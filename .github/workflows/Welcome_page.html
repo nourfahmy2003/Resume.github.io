@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Nour's Website</title>
+  <link rel="stylesheet" href="Resume.css">
+</head>
+<body>
+  <div class="welcome-section" id="welcome">
+    <h1>Hello, this is Noureldeen Fahmy!</h1>
+    <p class="ceo-text">CTO and Co-Founder of Storelx</p>
+    <p class="scroll-text">Scroll down to explore my website.</p>
+    <div class="scroll-animation" id="scroll-down">
+      <div class="arrow-down"></div>
+    </div>
+  </div>
+
+  <!-- About Me Section -->
+  <div class="about-section" id="about">
+    <div class="content-container">
+      <h2>About Me</h2>
+      <p>
+        I am student enrolled in Memorial University in Computer Science Bachelors of Science. I am fluent in both English and Arabic.
+        I am particularly interested in the CICS internship program because it is a co-op program. 
+        This means that I would have the opportunity to gain work experience.
+         I believe that this would be a valuable experience for me, as it would allow me to apply my theoretical knowledge to real-world problems and to develop my professional skills
+        I am confident that I have the skills and knowledge necessary to be successful in the CICS internship program. 
+        I have a strong foundation in computer science fundamentals, and I am proficient in a variety of programming languages and technologies. 
+        I am also a quick learner and I am eager to take on new challenges.
+      </p>
+    </div>
+  </div>
+
+  <!-- Education Section -->
+<div class="education-section" id="education">
+  <div class="content-container">
+    <h2>Education</h2>
+    <div class="timeline-edu">
+      <div class="timeline-item">
+        <h3>Memorial University of Newfoundland</h3>
+        <p>Bachelor of Science in Computer Science - 2021-present</p>
+        <span class="timeline-date">2021 - Present</span>
+      </div>
+      <div class="timeline-item">
+        <h3>Canadian International School of Egypt</h3>
+        <p>Ontario Diploma - Graduated in 2021</p>
+        <span class="timeline-date">Graduated in 2021</span>
+      </div>
+      <!-- Add more education entries as needed -->
+    </div>
+  </div>
+</div>
+
+
+<!-- ... (previous code) ... -->
+
+<section class="experience-section">
+  <section class="timeline">
+    <div class="info">
+      <h2>Work Experiences</h2>
+      <p>Here is the history of my past Work experiences</p>
+    </div>
+
+    <ol>
+      <li>
+        <div>
+          <time>April 2023 - Present</time> <job-loc>Union Group FZCO, Dubai, UAE</job-loc>
+          <job>Data Science Intern</job>
+          <p class="job-description" id="job1">
+            <!-- Job 1 description -->
+            ● Cleaned and manipulated raw data.
+            <br>● Created graphs and charts detailing data analysis results.
+            <br>● Recommended data analysis tools to address business issues.
+            <br>● Understood and followed oral and written directions.
+            <br>● Worked successfully with a diverse group of coworkers to accomplish goals and address
+            issues related to our products and services.
+            <br>● Provided excellent service and attention to customers when face-to-face or through phone
+            conversations.
+          </p>
+          <button class="read-more-btn" onclick="showModal('job1')">Read More</button>
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>July 2022 - October 2022</time> <job-loc>Hoopoe Digital, Cairo, Egypt</job-loc>
+          <job>Backend Developer Intern</job>
+          <p class="job-description" id="job2">
+            <!-- Job 2 description -->
+            ● I worked in 3 divisions the front end, back end, and data science but mostly worked with
+            backend
+            <br>● I was also taught some JS, NodeJS, React and JSON
+            <br>● Overall gained many new senses in the industry of computer science
+            <br>● Performed code review for peers and provided recommendations for improvements.
+            <br>● Worked closely with business partners to create and deliver high-value solutions to meet
+            their needs.
+            <br>● Reviewed information and elements regularly on websites and pages for accuracy and
+            functionality.
+          </p>
+          <button class="read-more-btn" onclick="showModal('job2')">Read More</button>
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>April 2022 - July 2022</time> <job-loc>Union Group, Cairo, Egypt</job-loc>
+          <job>Data Science Intern</job>
+          <p class="job-description" id="job3">
+            <!-- Job 3 description -->
+            ● I was taught how to use SQL for analyzing data and also the basics of SQL
+            <br>● Also got to gain the skill of being able to work with a team and be able to work
+            independently
+            <br>● Cleaned and manipulated raw data.
+            <br>● Created graphs and charts detailing data analysis results.
+            <br>● Used statistical software to analyze and process large data sets.
+            <br>● Planned and completed group projects, working smoothly with others.
+          </p>
+          <button class="read-more-btn" onclick="showModal('job3')">Read More</button>
+        </div>
+      </li>
+      <li></li>
+    </ol>
+
+  </section>
+</section>
+
+
+
+<div class="modal-overlay">
+  <div class="modal">
+    <button class="close-btn" onclick="hideModal()">&times;</button>
+    <div class="modal-content">
+      <h3 id="modal-job-name"></h3>
+  <p id="modal-job-time"></p>
+  <p id="modal-job-location"></p>
+  <p id="modal-job-description"></p>
+  
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Skills section-->
+<div class="lan-skills-section">
+<div class="skills_chart">
+  <h1>Language Skills Bar</h1>
+		<div class="skillbox">
+			<p>HTML</p>
+			<p>45%</p>
+			<div class="skill">
+				<div class="level" style="width: 45%; background: #2fc4b2;"></div>
+			</div>
+		</div>
+		<div class="skillbox">
+			<p>CSS</p>
+			<p>80%</p>
+			<div class="skill">
+				<div class="level" style="width: 80%; background: #d32626;"></div>
+			</div>
+		</div>
+		<div class="skillbox">
+			<p>JavaScript</p>
+			<p>65%</p>
+			<div class="skill">
+				<div class="level" style="width: 65%; background: #79d70f;"></div>
+			</div>
+		</div>
+		<div class="skillbox">
+			<p>JAVA</p>
+			<p>75%</p>
+			<div class="skill">
+				<div class="level" style="width: 75%; background: #b5076b;"></div>
+			</div>
+		</div>
+		<div class="skillbox">
+			<p>Python</p>
+			<p>85%</p>
+			<div class="skill">
+				<div class="level" style="width: 85%; background: #fed330;"></div>
+			</div>
+		</div>
+    <div class="skillbox">
+			<p>SQL</p>
+			<p>90%</p>
+			<div class="skill">
+				<div class="level" style="width: 90%; background: #3071fe;"></div>
+			</div>
+		</div>
+    <div class="skillbox">
+			<p>C++</p>
+			<p>30%</p>
+			<div class="skill">
+				<div class="level" style="width: 30%; background: #d36e26;"></div>
+			</div>
+		</div>
+
+
+	</div>
+</div>
+
+<div class="skills-section">
+  <h1>Professional Skills</h1>
+  <ul>
+    <li>Problem solving</li>
+    <li>Effective Communication, Teamwork, Adaptability, Integrity, Dependability</li>
+    <li>Data management</li>
+    <li>Analytical Thinking</li>
+    <li>Friendly, Positive Attitude</li>
+    <li>Microsoft tools</li>
+    <li>Time management</li>
+    <li>Research skills</li>
+  </ul>
+</div>
+
+  <script src="Resume.js"></script>
+</body>
+</html>
