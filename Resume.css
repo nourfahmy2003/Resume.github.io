@@ -1,0 +1,677 @@
+body{
+  background-color: white;
+}
+
+/* Styling for the scroll animation */
+.welcome-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+.scroll-animation {
+  position: absolute;
+  bottom: 30px; /* Adjust the distance from the bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.arrow-down {
+  border: solid #333;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 10px;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) rotate(45deg); /* Keep the arrow facing down while bouncing */
+  }
+  40% {
+    transform: translateY(-10px) rotate(45deg); /* Adjust the bouncing height while keeping the arrow facing down */
+  }
+  60% {
+    transform: translateY(-5px) rotate(45deg); /* Adjust the bouncing height while keeping the arrow facing down */
+  }
+}
+
+/* Styling for the "CEO of Storelx" text */
+.ceo-text {
+  font-size: 15px;
+  color: #666;
+  position: relative; /* Add relative positioning */
+  top: 0px; /* Adjust the vertical position */
+}
+
+.scroll-text{
+  position: relative;
+  top:250px;
+}
+
+
+
+/* Styling for the "About Me" section */
+.about-section {
+  background-color: #f9f9f9;
+  padding: 50px 0;
+}
+
+.about-section .content-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-section h2 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+}
+
+.about-section p {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Styling for the education timeline */
+.education-section {
+  padding: 50px 0;
+  background-color: #f0f0f0;
+  text-align: center; /* Centering the education content */
+}
+
+.education-section .timeline-edu {
+  position: relative;
+  margin-top: 40px;
+}
+
+.education-section .timeline-edu:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 34%;
+  transform: translateX(-50%); /* Center the timeline line */
+  width: 2px;
+  background-color: #666;
+}
+
+.education-section .timeline-item {
+  position: relative;
+  padding-left: 10px;
+  margin-bottom: 40px;
+}
+
+.education-section .timeline-item h3 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.education-section .timeline-item p {
+  font-size: 16px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.education-section .timeline-item .timeline-date {
+  position: absolute;
+  top: 0;
+  left: 330px;
+  font-size: 14px;
+  color: #999;
+  width: 120px;
+  text-align: right;
+}
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+:root {
+  --white: #fff;
+  --black: #323135;
+  --crystal: #a8dadd;
+  --columbia-blue: #cee9e4;
+  --midnight-green: #01565b;
+  --yellow: #e5f33d;
+  --timeline-gradient: rgba(206, 233, 228, 1) 0%, rgba(206, 233, 228, 1) 50%,
+    rgba(206, 233, 228, 0) 100%;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  font: normal 16px/1.5 "Inter", sans-serif;
+  background: var(--columbia-blue);
+  color: var(--black);
+  margin-bottom: 50px;
+}
+
+.timeline job {
+  display: block;
+  font-size: 1rem;
+  font-weight: lighter;
+  margin-bottom: 2px;
+  color: green;
+}
+
+.experience-section{
+  max-height:fit-content;
+}
+.timeline job-description {
+  display: none;
+}
+/* TIMELINE
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.timeline {
+  position: relative;
+  white-space: nowrap;
+  max-width: 1200px;
+  padding: 0 10px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 320px auto;
+  grid-gap: 10px;
+  overflow: hidden;
+}
+
+.timeline::before,
+.timeline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 30px;
+  width: 100px;
+  z-index: 2;
+}
+
+.timeline::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--timeline-gradient));
+}
+
+.timeline::before {
+  left: 340px;
+  background: linear-gradient(90deg, var(--timeline-gradient));
+}
+
+.timeline .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 40px;
+  color: var(--white);
+  background: var(--midnight-green);
+  white-space: normal;
+  border-radius: 10px;
+}
+
+.timeline .info img {
+  margin-bottom: 20px;
+}
+
+.timeline .info p {
+  margin-top: 10px;
+  color: var(--crystal);
+}
+
+.timeline .info a {
+  text-decoration: none;
+}
+
+.timeline ol::-webkit-scrollbar {
+  height: 12px;
+}
+
+.timeline ol::-webkit-scrollbar-thumb,
+.timeline ol::-webkit-scrollbar-track {
+  border-radius: 92px;
+}
+
+.timeline ol::-webkit-scrollbar-thumb {
+  background: var(--midnight-green);
+}
+
+.timeline ol::-webkit-scrollbar-track {
+  background: var(--yellow);
+}
+
+.timeline ol {
+  font-size: 0;
+  padding: 250px 0;
+  transition: all 1s;
+  overflow-x: scroll;
+  
+  scroll-snap-type: x mandatory;
+  scrollbar-color: var(--yellow) var(--midnight-green);
+
+}
+
+.timeline ol li {
+  position: relative;
+  display: inline-block;
+  list-style-type: none;
+  width: 300px;
+  height: 5px;
+  background: var(--white);
+  scroll-snap-align: start;
+ 
+}
+
+.timeline ol li:last-child {
+  width: 300px;
+  margin-right: 120px;
+}
+
+.timeline ol li:not(:first-child) {
+  margin-left: 14px;
+}
+
+.timeline ol li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 1px);
+  bottom: 0;
+  width: 16px;
+  height: 16px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: var(--midnight-green);
+  z-index: 1;
+}
+
+.timeline ol li div {
+  position: absolute;
+  left: calc(100% + 7px);
+  width: 300px;
+  padding: 10px;
+  font-size: 1rem;
+  white-space: normal;
+  color: var(--black);
+  background: var(--white);
+  border-radius: 0 10px 10px 10px;
+  overflow: hidden; 
+ 
+}
+
+
+.timeline ol li div::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.timeline ol li:nth-child(odd) div {
+  top: -16px;
+  transform: translateY(-100%);
+  border-radius: 10px 10px 10px 0;
+}
+
+.timeline ol li:nth-child(odd) div::before {
+  top: 100%;
+  border-width: 8px 8px 0 0;
+  border-color: var(--white) transparent transparent transparent;
+}
+
+.timeline ol li:nth-child(even) div {
+  top: calc(100% + 16px);
+}
+
+.timeline ol li:nth-child(even) div::before {
+  top: -8px;
+  border-width: 8px 0 0 8px;
+  border-color: transparent transparent transparent var(--white);
+}
+
+.timeline time {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--midnight-green);
+}
+
+.timeline ol li div p.job-description {
+  display: none; /* Initially hide the job description */
+}
+
+.timeline ol li div button.read-more-btn {
+  margin-top: 10px;
+  background-color: var(--midnight-green);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+ 
+}
+
+/* CSS for the modal overlay */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+  
+}
+
+/* CSS for the modal content */
+.modal {
+  
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-width: 40%;
+  max-height: 90%;
+  overflow-y: auto;
+  text-align: center;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #888;
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content h3{
+  font-size: 20px;
+}
+
+
+.modal-content jobcomp{
+  font-size: 15px;
+}
+
+.modal-content jobtime{
+  font-size: 15px;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.modal-content p{
+  font-size: 15px;
+}
+/* Styles for the skills chart */
+.skills_chart {
+  width: 600px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 25px 20px;
+  background: #120136;
+  box-sizing: border-box;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  margin-top: 200px;
+}
+
+.skillbox {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.skills_chart h1 {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.skillbox p {
+  padding: 0;
+  letter-spacing: 1px;
+  margin: 0 0 15px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: bold;
+}
+
+.skillbox p:nth-child(2) {
+  float: right;
+  position: relative;
+  top: -25px;
+}
+
+/* Adjust the style of the skill level bar */
+.skill {
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.level {
+  width: 100%;
+  height: 15px;
+  border-radius: 8px;
+}
+
+/* Customize the colors for different skill levels */
+.level {
+  background-color: #4CAF50; /* Green color for 85% skill level */
+}
+
+.lan-skills-section {
+  background-color: white;
+  margin-top: -170px;
+  width: auto;
+  height: 750px;
+}
+
+/* CSS for the Professional Skills section */
+.skills-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 90px;
+  margin-bottom: 90px;
+  position:relative;
+  max-height: fit-content;
+}
+
+.skills-section h1 {
+  font-size: 32px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.skills-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.skills-section li {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.skills-section li:before {
+  content: "●"; /* Display green bullet point (●) before each list item */
+  color: #4CAF50; /* Green color for the bullet point */
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.profile-container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e3dbf6,#a99bf9);
+  padding: 10px;
+  margin-top: 30px;
+  max-height: fit-content;
+  margin-bottom: -100px;
+}
+
+.card{
+  width: 350px;
+  height: 515px;
+  margin: 100px auto 0;
+  
+}
+
+.card-inner{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.front, .back{
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.front{
+  background: url(images/IMG_8098.jpeg);
+  background-size: cover;
+  background-position: center;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+}
+
+.front h2{
+  font-weight: 700;
+  color: blue;
+
+}
+
+.front p{
+  color: #ccc;
+  font-size: 13px;
+}
+
+.front button{
+  width: 120px;
+  border: 1px solid #fff;
+  background: transparent;
+  border-radius: 50px;
+  padding: 8px 20px;
+  cursor: pointer;
+  margin: 20px;
+  margin-right:30px;
+  color:var(--columbia-blue);
+}
+
+.back {
+  background: white;
+  color: #333;
+padding: 20px 40px;
+transform: rotateY(180deg)
+}
+
+.back h1{
+  font-size: 50px;
+  line-height: 55px;
+  margin-bottom:10px;
+}
+
+.back h1{
+  font-size: 400;
+}
+.back p{
+  font-size: 14px;
+}
+
+.back span{
+  font-weight: 300;
+}
+
+.back img{
+  width: 160px;
+}
+
+.back a{
+  width: 60px;
+  height: 60px;
+border-radius: 50%;
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2) ;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 5px;
+margin-left: 100px;
+margin-top: 20px;
+
+}
+
+.back a img{
+  width:80%;
+}
+
+.card:hover .card-inner{
+  transform: rotateY(180deg)
+}
