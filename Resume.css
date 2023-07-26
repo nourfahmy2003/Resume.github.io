@@ -186,6 +186,9 @@ body {
   color: green;
 }
 
+.experience-section{
+  max-height:fit-content;
+}
 .timeline job-description {
   display: none;
 }
@@ -525,6 +528,9 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-top: 90px;
+  margin-bottom: 90px;
+  position:relative;
+  max-height: fit-content;
 }
 
 .skills-section h1 {
@@ -551,4 +557,121 @@ body {
   color: #4CAF50; /* Green color for the bullet point */
   font-size: 20px;
   margin-right: 10px;
+}
+
+.profile-container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e3dbf6,#a99bf9);
+  padding: 10px;
+  margin-top: 30px;
+  max-height: fit-content;
+  margin-bottom: -100px;
+}
+
+.card{
+  width: 350px;
+  height: 515px;
+  margin: 100px auto 0;
+  
+}
+
+.card-inner{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.front, .back{
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.front{
+  background: url(images/IMG_8098.jpeg);
+  background-size: cover;
+  background-position: center;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+}
+
+.front h2{
+  font-weight: 700;
+  color: blue;
+
+}
+
+.front p{
+  color: #ccc;
+  font-size: 13px;
+}
+
+.front button{
+  width: 120px;
+  border: 1px solid #fff;
+  background: transparent;
+  border-radius: 50px;
+  padding: 8px 20px;
+  cursor: pointer;
+  margin: 20px;
+  margin-right:30px;
+  color:var(--columbia-blue);
+}
+
+.back {
+  background: white;
+  color: #333;
+padding: 20px 40px;
+transform: rotateY(180deg)
+}
+
+.back h1{
+  font-size: 50px;
+  line-height: 55px;
+  margin-bottom:10px;
+}
+
+.back h1{
+  font-size: 400;
+}
+.back p{
+  font-size: 14px;
+}
+
+.back span{
+  font-weight: 300;
+}
+
+.back img{
+  width: 160px;
+}
+
+.back a{
+  width: 60px;
+  height: 60px;
+border-radius: 50%;
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2) ;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 5px;
+margin-left: 100px;
+margin-top: 20px;
+
+}
+
+.back a img{
+  width:80%;
+}
+
+.card:hover .card-inner{
+  transform: rotateY(180deg)
 }
