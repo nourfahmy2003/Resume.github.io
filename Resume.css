@@ -21,13 +21,6 @@ body{
   color: #333;
 }
 
-.storelx-web{
-  font-weight: 100;
-  text-decoration: underline;
-  font-size: 10px;
-  position: relative;
-  color: #fff !important;
-}
 
 .scroll-animation {
   position: absolute;
