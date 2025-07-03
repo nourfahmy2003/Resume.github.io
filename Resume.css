@@ -1,5 +1,8 @@
-body{
+body {
   background-color: white;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Modern Header Section */
@@ -709,7 +712,7 @@ body{
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .about-section {
     padding: 50px 0;
   }
@@ -851,7 +854,20 @@ body {
   font: normal 16px/1.5 "Inter", sans-serif;
   background: var(--columbia-blue);
   color: var(--black);
-  margin-bottom: 50px;
+  margin: 0 0 50px 0;
+  padding: 0;
+}
+
+/* Center section content and limit width */
+.section-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px;
+  padding: 0 1rem;
+}
+
+.timeline-description {
+  text-align: center;
 }
 
 .timeline job {
@@ -2303,22 +2319,27 @@ margin-top: 20px;
   .skills-main-section {
     padding: 60px 0;
   }
-  
+
   .skills-container {
     padding: 0 15px;
   }
-  
+
   .soft-skills-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .skills-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Modal should take most of the screen width on mobile */
+  .modal {
+    max-width: 95%;
   }
 }
 
 /* Additional mobile layout improvements */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .about-card {
     padding: 20px;
     margin-bottom: 20px;
@@ -2333,6 +2354,10 @@ margin-top: 20px;
 
   .timeline {
     grid-template-columns: 1fr;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .timeline::before,
@@ -2347,11 +2372,12 @@ margin-top: 20px;
 
   .timeline ol li {
     display: block;
-    width: auto;
+    width: 100%;
     height: auto;
     margin: 30px 0;
     position: relative;
-    padding-left: 20px;
+    padding: 1rem 0;
+    text-align: center;
   }
 
   .timeline ol li:not(:last-child)::after {
@@ -2361,7 +2387,8 @@ margin-top: 20px;
   .timeline ol li::before {
     content: "";
     position: absolute;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     top: 10px;
     width: 8px;
     height: 8px;
@@ -2371,12 +2398,15 @@ margin-top: 20px;
 
   .timeline ol li div {
     position: static;
-    width: auto;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    box-sizing: border-box;
     border-radius: 8px;
-    padding: 15px 15px 15px 20px;
+    padding: 1rem;
     background: #fff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    border-left: 3px solid var(--midnight-green);
+    border-left: none;
   }
 
   .education-section .timeline-edu:before {
@@ -2391,5 +2421,14 @@ margin-top: 20px;
     position: static;
     text-align: left;
     margin-bottom: 5px;
+  }
+
+  /* Ensure containers span full width on small screens */
+  .content-container,
+  .projects-container,
+  .skills-container {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
   }
 }
