@@ -2303,17 +2303,22 @@ margin-top: 20px;
   .skills-main-section {
     padding: 60px 0;
   }
-  
+
   .skills-container {
     padding: 0 15px;
   }
-  
+
   .soft-skills-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .skills-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Modal should take most of the screen width on mobile */
+  .modal {
+    max-width: 95%;
   }
 }
 
@@ -2333,6 +2338,7 @@ margin-top: 20px;
 
   .timeline {
     grid-template-columns: 1fr;
+    width: 100%;
   }
 
   .timeline::before,
@@ -2391,5 +2397,14 @@ margin-top: 20px;
     position: static;
     text-align: left;
     margin-bottom: 5px;
+  }
+
+  /* Ensure containers span full width on small screens */
+  .content-container,
+  .projects-container,
+  .skills-container {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
   }
 }
