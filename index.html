@@ -3,242 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to Nour's Website</title>
+  <title>Noureldeen Fahmy - Portfolio</title>
+  <meta name="description" content="Noureldeen Fahmy - Computer Science student and CTO of Storelx.">
+  <meta name="keywords" content="Noureldeen Fahmy, software developer, Node.js, React, data science, resume">
   <link rel="stylesheet" href="Resume.css">
 </head>
 <body>
-  <div class="welcome-section" id="welcome">
-    <h1>Hello, this is Noureldeen Fahmy!</h1>
-    <p class="ceo-text">CTO and Co-Founder of Storelx </p>
-    <a class="storelx-web" href="storelx.com" >Stolex webiste</a>
-    <a href="#card">Conact card</a>
+  <header>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <button id="dark-toggle" aria-label="Toggle dark mode">🌙</button>
+    </nav>
+  </header>
+  <section class="hero" id="welcome">
+    <h1>Noureldeen Fahmy</h1>
+    <p>CTO and Co-Founder of Storelx</p>
+    <a class="storelx-web" href="https://storelx.com">Storelx Website</a>
     <p class="scroll-text">Scroll down to explore my website.</p>
-    <div class="scroll-animation" id="scroll-down">
-      <div class="arrow-down"></div>
-    </div>
-  </div>
-
-  <!-- About Me Section -->
-  <div class="about-section" id="about">
-    <div class="content-container">
-      <h2>About Me</h2>
-      <p>
-        I am student enrolled in Memorial University in Computer Science Bachelors of Science. I am fluent in both English and Arabic.
-        I am particularly interested in the CICS internship program because it is a co-op program. 
-        This means that I would have the opportunity to gain work experience.
-         I believe that this would be a valuable experience for me, as it would allow me to apply my theoretical knowledge to real-world problems and to develop my professional skills
-        I am confident that I have the skills and knowledge necessary to be successful in the CICS internship program. 
-        I have a strong foundation in computer science fundamentals, and I am proficient in a variety of programming languages and technologies. 
-        I am also a quick learner and I am eager to take on new challenges.
-      </p>
-    </div>
-  </div>
-
-  <!-- Education Section -->
-<div class="education-section" id="education">
-  <div class="content-container">
-    <h2>Education</h2>
-    <div class="timeline-edu">
-      <div class="timeline-item">
-        <h3>Memorial University of Newfoundland</h3>
-        <p>Bachelor of Science in Computer Science - 2021-present</p>
-        <span class="timeline-date">2021 - Present</span>
-      </div>
-      <div class="timeline-item">
-        <h3>Canadian International School of Egypt</h3>
-        <p>Ontario Diploma - Graduated in 2021</p>
-        <span class="timeline-date">Graduated in 2021</span>
-      </div>
-      <!-- Add more education entries as needed -->
-    </div>
-  </div>
-</div>
-
-
-<!-- ... (previous code) ... -->
-
-<section class="experience-section">
-  <section class="timeline">
-    <div class="info">
-      <h2>Work Experiences</h2>
-      <p>Here is the history of my past Work experiences</p>
-    </div>
-
-    <ol>
-      <li>
-        <div>
-          <time>April 2023 - Present</time> <job-loc>Union Group FZCO, Dubai, UAE</job-loc>
-          <job>Data Science Intern</job>
-          <p class="job-description" id="job1">
-            <!-- Job 1 description -->
-            ● Cleaned and manipulated raw data.
-            <br>● Created graphs and charts detailing data analysis results.
-            <br>● Recommended data analysis tools to address business issues.
-            <br>● Understood and followed oral and written directions.
-            <br>● Worked successfully with a diverse group of coworkers to accomplish goals and address
-            issues related to our products and services.
-            <br>● Provided excellent service and attention to customers when face-to-face or through phone
-            conversations.
-          </p>
-          <button class="read-more-btn" onclick="showModal('job1')">Read More</button>
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>July 2022 - October 2022</time> <job-loc>Hoopoe Digital, Cairo, Egypt</job-loc>
-          <job>Backend Developer Intern</job>
-          <p class="job-description" id="job2">
-            <!-- Job 2 description -->
-            ● I worked in 3 divisions the front end, back end, and data science but mostly worked with
-            backend
-            <br>● I was also taught some JS, NodeJS, React and JSON
-            <br>● Overall gained many new senses in the industry of computer science
-            <br>● Performed code review for peers and provided recommendations for improvements.
-            <br>● Worked closely with business partners to create and deliver high-value solutions to meet
-            their needs.
-            <br>● Reviewed information and elements regularly on websites and pages for accuracy and
-            functionality.
-          </p>
-          <button class="read-more-btn" onclick="showModal('job2')">Read More</button>
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>April 2022 - July 2022</time> <job-loc>Union Group, Cairo, Egypt</job-loc>
-          <job>Data Science Intern</job>
-          <p class="job-description" id="job3">
-            <!-- Job 3 description -->
-            ● I was taught how to use SQL for analyzing data and also the basics of SQL
-            <br>● Also got to gain the skill of being able to work with a team and be able to work
-            independently
-            <br>● Cleaned and manipulated raw data.
-            <br>● Created graphs and charts detailing data analysis results.
-            <br>● Used statistical software to analyze and process large data sets.
-            <br>● Planned and completed group projects, working smoothly with others.
-          </p>
-          <button class="read-more-btn" onclick="showModal('job3')">Read More</button>
-        </div>
-      </li>
-      <li></li>
-    </ol>
-
+    <div class="scroll-animation" id="scroll-down"><div class="arrow-down"></div></div>
   </section>
-</section>
-
-
-
-<div class="modal-overlay">
-  <div class="modal">
-    <button class="close-btn" onclick="hideModal()">&times;</button>
-    <div class="modal-content">
-      <h3 id="modal-job-name"></h3>
-  <p id="modal-job-time"></p>
-  <p id="modal-job-location"></p>
-  <p id="modal-job-description"></p>
-  
-    </div>
-    </div>
-  </div>
-</div>
-
-
-<!--Skills section-->
-<div class="lan-skills-section">
-<div class="skills_chart">
-  <h1>Language Skills Bar</h1>
-		<div class="skillbox">
-			<p>HTML</p>
-			<p>45%</p>
-			<div class="skill">
-				<div class="level" style="width: 45%; background: #2fc4b2;"></div>
-			</div>
-		</div>
-		<div class="skillbox">
-			<p>CSS</p>
-			<p>80%</p>
-			<div class="skill">
-				<div class="level" style="width: 80%; background: #d32626;"></div>
-			</div>
-		</div>
-		<div class="skillbox">
-			<p>JavaScript</p>
-			<p>65%</p>
-			<div class="skill">
-				<div class="level" style="width: 65%; background: #79d70f;"></div>
-			</div>
-		</div>
-		<div class="skillbox">
-			<p>JAVA</p>
-			<p>75%</p>
-			<div class="skill">
-				<div class="level" style="width: 75%; background: #b5076b;"></div>
-			</div>
-		</div>
-		<div class="skillbox">
-			<p>Python</p>
-			<p>85%</p>
-			<div class="skill">
-				<div class="level" style="width: 85%; background: #fed330;"></div>
-			</div>
-		</div>
-    <div class="skillbox">
-			<p>SQL</p>
-			<p>90%</p>
-			<div class="skill">
-				<div class="level" style="width: 90%; background: #3071fe;"></div>
-			</div>
-		</div>
-    <div class="skillbox">
-			<p>C++</p>
-			<p>30%</p>
-			<div class="skill">
-				<div class="level" style="width: 30%; background: #d36e26;"></div>
-			</div>
-		</div>
-
-
-	</div>
-</div>
-
-<div class="skills-section">
-  <h1>Professional Skills</h1>
-  <ul>
-    <li>Problem solving</li>
-    <li>Effective Communication, Teamwork, Adaptability, Integrity, Dependability</li>
-    <li>Data management</li>
-    <li>Analytical Thinking</li>
-    <li>Friendly, Positive Attitude</li>
-    <li>Microsoft tools</li>
-    <li>Time management</li>
-    <li>Research skills</li>
-  </ul>
-</div>
-
-<div class="profile-container">
-  <div class="card" id="card">
-    <div class="card-inner">
-      <div class="front">
-        <h2>Noureldeen Fahmy</h2>
-        <p>Computer Science student</p>
-        <button>hover over</button>
+  <main>
+    <section id="about" class="about-section">
+      <h2>About Me</h2>
+      <p>I am a Computer Science honours student at Memorial University of Newfoundland. Fluent in English and Arabic, I enjoy applying theory to real-world problems and continuously learning new technologies.</p>
+    </section>
+    <section id="education" class="details-list">
+      <h2>Education</h2>
+      <details open>
+        <summary>Memorial University of Newfoundland - B.Sc. Computer Science (Honours), GPA 3.6, May 2025</summary>
+        <p>Relevant coursework: Algorithmic Techniques for AI, Data Prep Techniques, Intro to Data Mining, Web Programming.</p>
+      </details>
+    </section>
+    <section id="experience" class="details-list">
+      <h2>Experience</h2>
+      <details>
+        <summary>Storelx – CTO and Co-founder (Jan 2023 – Present)</summary>
+        <ul>
+          <li>Built P2P storage marketplace using Node.js & React with 100+ active users.</li>
+          <li>Designed microservices architecture (Express.js), reducing API response time by 40%.</li>
+          <li>Optimized MongoDB schemas (30% faster queries).</li>
+          <li>Led Agile team of 3, 95% sprint completion.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Union Group FZCO – Data Science Intern (Apr–Aug 2023)</summary>
+        <ul>
+          <li>Built data pipelines (Python, Pandas) for 20k+ daily transactions.</li>
+          <li>Created predictive models (85% accurate) using scikit-learn.</li>
+          <li>Built Plotly/Dash dashboards (cut report time 75%).</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Hoopoe Digital – Full Stack Intern (Jul–Oct 2022)</summary>
+        <ul>
+          <li>Developed customer tracking system (5+ malls, 20k+ users).</li>
+          <li>Built APIs (Node.js, Express) with 99.9% uptime.</li>
+          <li>React/D3 analytics dashboard (10k+ data points).</li>
+          <li>Improved scalability by 40%.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Union Group – Data Science Intern (Apr–Jul 2022)</summary>
+        <ul>
+          <li>Analyzed 5+ years of financial data, enabling 15% cost reduction.</li>
+          <li>Automated cleaning pipelines (10k+ records/day, 99% accurate).</li>
+          <li>Created Power BI dashboards used by 50+ stakeholders.</li>
+          <li>Forecasting improved by 25%, onboarding time halved.</li>
+        </ul>
+      </details>
+    </section>
+    <section id="projects" class="projects">
+      <h2>Projects</h2>
+      <ul>
+        <li><a href="https://card-memory-game-gold.vercel.app/">Memory Game</a> – React memory game with Vite, hooks, and CI/CD on Vercel.</li>
+        <li><a href="https://cv-builder-noureldeen.vercel.app/">CVMaker</a> – Full-stack CV builder with PDF export.</li>
+      </ul>
+    </section>
+    <section id="skills" class="skills">
+      <h2>Skills</h2>
+      <h3>Languages</h3>
+      <ul>
+        <li>Java</li>
+        <li>Python</li>
+        <li>JavaScript</li>
+        <li>SQL</li>
+        <li>HTML</li>
+      </ul>
+      <h3>Frameworks & Libraries</h3>
+      <ul>
+        <li>React</li>
+        <li>Node.js</li>
+        <li>MongoDB</li>
+        <li>Pandas</li>
+        <li>NumPy</li>
+      </ul>
+    </section>
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p>St. Johns's, NL, Canada</p>
+      <p><a href="mailto:nourfahmy2003@gmail.com">nourfahmy2003@gmail.com</a></p>
+      <p>Phone: +1 709-764-5964</p>
+      <div class="socials">
+        <a href="http://github.com/nourfahmy2003"><img src="images/github.png" alt="GitHub"></a>
+        <a href="http://www.linkedin.com/in/nefahmy/"><img src="images/icons8-linkedin-96.png" alt="LinkedIn"></a>
       </div>
-    <div class="back">
-      <img src="images/waving-hand.png">
-      <h1>Noureldeen <span>Fahmy</span></h1>
-      <p>nourfahmy2003@gmail.com<br>(709)-771-9840
-      <span><br>I am Memorial University student currently enrolled in Computer Science</span></p>
-      
-        <a href="https://www.linkedin.com/in/noureldeen-fahmy-277742256/"><img src="images/icons8-linkedin-96.png">
-        </div>
-          
-      </div>
-      
-    </div>
-    </div>
-  </div>
-</div>
-
-
+      <p><a id="resume-download" href="#" download>Download Resume PDF</a></p>
+    </section>
+    <section class="profile-card">
+      <img class="profile" src="images/IMG_8098.jpeg" alt="Noureldeen Fahmy">
+      <p>Computer Science student and technology enthusiast.</p>
+    </section>
+  </main>
+  <footer>
+    &copy; 2024 Noureldeen Fahmy
+  </footer>
   <script src="Resume.js"></script>
 </body>
 </html>
