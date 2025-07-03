@@ -2399,6 +2399,9 @@ margin-top: 20px;
   .timeline ol li div {
     position: static;
     width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    box-sizing: border-box;
     border-radius: 8px;
     padding: 1rem;
     background: #fff;
