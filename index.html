@@ -1,244 +1,698 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Nour's Website</title>
   <link rel="stylesheet" href="Resume.css">
 </head>
+
 <body>
   <div class="welcome-section" id="welcome">
-    <h1>Hello, this is Noureldeen Fahmy!</h1>
-    <p class="ceo-text">CTO and Co-Founder of Storelx </p>
-    <a class="storelx-web" href="storelx.com" >Stolex webiste</a>
-    <a href="#card">Conact card</a>
-    <p class="scroll-text">Scroll down to explore my website.</p>
-    <div class="scroll-animation" id="scroll-down">
-      <div class="arrow-down"></div>
+    <div class="background-animation">
+      <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+      </div>
+    </div>
+    
+    <div class="header-content">
+      <div class="profile-intro">
+        <h1 class="main-title">
+          <span class="greeting">Hello, I'm</span>
+          <span class="name">Noureldeen Fahmy</span>
+        </h1>
+        
+        <div class="title-section">
+          <p class="primary-title">CTO & Co-Founder</p>
+          <div class="company-info">
+            <span class="company-name">Storelx</span>
+            <a href="https://www.storelx.com" target="_blank" class="company-link">
+              <span class="link-icon">🌐</span>
+              <span class="link-text">www.storelx.com</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="role-tags">
+          <span class="role-tag">Full-Stack Developer</span>
+          <span class="role-tag">Data Scientist</span>
+          <span class="role-tag">Team Leader</span>
+        </div>
+        
+        <div class="header-actions">
+          <a href="#card" class="cta-button primary">
+            <span class="button-icon">📧</span>
+            <span class="button-text">Contact Me</span>
+          </a>
+          <a href="#about" class="cta-button secondary">
+            <span class="button-icon">👤</span>
+            <span class="button-text">About Me</span>
+          </a>
+        </div>
+      </div>
+      
+      <div class="scroll-indicator">
+        <p class="scroll-text">Explore my journey</p>
+        <div class="scroll-animation" id="scroll-down">
+          <div class="scroll-wheel">
+            <div class="scroll-dot"></div>
+          </div>
+          <div class="scroll-arrows">
+            <div class="arrow-down"></div>
+            <div class="arrow-down"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- About Me Section -->
-  <div class="about-section" id="about">
-    <div class="content-container">
-      <h2>About Me</h2>
-      <p>
-        I am student enrolled in Memorial University in Computer Science Bachelors of Science. I am fluent in both English and Arabic.
-        I am particularly interested in the CICS internship program because it is a co-op program. 
-        This means that I would have the opportunity to gain work experience.
-         I believe that this would be a valuable experience for me, as it would allow me to apply my theoretical knowledge to real-world problems and to develop my professional skills
-        I am confident that I have the skills and knowledge necessary to be successful in the CICS internship program. 
-        I have a strong foundation in computer science fundamentals, and I am proficient in a variety of programming languages and technologies. 
-        I am also a quick learner and I am eager to take on new challenges.
-      </p>
+  <section class="about-section" id="about">
+    <div class="about-container">
+      <div class="about-header">
+        <h2 class="section-title">About Me</h2>
+        <div class="title-underline"></div>
+        <p class="section-subtitle">Passionate developer building innovative solutions</p>
+      </div>
+      
+      <div class="about-content">
+        <div class="about-text">
+          <div class="intro-card">
+            <div class="card-icon">👋</div>
+            <h3>Hello, I'm Noureldeen!</h3>
+            <p>
+              I'm Noureldeen Fahmy, a Computer Science student at Memorial University of Newfoundland, graduating in
+              2025. With a strong foundation in full-stack development and data science, I bring hands-on experience building
+              scalable web platforms, developing intelligent data pipelines, and leading agile teams.
+            </p>
+          </div>
+          
+          <div class="journey-card">
+            <div class="card-icon">🚀</div>
+            <h3>My Journey</h3>
+            <p>
+              My professional journey includes roles as a full-stack developer, data science intern, and team lead, where I've
+              contributed to real-world applications used by thousands of users. From architecting a P2P storage marketplace
+              to forecasting sales with machine learning, I focus on creating clean, efficient, and impactful solutions.
+            </p>
+          </div>
+          
+          <div class="passion-card">
+            <div class="card-icon">💡</div>
+            <h3>What Drives Me</h3>
+            <p>
+              I'm passionate about combining software engineering with data to solve meaningful problems—and I'm always eager
+              to learn, build, and grow in collaborative environments. I am also a quick learner and I am eager to take on new challenges.
+            </p>
+          </div>
+        </div>
+        
+        <div class="about-stats">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number">100+</div>
+              <div class="stat-label">Active Users Served</div>
+            </div>
+            
+            <div class="stat-item">
+              <div class="stat-number">5+</div>
+              <div class="stat-label">Projects Completed</div>
+            </div>
+            
+            <div class="stat-item">
+              <div class="stat-number">3+</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+            
+            <div class="stat-item">
+              <div class="stat-number">95%</div>
+              <div class="stat-label">Sprint Completion Rate</div>
+            </div>
+          </div>
+          
+          <div class="achievements">
+            <h4>Key Achievements</h4>
+            <div class="achievement-list">
+              <div class="achievement-item">
+                <span class="achievement-icon">⚡</span>
+                <span class="achievement-text">Reduced API response time by 40%</span>
+              </div>
+              <div class="achievement-item">
+                <span class="achievement-icon">📊</span>
+                <span class="achievement-text">Achieved 85% accuracy in ML forecasting</span>
+              </div>
+              <div class="achievement-item">
+                <span class="achievement-icon">🎯</span>
+                <span class="achievement-text">Led team of 3 developers successfully</span>
+              </div>
+              <div class="achievement-item">
+                <span class="achievement-icon">📈</span>
+                <span class="achievement-text">Improved system scalability by 40%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
   <!-- Education Section -->
-<div class="education-section" id="education">
-  <div class="content-container">
-    <h2>Education</h2>
-    <div class="timeline-edu">
-      <div class="timeline-item">
-        <h3>Memorial University of Newfoundland</h3>
-        <p>Bachelor of Science in Computer Science - 2021-present</p>
-        <span class="timeline-date">2021 - Present</span>
+  <div class="education-section" id="education">
+    <div class="content-container">
+      <h2>Education</h2>
+      <div class="timeline-edu">
+        <div class="timeline-item">
+          <h3>Memorial University of Newfoundland</h3>
+          <p>Bachelor of Science in Computer Science - 2021-present</p>
+          <span class="timeline-date">2021 - Present</span>
+        </div>
+        <div class="timeline-item">
+          <h3>Canadian International School of Egypt</h3>
+          <p>Ontario Diploma - Graduated in 2021</p>
+          <span class="timeline-date">Graduated in 2021</span>
+        </div>
+        <!-- Add more education entries as needed -->
       </div>
-      <div class="timeline-item">
-        <h3>Canadian International School of Egypt</h3>
-        <p>Ontario Diploma - Graduated in 2021</p>
-        <span class="timeline-date">Graduated in 2021</span>
-      </div>
-      <!-- Add more education entries as needed -->
     </div>
   </div>
-</div>
 
 
-<!-- ... (previous code) ... -->
+  <section class="experience-section">
+    <section class="timeline">
+      <div class="info">
+        <h2>Work Experiences</h2>
+        <p>Here is the history of my past Work experiences</p>
+      </div>
 
-<section class="experience-section">
-  <section class="timeline">
-    <div class="info">
-      <h2>Work Experiences</h2>
-      <p>Here is the history of my past Work experiences</p>
-    </div>
+      <ol>
+        <li>
+          <div>
+            <time>January 2023 - Present</time> <job-loc>Storelx, NL, Canada</job-loc>
+            <job>Lead Developer</job>
+            <p class="job-description" id="job1">
+              ● Led the development of a P2P storage marketplace platform using Node.js and React, serving 100+ active
+              users.
+              <br>● Designed and implemented a scalable microservices architecture using Express.js, reducing API
+              response time by 40%
+              <br>● Designed and optimized MongoDB schemas, resulting in 30% faster query performance
+              <br>● Led a team of 3 developers using Agile methodology, achieving 95% on-time sprint completion rate
+            </p>
+            <button class="read-more-btn" data-job-id="job1">Read More</button>
+          </div>
+        </li>
+        <li>
+          <div>
+            <time>April 2023 - August 2023</time> <job-loc>Union Group FZCO, Dubai, UAE</job-loc>
+            <job>Data Science Intern</job>
+            <p class="job-description" id="job2">
+              ● Developed pipelines using Python and Pandas, processing 20k+ daily transactions with 99.9% accuracy
+              <br>● Created predictive models using scikit-learn, achieving 85% accuracy in sales forecasting
+              <br>● Built interactive dashboards using Plotly and Dash, reducing report generation time by 75%
+            </p>
+            <button class="read-more-btn" data-job-id="job2">Read More</button>
+          </div>
+        </li>
+        <li>
+          <div>
+            <time>July 2022 - October 2022</time> <job-loc>Hoopoe Digital, Cairo, Egypt</job-loc>
+            <job>Full Stack Intern</job>
+            <p class="job-description" id="job3">
+              ● Developed a customer tracking application serving 5+ shopping malls and processing 20K+ daily visitors
+              <br>● Built RESTful APIs using Node.js and Express, handling 1000+ requests per minute with 99.9% uptime
+              <br>● Implemented real-time analytics dashboard using React and D3.js, processing 10k+ daily data points
+              <br>● Contributed to microservices architecture design, improving system scalability by 40%
+            </p>
+            <button class="read-more-btn" data-job-id="job3">Read More</button>
+          </div>
+        </li>
+        <li>
+          <div>
+            <time>April 2022 - July 2022</time> <job-loc>Union Group, Cairo, Egypt</job-loc>
+            <job>Data Science Intern</job>
+            <p class="job-description" id="job4">
+              ● Analyzed 5+ years of financial data using Python and SQL, identifying patterns that led to 15% cost
+              reduction
+              <br>● Created automated data cleaning pipelines processing 10k+ records daily with 99% accuracy
+              <br>● Developed interactive Power BI dashboards viewed by 50+ stakeholders daily
+              <br>● Implemented statistical analysis methods resulting in 25% more accurate financial forecasting
+              <br>● Documented 20+ technical processes, reducing onboarding time for new team members by 50%
+            </p>
+            <button class="read-more-btn" data-job-id="job4">Read More</button>
+          </div>
+        </li>
+        <li></li>
+      </ol>
 
-    <ol>
-      <li>
-        <div>
-          <time>April 2023 - Present</time> <job-loc>Union Group FZCO, Dubai, UAE</job-loc>
-          <job>Data Science Intern</job>
-          <p class="job-description" id="job1">
-            <!-- Job 1 description -->
-            ● Cleaned and manipulated raw data.
-            <br>● Created graphs and charts detailing data analysis results.
-            <br>● Recommended data analysis tools to address business issues.
-            <br>● Understood and followed oral and written directions.
-            <br>● Worked successfully with a diverse group of coworkers to accomplish goals and address
-            issues related to our products and services.
-            <br>● Provided excellent service and attention to customers when face-to-face or through phone
-            conversations.
-          </p>
-          <button class="read-more-btn" onclick="showModal('job1')">Read More</button>
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>July 2022 - October 2022</time> <job-loc>Hoopoe Digital, Cairo, Egypt</job-loc>
-          <job>Backend Developer Intern</job>
-          <p class="job-description" id="job2">
-            <!-- Job 2 description -->
-            ● I worked in 3 divisions the front end, back end, and data science but mostly worked with
-            backend
-            <br>● I was also taught some JS, NodeJS, React and JSON
-            <br>● Overall gained many new senses in the industry of computer science
-            <br>● Performed code review for peers and provided recommendations for improvements.
-            <br>● Worked closely with business partners to create and deliver high-value solutions to meet
-            their needs.
-            <br>● Reviewed information and elements regularly on websites and pages for accuracy and
-            functionality.
-          </p>
-          <button class="read-more-btn" onclick="showModal('job2')">Read More</button>
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>April 2022 - July 2022</time> <job-loc>Union Group, Cairo, Egypt</job-loc>
-          <job>Data Science Intern</job>
-          <p class="job-description" id="job3">
-            <!-- Job 3 description -->
-            ● I was taught how to use SQL for analyzing data and also the basics of SQL
-            <br>● Also got to gain the skill of being able to work with a team and be able to work
-            independently
-            <br>● Cleaned and manipulated raw data.
-            <br>● Created graphs and charts detailing data analysis results.
-            <br>● Used statistical software to analyze and process large data sets.
-            <br>● Planned and completed group projects, working smoothly with others.
-          </p>
-          <button class="read-more-btn" onclick="showModal('job3')">Read More</button>
-        </div>
-      </li>
-      <li></li>
-    </ol>
-
+    </section>
   </section>
-</section>
 
-
-
-<div class="modal-overlay">
-  <div class="modal">
-    <button class="close-btn" onclick="hideModal()">&times;</button>
-    <div class="modal-content">
-      <h3 id="modal-job-name"></h3>
-  <p id="modal-job-time"></p>
-  <p id="modal-job-location"></p>
-  <p id="modal-job-description"></p>
-  
-    </div>
-    </div>
-  </div>
-</div>
-
-
-<!--Skills section-->
-<div class="lan-skills-section">
-<div class="skills_chart">
-  <h1>Language Skills Bar</h1>
-		<div class="skillbox">
-			<p>HTML</p>
-			<p>45%</p>
-			<div class="skill">
-				<div class="level" style="width: 45%; background: #2fc4b2;"></div>
-			</div>
-		</div>
-		<div class="skillbox">
-			<p>CSS</p>
-			<p>80%</p>
-			<div class="skill">
-				<div class="level" style="width: 80%; background: #d32626;"></div>
-			</div>
-		</div>
-		<div class="skillbox">
-			<p>JavaScript</p>
-			<p>65%</p>
-			<div class="skill">
-				<div class="level" style="width: 65%; background: #79d70f;"></div>
-			</div>
-		</div>
-		<div class="skillbox">
-			<p>JAVA</p>
-			<p>75%</p>
-			<div class="skill">
-				<div class="level" style="width: 75%; background: #b5076b;"></div>
-			</div>
-		</div>
-		<div class="skillbox">
-			<p>Python</p>
-			<p>85%</p>
-			<div class="skill">
-				<div class="level" style="width: 85%; background: #fed330;"></div>
-			</div>
-		</div>
-    <div class="skillbox">
-			<p>SQL</p>
-			<p>90%</p>
-			<div class="skill">
-				<div class="level" style="width: 90%; background: #3071fe;"></div>
-			</div>
-		</div>
-    <div class="skillbox">
-			<p>C++</p>
-			<p>30%</p>
-			<div class="skill">
-				<div class="level" style="width: 30%; background: #d36e26;"></div>
-			</div>
-		</div>
-
-
-	</div>
-</div>
-
-<div class="skills-section">
-  <h1>Professional Skills</h1>
-  <ul>
-    <li>Problem solving</li>
-    <li>Effective Communication, Teamwork, Adaptability, Integrity, Dependability</li>
-    <li>Data management</li>
-    <li>Analytical Thinking</li>
-    <li>Friendly, Positive Attitude</li>
-    <li>Microsoft tools</li>
-    <li>Time management</li>
-    <li>Research skills</li>
-  </ul>
-</div>
-
-<div class="profile-container">
-  <div class="card" id="card">
-    <div class="card-inner">
-      <div class="front">
-        <h2>Noureldeen Fahmy</h2>
-        <p>Computer Science student</p>
-        <button>hover over</button>
+  <section class="projects-section">
+    <div class="projects-container">
+      <div class="projects-header">
+        <h2>My Projects</h2>
+        <p>Explore some of the projects I've built</p>
       </div>
-    <div class="back">
-      <img src="images/waving-hand.png">
-      <h1>Noureldeen <span>Fahmy</span></h1>
-      <p>nourfahmy2003@gmail.com<br>(709)-771-9840
-      <span><br>I am Memorial University student currently enrolled in Computer Science</span></p>
-      
-        <a href="https://www.linkedin.com/in/noureldeen-fahmy-277742256/"><img src="images/icons8-linkedin-96.png">
+
+      <div class="projects-grid">
+        <div class="project-card" data-project="project1">
+          <div class="project-card-header">
+            <h3>Memory Game</h3>
+            <span class="project-date">May 2024</span>
+          </div>
+          <div class="project-location">🍁 NL, Canada</div>
+          <div class="project-description">
+            <p>An interactive web-based memory game built with React and Vite, featuring optimized performance and
+              modern UI design.</p>
+          </div>
+          <div class="project-tech">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Vite</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Vercel</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://card-memory-game-gold.vercel.app/" target="_blank" class="project-link">
+              <span>🔗</span> Live Demo
+            </a>
+            <button class="project-details-btn" data-project-id="project1">
+              <span>📄</span> Details
+            </button>
+          </div>
         </div>
-          
+
+        <div class="project-card" data-project="project2">
+          <div class="project-card-header">
+            <h3>CV Maker</h3>
+            <span class="project-date">April 2024</span>
+          </div>
+          <div class="project-location">🍁 NL, Canada</div>
+          <div class="project-description">
+            <p>A full-stack resume builder with PDF export, drag-and-drop functionality, and multiple template designs.
+            </p>
+          </div>
+          <div class="project-tech">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">react-pdf</span>
+            <span class="tech-tag">react-beautiful-dnd</span>
+            <span class="tech-tag">CSS</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://cv-builder-noureldeen.vercel.app/" target="_blank" class="project-link">
+              <span>🔗</span> Live Demo
+            </a>
+            <button class="project-details-btn" data-project-id="project2">
+              <span>📄</span> Details
+            </button>
+          </div>
+        </div>
       </div>
-      
     </div>
+  </section>
+
+  <div class="modal-overlay">
+    <div class="modal">
+      <button class="close-btn" onclick="hideModal()">&times;</button>
+      <div class="modal-content">
+        <h3 id="modal-job-name"></h3>
+        <p id="modal-job-time"></p>
+        <p id="modal-job-location"></p>
+        <p id="modal-job-description"></p>
+
+      </div>
     </div>
   </div>
-</div>
+  </div>
 
+  <!-- Skills section moved after projects -->
+  <section class="skills-main-section">
+    <div class="skills-container">
+      <div class="skills-header">
+        <h2>Skills & Expertise</h2>
+        <p>My technical and professional capabilities</p>
+      </div>
+      
+      <div class="skills-content">
+        <!-- Technical Skills -->
+        <div class="technical-skills">
+          <h3><span class="icon">💻</span> Technical Skills</h3>
+          <div class="skills-grid">
+            <div class="skill-category">
+              <h4>Programming Languages</h4>
+              <div class="skill-bars">
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">Python</span>
+                    <span class="skill-percentage">90%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="90%" style="background: linear-gradient(45deg, #3776ab, #ffd43b);"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">JavaScript</span>
+                    <span class="skill-percentage">85%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="85%" style="background: linear-gradient(45deg, #f7df1e, #323330);"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">Java</span>
+                    <span class="skill-percentage">80%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="80%" style="background: linear-gradient(45deg, #ed8b00, #5382a1);"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">SQL</span>
+                    <span class="skill-percentage">88%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="88%" style="background: linear-gradient(45deg, #336791, #f29111);"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">C++</span>
+                    <span class="skill-percentage">70%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="70%" style="background: linear-gradient(45deg, #00599c, #004482);"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skill-category">
+              <h4>Frameworks & Libraries</h4>
+              <div class="skill-bars">
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">React</span>
+                    <span class="skill-percentage">85%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="85%" style="background: linear-gradient(45deg, #61dafb, #20232a);"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">Node.js</span>
+                    <span class="skill-percentage">80%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="80%" style="background: linear-gradient(45deg, #339933, #68a063);"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">Express.js</span>
+                    <span class="skill-percentage">78%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="78%" style="background: linear-gradient(45deg, #000000, #404040);"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">Pandas</span>
+                    <span class="skill-percentage">82%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="82%" style="background: linear-gradient(45deg, #150458, #e70488);"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">scikit-learn</span>
+                    <span class="skill-percentage">75%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="75%" style="background: linear-gradient(45deg, #f7931e, #3499cd);"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skill-category">
+              <h4>Tools & Technologies</h4>
+              <div class="skill-bars">
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">MongoDB</span>
+                    <span class="skill-percentage">85%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="85%" style="background: linear-gradient(45deg, #4db33d, #3fa037);"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">Git</span>
+                    <span class="skill-percentage">88%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="88%" style="background: linear-gradient(45deg, #f05032, #362d27);"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">Docker</span>
+                    <span class="skill-percentage">72%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="72%" style="background: linear-gradient(45deg, #2496ed, #0db7ed);"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">AWS</span>
+                    <span class="skill-percentage">68%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="68%" style="background: linear-gradient(45deg, #ff9900, #232f3e);"></div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">Vercel</span>
+                    <span class="skill-percentage">90%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-width="90%" style="background: linear-gradient(45deg, #000000, #ffffff);"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Professional Skills -->
+        <div class="professional-skills">
+          <h3><span class="icon">🎯</span> Professional Skills</h3>
+          <div class="soft-skills-grid">
+            <div class="soft-skill-card">
+              <div class="skill-icon">🧠</div>
+              <h4>Problem Solving</h4>
+              <p>Analytical thinking and creative solutions to complex technical challenges</p>
+            </div>
+            
+            <div class="soft-skill-card">
+              <div class="skill-icon">👥</div>
+              <h4>Team Leadership</h4>
+              <p>Leading agile teams and mentoring junior developers effectively</p>
+            </div>
+            
+            <div class="soft-skill-card">
+              <div class="skill-icon">💬</div>
+              <h4>Communication</h4>
+              <p>Clear technical documentation and stakeholder presentations</p>
+            </div>
+            
+            <div class="soft-skill-card">
+              <div class="skill-icon">📊</div>
+              <h4>Data Analysis</h4>
+              <p>Statistical analysis, data visualization, and business intelligence</p>
+            </div>
+            
+            <div class="soft-skill-card">
+              <div class="skill-icon">🚀</div>
+              <h4>Project Management</h4>
+              <p>Agile methodologies, sprint planning, and delivery optimization</p>
+            </div>
+            
+            <div class="soft-skill-card">
+              <div class="skill-icon">🔄</div>
+              <h4>Adaptability</h4>
+              <p>Quick learning of new technologies and frameworks</p>
+            </div>
+            
+            <div class="soft-skill-card">
+              <div class="skill-icon">🎨</div>
+              <h4>UI/UX Design</h4>
+              <p>User-centered design principles and responsive interfaces</p>
+            </div>
+            
+            <div class="soft-skill-card">
+              <div class="skill-icon">⚡</div>
+              <h4>Performance Optimization</h4>
+              <p>Code optimization, system scalability, and efficiency improvements</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <div class="profile-container">
+    <div class="modern-contact-section" id="card">
+      <div class="contact-background">
+        <div class="geometric-patterns">
+          <div class="pattern-circle circle-1"></div>
+          <div class="pattern-circle circle-2"></div>
+          <div class="pattern-circle circle-3"></div>
+          <div class="pattern-hexagon hex-1"></div>
+          <div class="pattern-hexagon hex-2"></div>
+          <div class="pattern-line line-1"></div>
+          <div class="pattern-line line-2"></div>
+          <div class="pattern-line line-3"></div>
+        </div>
+      </div>
+      
+      <div class="contact-content">
+        <div class="contact-card">
+          <div class="card-header">
+            <div class="avatar-section">
+              <div class="avatar-placeholder">
+                <span class="avatar-initials">NF</span>
+                <div class="avatar-ring"></div>
+              </div>
+              <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span class="status-text">Available for opportunities</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card-body">
+            <h2 class="contact-name">
+              <span class="first-name">Noureldeen</span>
+              <span class="last-name">Fahmy</span>
+            </h2>
+            
+            <p class="contact-role">Computer Science Student & Full-Stack Developer</p>
+            
+            <div class="contact-details">
+              <div class="detail-item">
+                <div class="detail-icon">📧</div>
+                <div class="detail-content">
+                  <span class="detail-label">Email</span>
+                  <a href="mailto:nourfahmy2003@gmail.com" class="detail-value">nourfahmy2003@gmail.com</a>
+                </div>
+              </div>
+              
+              <div class="detail-item">
+                <div class="detail-icon">📱</div>
+                <div class="detail-content">
+                  <span class="detail-label">Phone</span>
+                  <a href="tel:+17097645946" class="detail-value">+1 (709) 764-5946</a>
+                </div>
+              </div>
+              
+              <div class="detail-item">
+                <div class="detail-icon">🎓</div>
+                <div class="detail-content">
+                  <span class="detail-label">University</span>
+                  <span class="detail-value">Memorial University of Newfoundland</span>
+                </div>
+              </div>
+              
+              <div class="detail-item">
+                <div class="detail-icon">📍</div>
+                <div class="detail-content">
+                  <span class="detail-label">Location</span>
+                  <span class="detail-value">St. John's, NL, Canada</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="social-links">
+              <a href="https://www.linkedin.com/in/noureldeen-fahmy-277742256/" target="_blank" class="social-link linkedin">
+                <div class="social-icon">💼</div>
+                <span class="social-text">LinkedIn Profile</span>
+              </a>
+              
+              <a href="https://github.com/noureldeen" target="_blank" class="social-link github">
+                <div class="social-icon">💻</div>
+                <span class="social-text">GitHub Portfolio</span>
+              </a>
+            </div>
+            
+            <div class="contact-actions">
+              <a href="mailto:nourfahmy2003@gmail.com" class="contact-btn primary">
+                <span class="btn-icon">✉️</span>
+                <span class="btn-text">Send Email</span>
+              </a>
+              
+              <a href="tel:+17097645946" class="contact-btn secondary">
+                <span class="btn-icon">📞</span>
+                <span class="btn-text">Call Now</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <!-- Hidden project details for modal -->
+  <div class="hidden-project-details">
+    <div class="project-details" id="project1">
+      ● Developed an interactive web-based memory game using React and Vite
+      <br>● Implemented game logic and state management using React hooks
+      <br>● Optimized performance and deployed on Vercel with CI/CD pipeline
+      <br>● Features include: Card flipping animations, Score tracking, Timer functionality, Multiple difficulty levels
+      <br>● Used modern React patterns including custom hooks and context API
+      <br>● Responsive design that works on desktop and mobile devices
+    </div>
+
+    <div class="project-details" id="project2">
+      ● Developed a full-stack resume builder with PDF export functionality using react-pdf, supporting multiple
+      template designs
+      <br>● Created drag-and-drop interface using react-beautiful-dnd for section reordering
+      <br>● Achieved 40% faster render time through React optimization techniques
+      <br>● Implemented auto-save feature, preventing data loss and improving user experience
+      <br>● Features include: Real-time preview, Multiple templates, PDF export, Local storage, Responsive design
+      <br>● Built with modern React architecture and component-based design
+      <br>● Includes form validation and error handling for better user experience
+    </div>
+  </div>
 
   <script src="Resume.js"></script>
 </body>
+
 </html>
