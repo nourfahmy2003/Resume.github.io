@@ -1,5 +1,15 @@
+:root{
+  --bg-color:#ffffff;
+  --text-color:#333333;
+}
+body.dark{
+  --bg-color:#121212;
+  --text-color:#e0e0e0;
+}
+
 body{
-  background-color: white;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 /* Styling for the scroll animation */
@@ -10,7 +20,7 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f0f0f0;
+  background-color: var(--columbia-blue);
 }
 
 .welcome-section a{
@@ -67,7 +77,7 @@ body{
 
 /* Styling for the "About Me" section */
 .about-section {
-  background-color: #f9f9f9;
+  background-color: var(--columbia-blue);
   padding: 50px 0;
 }
 
@@ -96,7 +106,7 @@ body{
 /* Styling for the education timeline */
 .education-section {
   padding: 50px 0;
-  background-color: #f0f0f0;
+  background-color: var(--columbia-blue);
   text-align: center; /* Centering the education content */
 }
 
@@ -113,7 +123,7 @@ body{
   left: 34%;
   transform: translateX(-50%); /* Center the timeline line */
   width: 2px;
-  background-color: #666;
+  background-color: var(--text-color);
 }
 
 .education-section .timeline-item {
@@ -602,7 +612,7 @@ body {
 }
 
 .front{
-  background: url(IMG_8098.jpeg);
+  background: linear-gradient(135deg, #e3dbf6, #a99bf9);
   background-size: cover;
   background-position: center;
   padding: 60px 40px;
@@ -659,28 +669,70 @@ transform: rotateY(180deg)
   font-weight: 300;
 }
 
-.back img{
-  width: 160px;
+.wave-emoji {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 10px;
 }
 
-.back a{
-  width: 60px;
-  height: 60px;
-border-radius: 50%;
-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2) ;
-display: flex;
-align-items: center;
-justify-content: center;
-margin: 0 5px;
-margin-left: 100px;
-margin-top: 20px;
-
-}
-
-.back a img{
-  width:80%;
+.back a {
+  display: inline-block;
+  margin: 0 5px;
+  color: var(--midnight-green);
+  text-decoration: underline;
 }
 
 .card:hover .card-inner{
   transform: rotateY(180deg)
+}
+
+/* Header and navigation */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: var(--midnight-green);
+  color: var(--white);
+}
+.site-header a {
+  color: var(--white);
+  text-decoration: none;
+  margin: 0 10px;
+}
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+}
+#dark-mode-toggle {
+  background: transparent;
+  border: 1px solid var(--white);
+  color: var(--white);
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.download-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--midnight-green);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 4px;
+}
+.skill-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  justify-content: center;
+}
+.skill-list li {
+  background: var(--midnight-green);
+  color: var(--white);
+  padding: 5px 10px;
+  border-radius: 4px;
 }
