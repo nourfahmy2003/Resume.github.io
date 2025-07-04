@@ -19,7 +19,7 @@ window.addEventListener('scroll', function() {
   }
 });
 
-const timeline = document.querySelector('.timeline');
+const timeline = document.querySelector('#timeline');
 const modalOverlay = document.querySelector('.modal-overlay');
 const modal = document.querySelector('.modal');
 const modalContent = document.querySelector('.modal-content');
@@ -83,7 +83,7 @@ function hideModal() {
 }
 
 // Get all the "Read More" buttons from both timeline sections
-const experienceTimeline = document.querySelector('.experience-section .timeline');
+const experienceTimeline = document.querySelector('#timeline');
 const projectsTimeline = document.querySelector('.projects-section .timeline');
 
 // Function to add event listeners to read more buttons in a timeline
@@ -124,7 +124,7 @@ function addProjectDetailListeners() {
 
 // Function to add event listeners to read more buttons in work experience timeline
 function addWorkExperienceListeners() {
-  const experienceTimeline = document.querySelector('.experience-section .timeline');
+  const experienceTimeline = document.querySelector('#timeline');
   if (experienceTimeline) {
     const readMoreButtons = experienceTimeline.querySelectorAll('button.read-more-btn');
     
@@ -225,6 +225,39 @@ function addSkillCardAnimations() {
 // Initialize animations when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
   addSkillCardAnimations();
+
+  // Fade in sections when they enter the viewport
+  const fadeSections = document.querySelectorAll('.fade-section');
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  fadeSections.forEach(section => {
+    fadeObserver.observe(section);
+  });
+});
+
+// Simple timeline navigation without external plugins
+document.addEventListener('DOMContentLoaded', function() {
+  const items = document.querySelectorAll('#experience-timeline .timeline-item');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const dot = entry.target.querySelector('.timeline-dot');
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        if (dot) dot.classList.add('active');
+      } else {
+        if (dot) dot.classList.remove('active');
+      }
+    });
+  }, { threshold: 0.5 });
+
+  items.forEach(item => observer.observe(item));
 });
 
 
