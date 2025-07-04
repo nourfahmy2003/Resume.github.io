@@ -6,9 +6,9 @@
 .vertical-timeline {
   position: relative;
   max-width: 700px;
-  margin: 40px auto;
+  margin: 0px auto;
   padding-left: 60px;
-  height: 100vh;
+  height: 45vh;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
@@ -32,7 +32,7 @@
 .vertical-timeline .timeline-item {
   position: relative;
   margin: 0;
-  min-height: 100vh;
+  min-height: 40vh;
   scroll-snap-align: start;
   display: flex;
   align-items: center;
@@ -174,6 +174,29 @@
   }
 }
 
+.experience-title {
+  font-size: 2.25rem;              
+  font-weight: 700;                
+  text-align: center;              
+  color: #0f172a;                  
+  margin-bottom: 2rem;            
+  position: relative;
+  line-height: 1.2;
+  letter-spacing: -0.5px;        
+  margin-top: 20px;
+}
+
+.experience-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #0ea5e9;      /* Accent line */
+  border-radius: 2px;
+  margin: 0.5rem auto 0 auto;     /* Centered underline */
+}
+
+
 @media (max-width: 480px) {
   .vertical-timeline {
     padding-left: 30px;
@@ -208,6 +231,9 @@
   justify-content: center;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   overflow: hidden;
+  min-height: 100vh;     /* Ensures section fills the whole screen */
+  display: flex;
+  flex-direction: column;
 }
 
 .background-animation {
@@ -464,25 +490,36 @@
 
 .scroll-indicator {
   position: absolute;
-  bottom: 20px;
+  bottom: -150px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
+  z-index: 10;
+  width: 100%;
 }
+
+@media (max-width: 768px) {
+  .scroll-indicator {
+    bottom: 10px; /* move slightly higher on small screens if needed */
+  }
+}
+
 
 .scroll-text {
   font-size: 1rem;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   opacity: 0.8;
+  color: white;
 }
 
 .scroll-animation {
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  pointer-events: none;
 }
+
 
 .scroll-wheel {
   width: 30px;
@@ -573,6 +610,7 @@
 .welcome-section a{
   font-weight: 500;
   text-decoration: underline;
+  
   font-size: 16px;
   position: relative;
   color: #333;
