@@ -19,152 +19,7 @@ window.addEventListener('scroll', function() {
   }
 });
 
-const timeline = document.querySelector('.timeline');
-const modalOverlay = document.querySelector('.modal-overlay');
-const modal = document.querySelector('.modal');
-const modalContent = document.querySelector('.modal-content');
-const closeBtn = document.querySelector('.close-btn');
-
-// Function to show the modal when a "Read More" button is clicked
-function showModal(jobId) {
-  // Get the element corresponding to the jobId (e.g., 'job1', 'job2', 'project1', etc.)
-  const jobElement = document.getElementById(jobId);
-
-  if (!jobElement) {
-    console.error(`Element with ID '${jobId}' not found`);
-    return;
-  }
-
-  // Get the job description text
-  const jobDescription = jobElement.innerHTML;
-
-  // Determine if this is a project or work experience
-  const isProject = jobId.startsWith('project');
-  
-  let jobDetails = '';
-  
-  if (isProject) {
-    // For projects, get details from the project card
-    const projectCard = document.querySelector(`[data-project="${jobId}"]`);
-    if (projectCard) {
-      const projectTitle = projectCard.querySelector('h3').innerText;
-      const projectDate = projectCard.querySelector('.project-date').innerText;
-      const projectLocation = projectCard.querySelector('.project-location').innerText;
-      
-      jobDetails = `<h3>${projectTitle}</h3><jobcomp>Project</jobcomp><br><jobtime>${projectDate}</jobtime><br><joblocation>${projectLocation}</joblocation><p>${jobDescription}</p>`;
-    } else {
-      // Fallback for project details
-      jobDetails = `<h3>Project Details</h3><p>${jobDescription}</p>`;
-    }
-  } else {
-    // For work experience, use the existing structure
-    const jobName = jobElement.previousElementSibling.innerText;
-    const jobComp = jobElement.previousElementSibling.previousElementSibling.innerText;
-    const jobTime = jobElement.previousElementSibling.previousElementSibling.previousElementSibling.innerText;
-    
-    // Special handling for Storelx job (job1) to include website link
-    if (jobId === 'job1') {
-      jobDetails = `<h3>${jobName}</h3><jobcomp>${jobComp}</jobcomp><br><jobtime>${jobTime}</jobtime><br><div class="company-website-link"><a href="https://www.storelx.com" target="_blank" style="color: #667eea; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; margin: 10px 0;"><span>🌐</span> Visit Storelx Website: www.storelx.com</a></div><p>${jobDescription}</p>`;
-    } else {
-      jobDetails = `<h3>${jobName}</h3><jobcomp>${jobComp}</jobcomp><br><jobtime>${jobTime}</jobtime><p>${jobDescription}</p>`;
-    }
-  }
-
-  // Set the job details as the content of the modal
-  modalContent.innerHTML = jobDetails;
-
-  // Show the modal
-  modalOverlay.style.display = 'flex';
-}
-
-// Function to hide the modal when the close button is clicked
-function hideModal() {
-  modalOverlay.style.display = 'none';
-}
-
-// Get all the "Read More" buttons from both timeline sections
-const experienceTimeline = document.querySelector('.experience-section .timeline');
-const projectsTimeline = document.querySelector('.projects-section .timeline');
-
-// Function to add event listeners to read more buttons in a timeline
-function addReadMoreListeners(timelineElement) {
-  if (timelineElement) {
-    const readMoreButtons = timelineElement.querySelectorAll('button.read-more-btn');
-    
-    readMoreButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        // Get the value of the 'data-job-id' attribute from the button
-        const jobId = button.getAttribute('data-job-id');
-        
-        // Call the showModal function and pass the jobId
-        showModal(jobId);
-      });
-    });
-  }
-}
-
-// Add event listeners to both experience and projects timelines
-addReadMoreListeners(experienceTimeline);
-addReadMoreListeners(projectsTimeline);
-
-// Function to add event listeners to project detail buttons
-function addProjectDetailListeners() {
-  const projectDetailButtons = document.querySelectorAll('.project-details-btn');
-  
-  projectDetailButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      // Get the value of the 'data-project-id' attribute from the button
-      const projectId = button.getAttribute('data-project-id');
-      
-      // Call the showModal function and pass the projectId
-      showModal(projectId);
-    });
-  });
-}
-
-// Function to add event listeners to read more buttons in work experience timeline
-function addWorkExperienceListeners() {
-  const experienceTimeline = document.querySelector('.experience-section .timeline');
-  if (experienceTimeline) {
-    const readMoreButtons = experienceTimeline.querySelectorAll('button.read-more-btn');
-    
-    readMoreButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        // Get the value of the 'data-job-id' attribute from the button
-        const jobId = button.getAttribute('data-job-id');
-        
-        // Call the showModal function and pass the jobId
-        showModal(jobId);
-      });
-    });
-  }
-}
-
-// Add event listeners to both sections
-addWorkExperienceListeners();
-addProjectDetailListeners();
-
-// Add click event listener to close button
-if (closeBtn) {
-  closeBtn.addEventListener('click', () => {
-    // Call the hideModal function when close button is clicked
-    hideModal();
-  });
-}
-
-// Close the modal if the user clicks outside the modal content
-if (modalOverlay) {
-  modalOverlay.addEventListener('click', (event) => {
-    if (event.target === modalOverlay) {
-      // Call the hideModal function when the modal overlay is clicked
-      hideModal();
-    }
-  });
-}
-
-// Hide the modal when the page loads
 window.onload = function() {
-  hideModal();
   animateSkillBars();
 };
 
@@ -225,6 +80,98 @@ function addSkillCardAnimations() {
 // Initialize animations when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
   addSkillCardAnimations();
+
+  // Fade in sections when they enter the viewport
+  const fadeSections = document.querySelectorAll('.fade-section');
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  fadeSections.forEach(section => {
+    fadeObserver.observe(section);
+  });
+});
+
+// Simple timeline navigation without external plugins
+document.addEventListener('DOMContentLoaded', function() {
+  const timeline = document.getElementById('experience-timeline');
+  const items = timeline.querySelectorAll('.timeline-item');
+  const indicator = timeline.querySelector('.timeline-indicator');
+  let currentIndex = 0;
+
+  // nudge scroll position so sticky indicator starts centered
+  timeline.scrollTop = 1;
+
+  items.forEach((item, idx) => {
+    const dot = document.createElement('span');
+    dot.className = 'indicator-dot';
+    dot.dataset.date = item.dataset.date;
+    dot.addEventListener('click', () => scrollToIndex(idx));
+    indicator.appendChild(dot);
+  });
+
+  function updateDots() {
+    indicator.querySelectorAll('.indicator-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === currentIndex);
+      if (i === currentIndex) {
+        if (!d.classList.contains('show-date')) {
+          d.classList.add('show-date');
+          const timer = setTimeout(() => {
+            d.classList.remove('show-date');
+            d.dataset.timer = '';
+          }, 5000);
+          d.dataset.timer = String(timer);
+        }
+      } else {
+        d.classList.remove('show-date');
+        if (d.dataset.timer) {
+          clearTimeout(parseInt(d.dataset.timer, 10));
+          d.dataset.timer = '';
+        }
+      }
+    });
+  }
+
+  function updateActiveItem() {
+    items.forEach((item, idx) => {
+      item.classList.toggle('active', idx === currentIndex);
+    });
+  }
+
+  function scrollToIndex(index) {
+    if (index < 0 || index >= items.length) return;
+    currentIndex = index;
+    items[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateDots();
+    updateActiveItem();
+  }
+
+
+
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        currentIndex = Array.from(items).indexOf(entry.target);
+        entry.target.classList.add('visible');
+        updateDots();
+        updateActiveItem();
+      }
+    });
+  }, { threshold: 0.6 });
+
+  items.forEach(item => observer.observe(item));
+
+  // initial state
+  if (items.length > 0) {
+    items[0].classList.add('visible');
+    updateDots();
+    updateActiveItem();
+  }
 });
 
 
