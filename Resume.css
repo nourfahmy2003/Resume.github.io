@@ -6,9 +6,9 @@
 .vertical-timeline {
   position: relative;
   max-width: 700px;
-  margin: 40px auto;
+  margin: 0px auto;
   padding-left: 60px;
-  height: 100vh;
+  height: 45vh;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
@@ -32,7 +32,7 @@
 .vertical-timeline .timeline-item {
   position: relative;
   margin: 0;
-  min-height: 100vh;
+  min-height: 40vh;
   scroll-snap-align: start;
   display: flex;
   align-items: center;
@@ -107,6 +107,7 @@
 }
 
 
+
 /* ensure indicator stays centered */
 
 
@@ -163,6 +164,7 @@
 
   .vertical-timeline .timeline-item {
     min-height: 100svh;
+
   }
 
   .timeline-indicator {
@@ -175,10 +177,33 @@
   }
 }
 
+
+.experience-title {
+  font-size: 2.25rem;              
+  font-weight: 700;                
+  text-align: center;              
+  color: #0f172a;                  
+  margin-bottom: 2rem;            
+  position: relative;
+  line-height: 1.2;
+  letter-spacing: -0.5px;        
+  margin-top: 20px;
+}
+
+.experience-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #0ea5e9;      /* Accent line */
+  border-radius: 2px;
+  margin: 0.5rem auto 0 auto;     /* Centered underline */
+}
+
+
 @media (max-width: 480px) {
   .vertical-timeline {
     padding-left: 30px;
-    height: 100svh;
   }
 
   .timeline-indicator {
@@ -188,11 +213,11 @@
   .vertical-timeline .timeline-card {
     width: calc(100% - 1rem);
   }
-
   .vertical-timeline .timeline-item {
     min-height: 100svh;
   }
 }
+
 
 /* Fade-in sections */
 .fade-section {
@@ -215,6 +240,9 @@
   justify-content: center;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   overflow: hidden;
+  min-height: 100vh;     /* Ensures section fills the whole screen */
+  display: flex;
+  flex-direction: column;
 }
 
 .background-animation {
@@ -525,6 +553,7 @@
 .welcome-section a{
   font-weight: 500;
   text-decoration: underline;
+  
   font-size: 16px;
   position: relative;
   color: #333;
@@ -553,21 +582,12 @@
   overflow: hidden;
 }
 
-.about-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="aboutdots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23aboutdots)"/></svg>');
-  opacity: 0.5;
-}
+
 
 .about-section .content-container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 50px;
+  padding: 2rem 1rem;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 25px;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
@@ -576,6 +596,7 @@
   position: relative;
   z-index: 1;
   transition: all 0.3s ease;
+  text-align: center;
 }
 
 .about-section .content-container:hover {
@@ -583,16 +604,7 @@
   box-shadow: 0 35px 70px rgba(0, 0, 0, 0.2);
 }
 
-.about-section .content-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #4ecdc4);
-  border-radius: 25px 25px 0 0;
-}
+
 
 .about-section h2 {
   font-size: 3rem;
@@ -603,6 +615,7 @@
   position: relative;
   display: inline-block;
   width: 100%;
+  
 }
 
 .about-section h2::after {
@@ -639,7 +652,7 @@
   flex-wrap: wrap;
   gap: 50px;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .about-left {
@@ -955,7 +968,6 @@
   margin-right: 20px;
   position: relative;
 }
-
 .education-section .edu-year::after {
   content: '';
   position: absolute;
@@ -2555,5 +2567,4 @@ margin-top: 20px;
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
-
 
