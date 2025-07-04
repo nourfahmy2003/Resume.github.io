@@ -8,7 +8,7 @@
   max-width: 700px;
   margin: 40px auto;
   padding-left: 60px;
-  height: 80vh;
+  height: 100vh;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
@@ -32,7 +32,7 @@
 .vertical-timeline .timeline-item {
   position: relative;
   margin: 0;
-  min-height: 80vh;
+  min-height: 100vh;
   scroll-snap-align: start;
   display: flex;
   align-items: center;
@@ -163,7 +163,7 @@
   }
 
   .vertical-timeline .timeline-item {
-    min-height: 80vh;
+    min-height: 100vh;
   }
 
   .timeline-indicator {
@@ -176,6 +176,19 @@
   }
 }
 
+@media (max-width: 480px) {
+  .vertical-timeline {
+    padding-left: 30px;
+  }
+
+  .timeline-indicator {
+    left: 12px;
+  }
+
+  .vertical-timeline .timeline-card {
+    width: calc(100% - 1rem);
+  }
+}
 /* Fade-in sections */
 .fade-section {
   opacity: 0;
