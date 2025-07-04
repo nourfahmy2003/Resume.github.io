@@ -19,7 +19,6 @@ window.addEventListener('scroll', function() {
   }
 });
 
-const timeline = document.querySelector('.timeline');
 const modalOverlay = document.querySelector('.modal-overlay');
 const modal = document.querySelector('.modal');
 const modalContent = document.querySelector('.modal-content');
@@ -83,7 +82,7 @@ function hideModal() {
 }
 
 // Get all the "Read More" buttons from both timeline sections
-const experienceTimeline = document.querySelector('.experience-section .timeline');
+const experienceTimeline = document.querySelector('#timeline');
 const projectsTimeline = document.querySelector('.projects-section .timeline');
 
 // Function to add event listeners to read more buttons in a timeline
@@ -124,7 +123,7 @@ function addProjectDetailListeners() {
 
 // Function to add event listeners to read more buttons in work experience timeline
 function addWorkExperienceListeners() {
-  const experienceTimeline = document.querySelector('.experience-section .timeline');
+  const experienceTimeline = document.querySelector('#timeline');
   if (experienceTimeline) {
     const readMoreButtons = experienceTimeline.querySelectorAll('button.read-more-btn');
     
@@ -225,6 +224,98 @@ function addSkillCardAnimations() {
 // Initialize animations when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
   addSkillCardAnimations();
+
+  // Fade in sections when they enter the viewport
+  const fadeSections = document.querySelectorAll('.fade-section');
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  fadeSections.forEach(section => {
+    fadeObserver.observe(section);
+  });
+});
+
+// Simple timeline navigation without external plugins
+document.addEventListener('DOMContentLoaded', function() {
+  const timeline = document.getElementById('experience-timeline');
+  const items = timeline.querySelectorAll('.timeline-item');
+  const indicator = timeline.querySelector('.timeline-indicator');
+  let currentIndex = 0;
+
+  // nudge scroll position so sticky indicator starts centered
+  timeline.scrollTop = 1;
+
+  items.forEach((item, idx) => {
+    const dot = document.createElement('span');
+    dot.className = 'indicator-dot';
+    dot.dataset.date = item.dataset.date;
+    dot.addEventListener('click', () => scrollToIndex(idx));
+    indicator.appendChild(dot);
+  });
+
+  function updateDots() {
+    indicator.querySelectorAll('.indicator-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === currentIndex);
+      if (i === currentIndex) {
+        if (!d.classList.contains('show-date')) {
+          d.classList.add('show-date');
+          const timer = setTimeout(() => {
+            d.classList.remove('show-date');
+            d.dataset.timer = '';
+          }, 5000);
+          d.dataset.timer = String(timer);
+        }
+      } else {
+        d.classList.remove('show-date');
+        if (d.dataset.timer) {
+          clearTimeout(parseInt(d.dataset.timer, 10));
+          d.dataset.timer = '';
+        }
+      }
+    });
+  }
+
+  function updateActiveItem() {
+    items.forEach((item, idx) => {
+      item.classList.toggle('active', idx === currentIndex);
+    });
+  }
+
+  function scrollToIndex(index) {
+    if (index < 0 || index >= items.length) return;
+    currentIndex = index;
+    items[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateDots();
+    updateActiveItem();
+  }
+
+
+
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        currentIndex = Array.from(items).indexOf(entry.target);
+        entry.target.classList.add('visible');
+        updateDots();
+        updateActiveItem();
+      }
+    });
+  }, { threshold: 0.6 });
+
+  items.forEach(item => observer.observe(item));
+
+  // initial state
+  if (items.length > 0) {
+    items[0].classList.add('visible');
+    updateDots();
+    updateActiveItem();
+  }
 });
 
 
