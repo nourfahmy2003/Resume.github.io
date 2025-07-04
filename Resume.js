@@ -19,7 +19,7 @@ window.addEventListener('scroll', function() {
   }
 });
 
-const timeline = document.querySelector('.timeline');
+const timeline = document.querySelector('#timeline');
 const modalOverlay = document.querySelector('.modal-overlay');
 const modal = document.querySelector('.modal');
 const modalContent = document.querySelector('.modal-content');
@@ -83,7 +83,7 @@ function hideModal() {
 }
 
 // Get all the "Read More" buttons from both timeline sections
-const experienceTimeline = document.querySelector('.experience-section .timeline');
+const experienceTimeline = document.querySelector('#timeline');
 const projectsTimeline = document.querySelector('.projects-section .timeline');
 
 // Function to add event listeners to read more buttons in a timeline
@@ -124,7 +124,7 @@ function addProjectDetailListeners() {
 
 // Function to add event listeners to read more buttons in work experience timeline
 function addWorkExperienceListeners() {
-  const experienceTimeline = document.querySelector('.experience-section .timeline');
+  const experienceTimeline = document.querySelector('#timeline');
   if (experienceTimeline) {
     const readMoreButtons = experienceTimeline.querySelectorAll('button.read-more-btn');
     
@@ -225,6 +225,48 @@ function addSkillCardAnimations() {
 // Initialize animations when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
   addSkillCardAnimations();
+});
+
+// Simple timeline navigation without external plugins
+document.addEventListener('DOMContentLoaded', function() {
+  const issues = document.querySelectorAll('#issues li');
+  const dates = document.querySelectorAll('#dates a');
+  const nextBtn = document.getElementById('next');
+  const prevBtn = document.getElementById('prev');
+  let current = 0;
+
+  function showIssue(i) {
+    issues.forEach((item, idx) => {
+      item.style.display = idx === i ? 'block' : 'none';
+      if (dates[idx]) {
+        dates[idx].classList.toggle('selected', idx === i);
+      }
+    });
+    current = i;
+  }
+
+  if (nextBtn && prevBtn && issues.length) {
+    showIssue(0);
+
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const next = (current + 1) % issues.length;
+      showIssue(next);
+    });
+
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const prev = (current - 1 + issues.length) % issues.length;
+      showIssue(prev);
+    });
+
+    dates.forEach((date, idx) => {
+      date.addEventListener('click', (e) => {
+        e.preventDefault();
+        showIssue(idx);
+      });
+    });
+  }
 });
 
 
