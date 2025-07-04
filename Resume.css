@@ -1,5 +1,8 @@
-body{
+body {
   background-color: white;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Modern Header Section */
@@ -709,7 +712,7 @@ body{
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .about-section {
     padding: 50px 0;
   }
@@ -851,7 +854,20 @@ body {
   font: normal 16px/1.5 "Inter", sans-serif;
   background: var(--columbia-blue);
   color: var(--black);
-  margin-bottom: 50px;
+  margin: 0 0 50px 0;
+  padding: 0;
+}
+
+/* Center section content and limit width */
+.section-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px;
+  padding: 0 1rem;
+}
+
+.timeline-description {
+  text-align: center;
 }
 
 .timeline job {
@@ -2303,22 +2319,27 @@ margin-top: 20px;
   .skills-main-section {
     padding: 60px 0;
   }
-  
+
   .skills-container {
     padding: 0 15px;
   }
-  
+
   .soft-skills-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .skills-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Modal should take most of the screen width on mobile */
+  .modal {
+    max-width: 95%;
   }
 }
 
 /* Additional mobile layout improvements */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .about-card {
     padding: 20px;
     margin-bottom: 20px;
@@ -2333,6 +2354,10 @@ margin-top: 20px;
 
   .timeline {
     grid-template-columns: 1fr;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .timeline::before,
@@ -2347,11 +2372,12 @@ margin-top: 20px;
 
   .timeline ol li {
     display: block;
-    width: auto;
+    width: 100%;
     height: auto;
     margin: 30px 0;
     position: relative;
-    padding-left: 20px;
+    padding: 1rem 0;
+    text-align: center;
   }
 
   .timeline ol li:not(:last-child)::after {
@@ -2361,7 +2387,8 @@ margin-top: 20px;
   .timeline ol li::before {
     content: "";
     position: absolute;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     top: 10px;
     width: 8px;
     height: 8px;
@@ -2371,12 +2398,15 @@ margin-top: 20px;
 
   .timeline ol li div {
     position: static;
-    width: auto;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    box-sizing: border-box;
     border-radius: 8px;
-    padding: 15px 15px 15px 20px;
+    padding: 1rem;
     background: #fff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    border-left: 3px solid var(--midnight-green);
+    border-left: none;
   }
 
   .education-section .timeline-edu:before {
@@ -2391,5 +2421,136 @@ margin-top: 20px;
     position: static;
     text-align: left;
     margin-bottom: 5px;
+}
+
+/* Ensure containers span full width on small screens */
+  .content-container,
+  .projects-container,
+  .skills-container {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+/* Vertical timeline styles */
+#timeline {
+  width: 100%;
+  max-width: 700px;
+  height: 600px;
+  overflow: hidden;
+  margin: 40px auto;
+  position: relative;
+  background: url('http://www.csslab.cl/ejemplos/timelinr/latest/images/dot.gif') 3px top repeat-y;
+}
+
+#dates {
+  width: 100px;
+  height: 600px;
+  overflow: hidden;
+  float: left;
+}
+
+#dates li {
+  list-style: none;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  font-size: 24px;
+  padding-left: 10px;
+  background: url('http://www.csslab.cl/ejemplos/timelinr/latest/images/biggerdot.png') left center no-repeat;
+}
+
+#dates a {
+  line-height: 38px;
+  padding-bottom: 10px;
+  color: #ffffcc;
+  text-decoration: none;
+  transition: 0.5s;
+}
+#dates a:hover,
+#dates .selected {
+  color: #ffcc00;
+  font-size: 38px;
+}
+
+#issues {
+  width: 600px;
+  height: 600px;
+  overflow: hidden;
+  float: left;
+}
+
+#issues li {
+  max-width: 550px;
+  height: 600px;
+  list-style: none;
+  text-align: center;
+}
+
+#issues li h1 {
+  color: #ffcc00;
+  font-size: 48px;
+  text-align: center;
+  text-shadow: #000 1px 1px 2px;
+}
+
+#issues li p {
+  word-wrap: break-word;
+  font-size: 14px;
+  margin: 10px 20px;
+  font-weight: normal;
+  line-height: 22px;
+  text-shadow: #000 1px 1px 2px;
+}
+
+#next,
+#prev {
+  position: absolute;
+  left: 45%;
+  font-size: 70px;
+  width: 38px;
+  height: 22px;
+  background-position: 0 -44px;
+  background-repeat: no-repeat;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+#next:hover,
+#prev:hover {
+  background-position: 0 0;
+}
+
+#next {
+  bottom: 0;
+  background-image: url('http://www.csslab.cl/ejemplos/timelinr/latest/images/next_v.png');
+}
+
+#prev {
+  top: 0;
+  background-image: url('http://www.csslab.cl/ejemplos/timelinr/latest/images/prev_v.png');
+}
+
+#next.disabled,
+#prev.disabled {
+  opacity: 0.2;
+}
+
+@media (max-width: 768px) {
+  #timeline,
+  #issues,
+  #dates {
+    width: 100%;
+    float: none;
+  }
+
+  #issues {
+    height: auto;
+  }
+
+  #issues li {
+    max-width: 100%;
+    height: auto;
   }
 }
