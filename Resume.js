@@ -19,7 +19,7 @@ window.addEventListener('scroll', function() {
   }
 });
 
-const timeline = document.querySelector('.timeline');
+const timeline = document.querySelector('#timeline');
 const modalOverlay = document.querySelector('.modal-overlay');
 const modal = document.querySelector('.modal');
 const modalContent = document.querySelector('.modal-content');
@@ -83,7 +83,7 @@ function hideModal() {
 }
 
 // Get all the "Read More" buttons from both timeline sections
-const experienceTimeline = document.querySelector('.experience-section .timeline');
+const experienceTimeline = document.querySelector('#timeline');
 const projectsTimeline = document.querySelector('.projects-section .timeline');
 
 // Function to add event listeners to read more buttons in a timeline
@@ -124,7 +124,7 @@ function addProjectDetailListeners() {
 
 // Function to add event listeners to read more buttons in work experience timeline
 function addWorkExperienceListeners() {
-  const experienceTimeline = document.querySelector('.experience-section .timeline');
+  const experienceTimeline = document.querySelector('#timeline');
   if (experienceTimeline) {
     const readMoreButtons = experienceTimeline.querySelectorAll('button.read-more-btn');
     
