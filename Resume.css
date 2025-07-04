@@ -2,14 +2,6 @@
   --accent-color: #00bcd4;
 }
 
-
-body {
-  background-color: white;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 /* Simplified vertical timeline */
 .vertical-timeline {
   position: relative;
@@ -21,6 +13,8 @@ body {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   scrollbar-width: none; /* Firefox */
+  box-sizing: border-box;
+  width: 100%;
 }
 .vertical-timeline::-webkit-scrollbar {
   display: none;
@@ -47,6 +41,7 @@ body {
   transition: opacity 0.6s ease, transform 0.6s ease;
   box-sizing: border-box;
   padding: 20px 0;
+  width: 100%;
 }
 
 .vertical-timeline .timeline-item.visible {
@@ -164,6 +159,7 @@ body {
     padding-left: 40px;
     width: 100%;
     margin: 0 auto;
+    box-sizing: border-box;
   }
 
   .vertical-timeline .timeline-item {
@@ -1052,7 +1048,6 @@ body {
   margin: 0 0 50px 0;
   padding: 0;
   overflow-x: hidden;
-
 }
 
 /* Center section content and limit width */
@@ -2663,4 +2658,3 @@ margin-top: 20px;
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
-
