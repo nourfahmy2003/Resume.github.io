@@ -1,5 +1,20 @@
-body{
+body {
   background-color: white;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fade-in sections */
+.fade-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Modern Header Section */
@@ -702,6 +717,16 @@ body{
     padding: 25px 20px;
     margin-bottom: 25px;
   }
+
+  .about-left,
+  .about-right {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+
+  .about-intro p {
+    text-align: center;
+  }
   
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -709,7 +734,7 @@ body{
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .about-section {
     padding: 50px 0;
   }
@@ -746,10 +771,10 @@ body{
   .about-section h2 {
     font-size: 1.8rem;
   }
-  
+
   .about-section p {
     font-size: 1rem;
-    text-align: left;
+    text-align: center;
   }
   
   .about-card::before {
@@ -851,7 +876,20 @@ body {
   font: normal 16px/1.5 "Inter", sans-serif;
   background: var(--columbia-blue);
   color: var(--black);
-  margin-bottom: 50px;
+  margin: 0 0 50px 0;
+  padding: 0;
+}
+
+/* Center section content and limit width */
+.section-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px;
+  padding: 0 1rem;
+}
+
+.timeline-description {
+  text-align: center;
 }
 
 .timeline job {
@@ -2303,22 +2341,27 @@ margin-top: 20px;
   .skills-main-section {
     padding: 60px 0;
   }
-  
+
   .skills-container {
     padding: 0 15px;
   }
-  
+
   .soft-skills-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .skills-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Modal should take most of the screen width on mobile */
+  .modal {
+    max-width: 95%;
   }
 }
 
 /* Additional mobile layout improvements */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .about-card {
     padding: 20px;
     margin-bottom: 20px;
@@ -2333,6 +2376,10 @@ margin-top: 20px;
 
   .timeline {
     grid-template-columns: 1fr;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .timeline::before,
@@ -2347,11 +2394,12 @@ margin-top: 20px;
 
   .timeline ol li {
     display: block;
-    width: auto;
+    width: 100%;
     height: auto;
     margin: 30px 0;
     position: relative;
-    padding-left: 20px;
+    padding: 1rem 0;
+    text-align: center;
   }
 
   .timeline ol li:not(:last-child)::after {
@@ -2361,7 +2409,8 @@ margin-top: 20px;
   .timeline ol li::before {
     content: "";
     position: absolute;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     top: 10px;
     width: 8px;
     height: 8px;
@@ -2371,12 +2420,15 @@ margin-top: 20px;
 
   .timeline ol li div {
     position: static;
-    width: auto;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    box-sizing: border-box;
     border-radius: 8px;
-    padding: 15px 15px 15px 20px;
+    padding: 1rem;
     background: #fff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    border-left: 3px solid var(--midnight-green);
+    border-left: none;
   }
 
   .education-section .timeline-edu:before {
@@ -2391,5 +2443,166 @@ margin-top: 20px;
     position: static;
     text-align: left;
     margin-bottom: 5px;
+}
+
+/* Ensure containers span full width on small screens */
+  .content-container,
+  .projects-container,
+  .skills-container {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+/* Vertical timeline styles */
+#experience-title,
+.experience-title {
+  font-size: 3rem;
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#timeline {
+  width: 100%;
+  max-width: 700px;
+  height: 600px;
+  overflow: hidden;
+  margin: 40px auto;
+  position: relative;
+  background: #f5f5f5;
+}
+
+#dates {
+  width: 100px;
+  height: 600px;
+  overflow: hidden;
+  float: left;
+}
+
+#dates li {
+  list-style: none;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  font-size: 24px;
+  padding-left: 25px;
+  position: relative;
+}
+#dates li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #4cc9f0;
+}
+
+#dates a {
+  line-height: 38px;
+  padding-bottom: 10px;
+  color: #555;
+  text-decoration: none;
+  transition: 0.3s;
+}
+#dates a:hover,
+#dates .selected {
+  color: #4cc9f0;
+  font-size: 38px;
+}
+
+#issues {
+  width: 600px;
+  height: 600px;
+  overflow: hidden;
+  float: left;
+}
+
+#issues li {
+  display: none;
+  max-width: 550px;
+  height: 600px;
+  list-style: none;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #f5f5f5;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+#issues li.selected,
+#issues li.active {
+  display: flex;
+  opacity: 1;
+}
+
+#issues li h1 {
+  color: #4cc9f0;
+  font-size: 48px;
+  text-align: center;
+  text-shadow: #000 1px 1px 2px;
+}
+
+#issues li p {
+  word-wrap: break-word;
+  font-size: 14px;
+  margin: 10px 20px;
+  font-weight: normal;
+  line-height: 22px;
+  text-shadow: #000 1px 1px 2px;
+  color: #333;
+}
+
+#next,
+#prev {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px;
+}
+
+#next {
+  bottom: 10px;
+}
+
+#prev {
+  top: 10px;
+}
+
+.timeline-nav {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+.timeline-nav:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 768px) {
+  #timeline,
+  #issues,
+  #dates {
+    width: 100%;
+    float: none;
+  }
+
+  #issues {
+    height: auto;
+  }
+
+  #issues li {
+    max-width: 100%;
+    height: auto;
   }
 }

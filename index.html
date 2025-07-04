@@ -72,7 +72,7 @@
   </div>
 
   <!-- About Me Section -->
-  <section class="about-section" id="about">
+  <section class="about-section fade-section" id="about">
     <div class="content-container">
       <h2>About Me</h2>
       <div class="about-flex">
@@ -124,7 +124,7 @@
   </section>
   
   <!-- Education Section -->
-  <div class="education-section" id="education">
+  <div class="education-section fade-section" id="education">
     <div class="content-container">
       <h2>Education</h2>
       <div class="timeline-edu">
@@ -144,76 +144,63 @@
   </div>
 
 
-  <section class="experience-section">
-    <section class="timeline">
-      <div class="info">
-        <h2>Work Experiences</h2>
-        <p>Here is the history of my past Work experiences</p>
-      </div>
-
-      <ol>
-        <li>
-          <div>
-            <time>January 2023 - Present</time> <job-loc>Storelx, NL, Canada</job-loc>
-            <job>Lead Developer</job>
-            <p class="job-description" id="job1">
-              ● Led the development of a P2P storage marketplace platform using Node.js and React, serving 100+ active
-              users.
-              <br>● Designed and implemented a scalable microservices architecture using Express.js, reducing API
-              response time by 40%
-              <br>● Designed and optimized MongoDB schemas, resulting in 30% faster query performance
-              <br>● Led a team of 3 developers using Agile methodology, achieving 95% on-time sprint completion rate
-            </p>
-            <button class="read-more-btn" data-job-id="job1">Read More</button>
-          </div>
+  <section class="experience-section section-container fade-section">
+    <h2 class="experience-title">Professional Experience</h2>
+    <div id="timeline">
+      <ul id="dates">
+        <li><a href="#job1" class="selected">2023</a></li>
+        <li><a href="#job2">2023</a></li>
+        <li><a href="#job3">2022</a></li>
+        <li><a href="#job4">2022</a></li>
+      </ul>
+      <ul id="issues">
+        <li id="job1" class="selected">
+          <h1>Lead Developer</h1>
+          <p>
+            Storelx, NL, Canada<br>January 2023 - Present<br>
+            ● Led the development of a P2P storage marketplace platform using Node.js and React, serving 100+ active users.<br>
+            ● Designed and implemented a scalable microservices architecture using Express.js, reducing API response time by 40%<br>
+            ● Designed and optimized MongoDB schemas, resulting in 30% faster query performance<br>
+            ● Led a team of 3 developers using Agile methodology, achieving 95% on-time sprint completion rate
+          </p>
         </li>
-        <li>
-          <div>
-            <time>April 2023 - August 2023</time> <job-loc>Union Group FZCO, Dubai, UAE</job-loc>
-            <job>Data Science Intern</job>
-            <p class="job-description" id="job2">
-              ● Developed pipelines using Python and Pandas, processing 20k+ daily transactions with 99.9% accuracy
-              <br>● Created predictive models using scikit-learn, achieving 85% accuracy in sales forecasting
-              <br>● Built interactive dashboards using Plotly and Dash, reducing report generation time by 75%
-            </p>
-            <button class="read-more-btn" data-job-id="job2">Read More</button>
-          </div>
+        <li id="job2">
+          <h1>Data Science Intern</h1>
+          <p>
+            Union Group FZCO, Dubai, UAE<br>April 2023 - August 2023<br>
+            ● Developed pipelines using Python and Pandas, processing 20k+ daily transactions with 99.9% accuracy<br>
+            ● Created predictive models using scikit-learn, achieving 85% accuracy in sales forecasting<br>
+            ● Built interactive dashboards using Plotly and Dash, reducing report generation time by 75%
+          </p>
         </li>
-        <li>
-          <div>
-            <time>July 2022 - October 2022</time> <job-loc>Hoopoe Digital, Cairo, Egypt</job-loc>
-            <job>Full Stack Intern</job>
-            <p class="job-description" id="job3">
-              ● Developed a customer tracking application serving 5+ shopping malls and processing 20K+ daily visitors
-              <br>● Built RESTful APIs using Node.js and Express, handling 1000+ requests per minute with 99.9% uptime
-              <br>● Implemented real-time analytics dashboard using React and D3.js, processing 10k+ daily data points
-              <br>● Contributed to microservices architecture design, improving system scalability by 40%
-            </p>
-            <button class="read-more-btn" data-job-id="job3">Read More</button>
-          </div>
+        <li id="job3">
+          <h1>Full Stack Intern</h1>
+          <p>
+            Hoopoe Digital, Cairo, Egypt<br>July 2022 - October 2022<br>
+            ● Developed a customer tracking application serving 5+ shopping malls and processing 20K+ daily visitors<br>
+            ● Built RESTful APIs using Node.js and Express, handling 1000+ requests per minute with 99.9% uptime<br>
+            ● Implemented real-time analytics dashboard using React and D3.js, processing 10k+ daily data points<br>
+            ● Contributed to microservices architecture design, improving system scalability by 40%
+          </p>
         </li>
-        <li>
-          <div>
-            <time>April 2022 - July 2022</time> <job-loc>Union Group, Cairo, Egypt</job-loc>
-            <job>Data Science Intern</job>
-            <p class="job-description" id="job4">
-              ● Analyzed 5+ years of financial data using Python and SQL, identifying patterns that led to 15% cost
-              reduction
-              <br>● Created automated data cleaning pipelines processing 10k+ records daily with 99% accuracy
-              <br>● Developed interactive Power BI dashboards viewed by 50+ stakeholders daily
-              <br>● Implemented statistical analysis methods resulting in 25% more accurate financial forecasting
-              <br>● Documented 20+ technical processes, reducing onboarding time for new team members by 50%
-            </p>
-            <button class="read-more-btn" data-job-id="job4">Read More</button>
-          </div>
+        <li id="job4">
+          <h1>Data Science Intern</h1>
+          <p>
+            Union Group, Cairo, Egypt<br>April 2022 - July 2022<br>
+            ● Analyzed 5+ years of financial data using Python and SQL, identifying patterns that led to 15% cost reduction<br>
+            ● Created automated data cleaning pipelines processing 10k+ records daily with 99% accuracy<br>
+            ● Developed interactive Power BI dashboards viewed by 50+ stakeholders daily<br>
+            ● Implemented statistical analysis methods resulting in 25% more accurate financial forecasting<br>
+            ● Documented 20+ technical processes, reducing onboarding time for new team members by 50%
+          </p>
         </li>
-        <li></li>
-      </ol>
-
-    </section>
+      </ul>
+      <button id="prev" class="timeline-nav" aria-label="Previous">&#9650;</button>
+      <button id="next" class="timeline-nav" aria-label="Next">&#9660;</button>
+    </div>
   </section>
 
-  <section class="projects-section">
+  <section class="projects-section fade-section">
     <div class="projects-container">
       <div class="projects-header">
         <h2>My Projects</h2>
@@ -291,7 +278,7 @@
   </div>
 
   <!-- Skills section moved after projects -->
-  <section class="skills-main-section">
+  <section class="skills-main-section fade-section">
     <div class="skills-container">
       <div class="skills-header">
         <h2>Skills & Expertise</h2>
@@ -528,7 +515,7 @@
   </section>
 
   
-  <div class="profile-container">
+  <div class="profile-container fade-section">
     <div class="modern-contact-section" id="card">
       <div class="contact-background">
         <div class="geometric-patterns">
@@ -654,6 +641,7 @@
     </div>
   </div>
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="Resume.js"></script>
 </body>
 
