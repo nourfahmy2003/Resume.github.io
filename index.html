@@ -56,16 +56,7 @@
       </div>
       
       <div class="scroll-indicator">
-        <p class="scroll-text">Explore my journey</p>
-        <div class="scroll-animation" id="scroll-down">
-          <div class="scroll-wheel">
-            <div class="scroll-dot"></div>
-          </div>
-          <div class="scroll-arrows">
-            <div class="arrow-down"></div>
-            <div class="arrow-down"></div>
-          </div>
-        </div>
+        <div class="down-arrow" id="scroll-down"></div>
       </div>
     </div>
   </div>
@@ -230,13 +221,17 @@
             <span class="tech-tag">JavaScript</span>
             <span class="tech-tag">Vercel</span>
           </div>
+          <ul class="project-details">
+            <li>Developed an interactive web-based memory game using React and Vite</li>
+            <li>Implemented state management with custom React hooks</li>
+            <li>Deployed on Vercel with CI/CD pipeline</li>
+            <li>Features card flipping animations, score tracking and timer</li>
+            <li>Responsive design for desktop and mobile</li>
+          </ul>
           <div class="project-actions">
             <a href="https://card-memory-game-gold.vercel.app/" target="_blank" class="project-link">
               <span>🔗</span> Live Demo
             </a>
-            <button class="project-details-btn" data-project-id="project1">
-              <span>📄</span> Details
-            </button>
           </div>
         </div>
 
@@ -256,32 +251,22 @@
             <span class="tech-tag">react-beautiful-dnd</span>
             <span class="tech-tag">CSS</span>
           </div>
+          <ul class="project-details">
+            <li>Full-stack resume builder with PDF export using react-pdf</li>
+            <li>Drag-and-drop interface with react-beautiful-dnd</li>
+            <li>Auto-save feature and multiple templates</li>
+            <li>40% faster renders with React optimizations</li>
+          </ul>
           <div class="project-actions">
             <a href="https://cv-builder-noureldeen.vercel.app/" target="_blank" class="project-link">
               <span>🔗</span> Live Demo
             </a>
-            <button class="project-details-btn" data-project-id="project2">
-              <span>📄</span> Details
-            </button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="modal-overlay">
-    <div class="modal">
-      <button class="close-btn" onclick="hideModal()">&times;</button>
-      <div class="modal-content">
-        <h3 id="modal-job-name"></h3>
-        <p id="modal-job-time"></p>
-        <p id="modal-job-location"></p>
-        <p id="modal-job-description"></p>
-
-      </div>
-    </div>
-  </div>
-  </div>
 
   <!-- Skills section moved after projects -->
   <section class="skills-main-section fade-section">
@@ -622,29 +607,6 @@
     </div>
   </div>
   </div>
-  </div>
-
-  <!-- Hidden project details for modal -->
-  <div class="hidden-project-details">
-    <div class="project-details" id="project1">
-      ● Developed an interactive web-based memory game using React and Vite
-      <br>● Implemented game logic and state management using React hooks
-      <br>● Optimized performance and deployed on Vercel with CI/CD pipeline
-      <br>● Features include: Card flipping animations, Score tracking, Timer functionality, Multiple difficulty levels
-      <br>● Used modern React patterns including custom hooks and context API
-      <br>● Responsive design that works on desktop and mobile devices
-    </div>
-
-    <div class="project-details" id="project2">
-      ● Developed a full-stack resume builder with PDF export functionality using react-pdf, supporting multiple
-      template designs
-      <br>● Created drag-and-drop interface using react-beautiful-dnd for section reordering
-      <br>● Achieved 40% faster render time through React optimization techniques
-      <br>● Implemented auto-save feature, preventing data loss and improving user experience
-      <br>● Features include: Real-time preview, Multiple templates, PDF export, Local storage, Responsive design
-      <br>● Built with modern React architecture and component-based design
-      <br>● Includes form validation and error handling for better user experience
-    </div>
   </div>
 
   <script src="Resume.js"></script>
