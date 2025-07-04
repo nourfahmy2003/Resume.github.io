@@ -69,7 +69,6 @@
   background: linear-gradient(to bottom, rgba(0, 188, 212, 0.4), rgba(99, 102, 241, 0.4));
   z-index: -1;
 }
-
 .indicator-dot {
   width: 10px;
   height: 10px;
@@ -80,7 +79,6 @@
   cursor: pointer;
   transition: background-color 0.3s, box-shadow 0.3s;
 }
-
 .indicator-dot::after {
   content: attr(data-date);
   position: absolute;
@@ -96,6 +94,7 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
+  z-index: 3;
 }
 
 .indicator-dot.active {
@@ -103,7 +102,6 @@
   border-color: var(--accent-color);
   box-shadow: none;
 }
-
 .indicator-dot:hover::after,
 .indicator-dot.show-date::after {
   opacity: 1;
@@ -980,6 +978,7 @@
   padding: 10px 20px;
   box-sizing: border-box;
 }
+
 
 .education-section .edu-year {
   width: 120px;
