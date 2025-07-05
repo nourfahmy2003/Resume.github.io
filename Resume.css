@@ -6,10 +6,11 @@
 .vertical-timeline {
   position: relative;
   max-width: 700px;
-  margin: 0px auto;
-  padding-left: 60px;
+  margin: 0 auto;
+  padding-left: 90px; /* space for indicator */
   height: 45vh;
   overflow-y: auto;
+  overscroll-behavior: contain;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   scrollbar-width: none; /* Firefox */
@@ -56,12 +57,14 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  left: 30px;
 }
 
 .timeline-indicator::before {
   content: "";
   position: absolute;
   top: 0;
+  left: 25px;
   width: 2px;
   height: 100%;
   background: linear-gradient(to bottom, rgba(0, 188, 212, 0.4), rgba(99, 102, 241, 0.4));
@@ -103,6 +106,21 @@
 .indicator-dot:hover::after,
 .indicator-dot.show-date::after {
   opacity: 1;
+}
+
+/* bubble displaying the date above each card */
+.timeline-date-bubble {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 8px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 
@@ -2526,5 +2544,12 @@ margin-top: 20px;
   margin-bottom: 30px;
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .vertical-timeline {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 }
 
