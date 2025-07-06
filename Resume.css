@@ -82,6 +82,7 @@
 .indicator-dot::after {
   content: attr(data-date);
   position: absolute;
+  left: 16px;
   top: 50%;
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.5);
@@ -93,7 +94,7 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-  z-index: 3;
+  z-index: 5;
 }
 
 .indicator-dot.active {
@@ -106,19 +107,17 @@
   opacity: 1;
 }
 
-/* bubble displaying the date above each card */
-.timeline-date-bubble {
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  margin-bottom: 8px;
-  padding: 4px 8px;
-  font-size: 0.75rem;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  border-radius: 6px;
-  white-space: nowrap;
-  pointer-events: none;
+/* inline date inside timeline cards */
+.timeline-date {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+  color: #000;
+  font-weight: 600;
 }
 
 /* ensure indicator stays centered */
@@ -178,6 +177,9 @@
     padding-top: 20px;
     padding-bottom: 20px;
   }
+  .timeline-date {
+    display: block;
+
 }
 
 
@@ -2229,4 +2231,3 @@ margin-top: 20px;
     text-align: center;
   }
 }
-
