@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
           const timer = setTimeout(() => {
             d.classList.remove('show-date');
             d.dataset.timer = '';
-          }, 5000);
+          }, 2000);
           d.dataset.timer = String(timer);
         }
       } else {
