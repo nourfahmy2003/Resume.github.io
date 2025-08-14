@@ -77,6 +77,7 @@ function runHeroAnimations() {
       .from("[data-cta]", { opacity: 0, y: 8, stagger: 0.08, duration: 0.35 }, "-=0.2")
       .to("#scrollCue", { opacity: 1, duration: 0.3 }, "-=0.1");
 
+
   const card = document.querySelector("#heroCard");
   if (window.matchMedia("(pointer: fine)").matches && card) {
     card.addEventListener("mousemove", (e) => {

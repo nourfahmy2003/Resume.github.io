@@ -702,7 +702,6 @@ pre code {
 
 
 
-
 .skill-tags {
   display: flex;
   justify-content: center;
@@ -770,6 +769,7 @@ pre code {
 
 .cta-button:hover::after {
   transform: scaleX(1);
+
 }
 
 .cta-button.primary {
