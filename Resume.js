@@ -65,12 +65,18 @@ function runHeroAnimations() {
   tl.fromTo("#heroCard", { opacity: 0, y: 16, filter: "blur(8px)" },
                      { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.8 }, "<0.1");
 
-  tl.from("[data-hero-h1]", { opacity: 0, y: 10, duration: 0.6 }, "-=0.2")
-    .from("[data-hero-sub]", { opacity: 0, y: 10, duration: 0.5 }, "-=0.2")
-    .from("[data-chip]", { opacity: 0, y: 10, duration: 0.4 }, "-=0.2")
-    .from("[data-skill]", { opacity: 0, y: 10, stagger: 0.08, duration: 0.4 }, "-=0.2")
-    .from("[data-cta]", { opacity: 0, y: 8, stagger: 0.08, duration: 0.35 }, "-=0.2")
-    .to("#scrollCue", { opacity: 1, duration: 0.3 }, "-=0.1");
+    tl.from("[data-hero-h1]", { opacity: 0, y: 10, duration: 0.6 }, "-=0.2")
+      .from("[data-hero-sub]", { opacity: 0, y: 10, duration: 0.5 }, "-=0.2")
+      .from("[data-chip]", { opacity: 0, y: 10, duration: 0.4 }, "-=0.2")
+      .from("[data-avatar]", { opacity: 0, y: 10, duration: 0.4 }, "-=0.2")
+      .from("[data-bio]", { opacity: 0, y: 10, duration: 0.4 }, "-=0.2")
+      .from("[data-metric]", { opacity: 0, y: 10, stagger: 0.08, duration: 0.4 }, "-=0.2")
+      .call(animateMetrics, null, "-=0.1")
+      .from("[data-badge]", { opacity: 0, y: 8, stagger: 0.08, duration: 0.3 }, "-=0.2")
+      .from("[data-skill]", { opacity: 0, y: 10, stagger: 0.08, duration: 0.4 }, "-=0.2")
+      .from("[data-cta]", { opacity: 0, y: 8, stagger: 0.08, duration: 0.35 }, "-=0.2")
+      .to("#scrollCue", { opacity: 1, duration: 0.3 }, "-=0.1");
+
 
   const card = document.querySelector("#heroCard");
   if (window.matchMedia("(pointer: fine)").matches && card) {
@@ -83,6 +89,19 @@ function runHeroAnimations() {
     });
   }
 
+  const avatar = document.querySelector('[data-avatar]');
+  if (window.matchMedia('(pointer: fine)').matches && avatar) {
+    avatar.addEventListener('mousemove', (e) => {
+      const r = avatar.getBoundingClientRect();
+      const x = (e.clientX - (r.left + r.width / 2)) / r.width;
+      const y = (e.clientY - (r.top + r.height / 2)) / r.height;
+      gsap.to(avatar, { rotationY: x * 10, rotationX: -y * 10, duration: 0.3, transformPerspective: 500, overwrite: true });
+    });
+    avatar.addEventListener('mouseleave', () => {
+      gsap.to(avatar, { rotationY: 0, rotationX: 0, duration: 0.3 });
+    });
+  }
+
   const btns = gsap.utils.toArray("[data-cta]");
   btns.forEach((b) => {
     b.addEventListener("mouseenter", () =>
@@ -91,6 +110,22 @@ function runHeroAnimations() {
     b.addEventListener("mouseleave", () =>
       gsap.to(b, { scale: 1.0, boxShadow: "0 4px 12px rgba(0,0,0,.12)", duration: 0.18, ease: "power2.out" })
     );
+  });
+}
+
+function animateMetrics() {
+  document.querySelectorAll('[data-count]').forEach((el) => {
+    const end = parseInt(el.getAttribute('data-count'), 10);
+    const suffix = el.getAttribute('data-suffix') || '';
+    gsap.fromTo(el, { innerText: 0 }, {
+      innerText: end,
+      duration: 1.2,
+      ease: 'power1.out',
+      snap: { innerText: 1 },
+      onUpdate: function () {
+        el.textContent = Math.round(el.innerText) + suffix;
+      }
+    });
   });
 }
 
