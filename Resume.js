@@ -1,10 +1,82 @@
-// Add smooth scrolling to navigate to sections
-document.getElementById('scroll-down').addEventListener('click', function() {
-  const target = document.getElementById('about');
-  if (target) {
-    target.scrollIntoView({
-      behavior: 'smooth'
+document.addEventListener('DOMContentLoaded', () => {
+  const codeIntro = document.getElementById('code-intro');
+  const codeBlock = document.getElementById('code-block');
+  const welcome = document.querySelector('.welcome-section');
+  const navbar = document.querySelector('.navbar');
+  const heroName = document.getElementById('hero-name');
+  const shapes = document.querySelectorAll('.shape');
+  const codeText = [
+    '<!-- portfolio setup -->',
+    '<header>',
+    '  <h1>Noureldeen Fahmy</h1>',
+    '  <p>Full-Stack Developer & Data Scientist</p>',
+    '</header>',
+    '<script>',
+    '  initHero();',
+    '</script>'
+  ].join('\n');
+  let idx = 0;
+  (function type() {
+    if (idx < codeText.length) {
+      codeBlock.textContent += codeText.charAt(idx);
+      idx++;
+      setTimeout(type, 30);
+    } else {
+      setTimeout(() => {
+        codeIntro.classList.add('fade-out');
+        welcome.classList.add('show');
+        navbar.classList.add('show');
+        typeHeroName();
+        setTimeout(() => codeIntro.remove(), 2500);
+      }, 300);
+    }
+  })();
+
+  document.getElementById('scroll-down').addEventListener('click', function() {
+    const target = document.getElementById('about');
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    const shiftX = (window.innerWidth / 2 - e.clientX) * 0.01;
+    const shiftY = (window.innerHeight / 2 - e.clientY) * 0.01;
+    heroName.style.transform = `translate(${shiftX}px, ${shiftY}px)`;
+    shapes.forEach((shape, i) => {
+      const factor = (i + 1) * 0.005;
+      shape.style.setProperty('--px', `${shiftX * factor}px`);
+      shape.style.setProperty('--py', `${shiftY * factor}px`);
     });
+  });
+
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+
+
+  function typeHeroName() {
+    const text = heroName.dataset.text || '';
+    heroName.textContent = '';
+    let i = 0;
+    (function type() {
+      if (i < text.length) {
+        heroName.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, 80);
+      } else {
+        heroName.classList.remove('typing');
+      }
+    })();
   }
 });
 
