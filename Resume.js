@@ -1,12 +1,102 @@
-// Add smooth scrolling to navigate to sections
-document.getElementById('scroll-down').addEventListener('click', function() {
-  const target = document.getElementById('about');
-  if (target) {
-    target.scrollIntoView({
-      behavior: 'smooth'
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const savedTheme = localStorage.getItem('theme');
+document.documentElement.setAttribute('data-theme', savedTheme || (prefersDark ? 'dark' : 'light'));
+
+document.addEventListener('DOMContentLoaded', () => {
+  const codeBlock = document.getElementById('code-block');
+  const navbar = document.querySelector('.navbar');
+  const codeText = [
+    '<section id="hero">',
+    '  <h1>Noureldeen Fahmy</h1>',
+    '</section>'
+  ].join('\n');
+  let idx = 0;
+  (function type() {
+    if (idx < codeText.length) {
+      codeBlock.textContent += codeText.charAt(idx);
+      idx++;
+      setTimeout(type, 20);
+    }
+  })();
+
+  runHeroAnimations();
+
+  document.getElementById('scrollCue').addEventListener('click', () => {
+    const target = document.getElementById('about');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle.addEventListener('click', () => {
+    const root = document.documentElement;
+    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+});
+
+const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function runHeroAnimations() {
+  if (prefersReduced) {
+    gsap.set(["#hero", "[data-hero-el]"], { opacity: 1, y: 0, clearProps: "all" });
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+  tl.to("#code-intro", { opacity: 1, duration: 0.2 })
+    .to("#code-intro", { opacity: 0, filter: "blur(10px)", pointerEvents: "none", duration: 0.6, delay: 1.3 });
+
+  tl.fromTo("#heroCard", { opacity: 0, y: 16, filter: "blur(8px)" },
+                     { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.8 }, "<0.1");
+
+    tl.from("[data-hero-h1]", { opacity: 0, y: 10, duration: 0.6 }, "-=0.2")
+      .from("[data-hero-sub]", { opacity: 0, y: 10, duration: 0.5 }, "-=0.2")
+      .from("[data-chip]", { opacity: 0, y: 10, duration: 0.4 }, "-=0.2")
+      .from("[data-avatar]", { opacity: 0, y: 10, duration: 0.4 }, "-=0.2")
+      .from("[data-bio]", { opacity: 0, y: 10, duration: 0.4 }, "-=0.2")
+      .from("[data-highlight]", { opacity: 0, y: 10, stagger: 0.08, duration: 0.4 }, "-=0.2")
+      .from("[data-badge]", { opacity: 0, y: 8, stagger: 0.08, duration: 0.3 }, "-=0.2")
+      .from("[data-skill]", { opacity: 0, y: 10, stagger: 0.08, duration: 0.4 }, "-=0.2")
+      .from("[data-cta]", { opacity: 0, y: 8, stagger: 0.08, duration: 0.35 }, "-=0.2")
+      .to("#scrollCue", { opacity: 1, duration: 0.3 }, "-=0.1");
+
+  const card = document.querySelector("#heroCard");
+  if (window.matchMedia("(pointer: fine)").matches && card) {
+    card.addEventListener("mousemove", (e) => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - (r.left + r.width / 2)) / r.width;
+      const y = (e.clientY - (r.top + r.height / 2)) / r.height;
+      gsap.to("#heroBG", { x: x * 8, y: y * 6, duration: 0.3, overwrite: true });
+      gsap.to("[data-hero-h1]", { x: x * 3, y: y * 2, duration: 0.3, overwrite: true });
     });
   }
-});
+
+  const btns = gsap.utils.toArray("[data-cta]");
+  btns.forEach((b) => {
+    b.addEventListener("mouseenter", () =>
+      gsap.to(b, { scale: 1.02, boxShadow: "0 10px 24px rgba(0,0,0,.18)", duration: 0.18, ease: "power2.out" })
+    );
+    b.addEventListener("mouseleave", () =>
+      gsap.to(b, { scale: 1.0, boxShadow: "0 4px 12px rgba(0,0,0,.12)", duration: 0.18, ease: "power2.out" })
+    );
+  });
+}
 
 // Reveal the clean strip for "About Me" section on scroll
 window.addEventListener('scroll', function() {
