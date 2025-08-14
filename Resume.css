@@ -1,5 +1,16 @@
+/* Color palette */
 :root {
-  --accent-color: #00bcd4;
+  --color-charcoal: #0F0F0F;
+  --color-offwhite: #F5F7FA;
+  --color-midgray: #2B2B2B;
+  --color-electric-blue: #3A8DFF;
+  --color-vibrant-purple: #8B5CF6;
+  --color-soft-cyan: #5EEAD4;
+  --accent-color: var(--color-electric-blue);
+
+  /* Legacy mappings */
+  --white: var(--color-offwhite);
+  --black: var(--color-charcoal);
 }
 
 /* Professional Experience Timeline */
@@ -402,7 +413,7 @@
   display: block;
   font-size: 4rem;
   font-weight: 700;
-  background: linear-gradient(45deg, #ffffff, #f0f8ff, #e6f3ff);
+  background: linear-gradient(45deg, var(--color-electric-blue), var(--color-vibrant-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -534,26 +545,26 @@
 }
 
 .cta-button.primary {
-  background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-  color: white;
-  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+  background: linear-gradient(45deg, var(--color-electric-blue), var(--color-vibrant-purple));
+  color: var(--color-offwhite);
+  box-shadow: 0 5px 15px rgba(58, 141, 255, 0.4);
 }
 
 .cta-button.primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+  box-shadow: 0 8px 25px rgba(58, 141, 255, 0.6);
 }
 
 .cta-button.secondary {
   background: transparent;
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: var(--color-offwhite);
+  border: 2px solid rgba(94, 234, 212, 0.5);
   backdrop-filter: blur(10px);
 }
 
 .cta-button.secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(94, 234, 212, 0.1);
+  border-color: rgba(94, 234, 212, 0.8);
   transform: translateY(-3px);
 }
 
@@ -1015,18 +1026,7 @@
   margin: 0;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
-
-:root {
-  --white: #fff;
-  --black: #323135;
-  --crystal: #a8dadd;
-  --columbia-blue: #cee9e4;
-  --midnight-green: #01565b;
-  --yellow: #e5f33d;
-  --timeline-gradient: rgba(206, 233, 228, 1) 0%, rgba(206, 233, 228, 1) 50%,
-    rgba(206, 233, 228, 0) 100%;
-}
+/* removed duplicate root and font import */
 
 *,
 *::before,
@@ -1054,11 +1054,19 @@ img {
 
 body {
   font: normal 16px/1.5 "Inter", sans-serif;
-  background: var(--columbia-blue);
-  color: var(--black);
+  background: var(--color-offwhite);
+  color: var(--color-charcoal);
   margin: 0 0 50px 0;
   padding: 0;
   overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Poppins", sans-serif;
+}
+
+code, pre {
+  font-family: "Fira Code", monospace;
 }
 
 /* Center section content and limit width */
@@ -1723,7 +1731,7 @@ body {
   cursor: default;
   margin: 20px;
   margin-left:70px;
-  color:var(--columbia-blue);
+  color:var(--color-electric-blue);
 }
 
 .back {
