@@ -5,12 +5,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Nour's Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&family=Inter:wght@400;500&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="Resume.css">
 </head>
 
 <body>
-  <div class="welcome-section" id="welcome">
-    <div class="background-animation">
+  <div id="code-intro" class="code-intro"><pre id="code-block"></pre></div>
+  <nav class="navbar">
+    <a href="#hero" class="nav-link active">Home</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#card" class="nav-link">Contact</a>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </nav>
+  <div class="welcome-section" id="hero">
+    <div class="background-animation" id="heroBG">
       <div class="floating-shapes">
         <div class="shape shape-1"></div>
         <div class="shape shape-2"></div>
@@ -19,44 +29,37 @@
         <div class="shape shape-5"></div>
       </div>
     </div>
-    
+
     <div class="header-content">
-      <div class="profile-intro">
-        <h1 class="main-title">
+      <div class="profile-intro glass-panel" id="heroCard" role="region" aria-label="Intro">
+        <h1 class="main-title" data-hero-h1>
           <span class="greeting">Hello, I'm</span>
-          <span class="name">Noureldeen Fahmy</span>
+          <span class="name" id="hero-name">Noureldeen Fahmy</span>
         </h1>
-        
-        <div class="title-section">
-          <div class="company-info">
-            <span class="company-name">Storelx</span>
-            <a href="https://www.storelx.com" target="_blank" class="company-link">
-              <span class="link-icon">🌐</span>
-              <span class="link-text">www.storelx.com</span>
-            </a>
-          </div>
+        <p class="hero-tagline" data-hero-sub>Full-stack developer &amp; data scientist</p>
+        <div class="company-tag">
+          <a href="https://www.storelx.com" target="_blank" data-chip>Storelx</a>
         </div>
-        
-        <div class="role-tags">
-          <span class="role-tag">Full-Stack Developer</span>
-          <span class="role-tag">Data Scientist</span>
-          <span class="role-tag">Team Leader</span>
+        <div class="skill-tags">
+          <span class="skill-tag" data-skill>React</span>
+          <span class="skill-tag" data-skill>Node.js</span>
+          <span class="skill-tag" data-skill>Python</span>
+          <span class="skill-tag" data-skill>AWS</span>
         </div>
-        
         <div class="header-actions">
-          <a href="#card" class="cta-button primary">
+          <a href="#card" class="cta-button primary" data-cta>
             <span class="button-icon">📧</span>
             <span class="button-text">Contact Me</span>
           </a>
-          <a href="#about" class="cta-button secondary">
+          <a href="#about" class="cta-button secondary" data-cta>
             <span class="button-icon">👤</span>
             <span class="button-text">About Me</span>
           </a>
         </div>
       </div>
-      
+
       <div class="scroll-indicator">
-        <div class="down-arrow" id="scroll-down"></div>
+        <div class="down-arrow" id="scrollCue"></div>
       </div>
     </div>
   </div>
@@ -618,6 +621,8 @@
   </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
   <script src="Resume.js"></script>
 </body>
 
