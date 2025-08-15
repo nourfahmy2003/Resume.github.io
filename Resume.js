@@ -43,29 +43,39 @@ function runHeroAnimations() {
     .from("[data-cta]", { y: 10, opacity: 0, duration: 0.5 }, "-=0.3")
     .from(".feature-block", { y: 20, opacity: 0, stagger: 0.08, duration: 0.6 }, "-=0.2");
 
-  const imgHolder = document.querySelector('[data-parallax]');
-  if (window.matchMedia('(pointer: fine)').matches && imgHolder) {
-    imgHolder.addEventListener('mousemove', (e) => {
-      const r = imgHolder.getBoundingClientRect();
-      const x = (e.clientX - (r.left + r.width / 2)) / r.width;
-      const y = (e.clientY - (r.top + r.height / 2)) / r.height;
-      gsap.to(imgHolder, { x: x * 6, y: y * 6, duration: 0.3, overwrite: true });
-    });
-    imgHolder.addEventListener('mouseleave', () => {
-      gsap.to(imgHolder, { x: 0, y: 0, duration: 0.3 });
-    });
-  }
+  const wrap = document.getElementById('photoWrap');
+  if (window.matchMedia('(pointer: fine)').matches && wrap) {
+      wrap.addEventListener('mousemove', e => {
+        const r = wrap.getBoundingClientRect();
+        const x = (e.clientX - (r.left + r.width / 2)) / r.width;
+        const y = (e.clientY - (r.top + r.height / 2)) / r.height;
+        wrap.style.transform = `translateX(-56px) translate(${x * 6}px, ${y * 4}px)`;
+      });
+      wrap.addEventListener('mouseleave', () => {
+        wrap.style.transform = 'translateX(-56px)';
+      });
+    }
 
   const btns = gsap.utils.toArray('[data-cta]');
-  btns.forEach((b) => {
-    b.addEventListener('mouseenter', () =>
-      gsap.to(b, { scale: 1.02, duration: 0.18, ease: 'power2.out' })
-    );
-    b.addEventListener('mouseleave', () =>
-      gsap.to(b, { scale: 1.0, duration: 0.18, ease: 'power2.out' })
-    );
-  });
-}
+    btns.forEach((b) => {
+      b.addEventListener('mouseenter', () =>
+        gsap.to(b, { scale: 1.02, duration: 0.18, ease: 'power2.out' })
+      );
+      b.addEventListener('mouseleave', () =>
+        gsap.to(b, { scale: 1.0, duration: 0.18, ease: 'power2.out' })
+      );
+    });
+
+    const contact = document.querySelector('a[href="#card"]');
+    if (contact) {
+      contact.addEventListener('mouseover', () => {
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = '#card';
+        document.head.appendChild(link);
+      }, { once: true });
+    }
+  }
 
 function cycleSnippets() {
   const snippets = [
