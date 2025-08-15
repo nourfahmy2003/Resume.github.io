@@ -16,6 +16,7 @@
 <body>
   <nav class="navbar">
     <a href="#hero" class="nav-link active">Home</a>
+    <a href="#projects" class="nav-link">Projects</a>
     <a href="#card" class="nav-link">Contact</a>
     <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
   </nav>
@@ -80,9 +81,10 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Education Section -->
+
+    <!-- Education Section -->
   <div class="education-section fade-section" id="education">
     <div class="content-container">
       <h2>Education</h2>
@@ -184,14 +186,17 @@
     </div>
   </section>
 
-  <section class="projects-section fade-section">
+  <section class="projects-section fade-section" id="projects">
     <div class="projects-container">
       <div class="projects-header">
-        <h2>My Projects</h2>
+        <div class="projects-header-row">
+          <h2>My Projects</h2>
+          <a href="/projects" class="see-more">See more →</a>
+        </div>
         <p>Explore some of the projects I've built</p>
       </div>
 
-      <div class="projects-grid">
+      <div class="projects-grid limit-4">
         <div class="project-card" data-project="project1">
           <div class="project-card-header">
             <h3>Memory Game</h3>
