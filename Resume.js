@@ -3,30 +3,10 @@ const savedTheme = localStorage.getItem('theme');
 document.documentElement.setAttribute('data-theme', savedTheme || (prefersDark ? 'dark' : 'light'));
 
 document.addEventListener('DOMContentLoaded', () => {
-  const codeBlock = document.getElementById('code-block');
   const navbar = document.querySelector('.navbar');
-  const codeText = [
-    '<section id="hero">',
-    '  <h1>Noureldeen Fahmy</h1>',
-    '</section>'
-  ].join('\n');
-  let idx = 0;
-  (function type() {
-    if (idx < codeText.length) {
-      codeBlock.textContent += codeText.charAt(idx);
-      idx++;
-      setTimeout(type, 20);
-    }
-  })();
 
   runHeroAnimations();
-
-  document.getElementById('scrollCue').addEventListener('click', () => {
-    const target = document.getElementById('about');
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
+  cycleSnippets();
 
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 10);
@@ -52,93 +32,74 @@ const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").mat
 
 function runHeroAnimations() {
   if (prefersReduced) {
-    gsap.set(["#hero", "[data-hero-el]"], { opacity: 1, y: 0, clearProps: "all" });
+    gsap.set([".hero-left", ".portrait-wrapper", ".stat", ".feature-block"], { opacity: 1, y: 0, clearProps: "all" });
     return;
   }
 
-  gsap.registerPlugin(ScrollTrigger);
   const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+  tl.from(".hero-left", { x: -24, opacity: 0, duration: 0.8 })
+    .from(".portrait-wrapper", { scale: 0.98, opacity: 0, duration: 0.8 }, "-=0.4")
+    .from(".stat", { y: -20, opacity: 0, stagger: 0.08, duration: 0.5 }, "-=0.4")
+    .from("[data-cta]", { y: 10, opacity: 0, duration: 0.5 }, "-=0.3")
+    .from(".feature-block", { y: 20, opacity: 0, stagger: 0.08, duration: 0.6 }, "-=0.2");
 
-  tl.to("#code-intro", { opacity: 1, duration: 0.2 })
-    .to("#code-intro", { opacity: 0, filter: "blur(10px)", pointerEvents: "none", duration: 0.6, delay: 1.3 });
-
-  tl.fromTo("#heroCard", { opacity: 0, y: 16, filter: "blur(8px)" },
-                     { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.8 }, "<0.1");
-
-    tl.from("[data-hero-h1]", { opacity: 0, y: 10, duration: 0.6 }, "-=0.2")
-      .from("[data-hero-sub]", { opacity: 0, y: 10, duration: 0.5 }, "-=0.2")
-      .from("[data-chip]", { opacity: 0, y: 10, duration: 0.4 }, "-=0.2")
-      .from("[data-avatar]", { opacity: 0, y: 10, duration: 0.4 }, "-=0.2")
-      .from("[data-bio]", { opacity: 0, y: 10, duration: 0.4 }, "-=0.2")
-      .from("[data-metric]", { opacity: 0, y: 10, stagger: 0.08, duration: 0.4 }, "-=0.2")
-      .call(animateMetrics, null, "-=0.1")
-      .from("[data-badge]", { opacity: 0, y: 8, stagger: 0.08, duration: 0.3 }, "-=0.2")
-      .from("[data-skill]", { opacity: 0, y: 10, stagger: 0.08, duration: 0.4 }, "-=0.2")
-      .from("[data-cta]", { opacity: 0, y: 8, stagger: 0.08, duration: 0.35 }, "-=0.2")
-      .to("#scrollCue", { opacity: 1, duration: 0.3 }, "-=0.1");
-
-
-  const card = document.querySelector("#heroCard");
-  if (window.matchMedia("(pointer: fine)").matches && card) {
-    card.addEventListener("mousemove", (e) => {
-      const r = card.getBoundingClientRect();
+  const imgHolder = document.querySelector('[data-parallax]');
+  if (window.matchMedia('(pointer: fine)').matches && imgHolder) {
+    imgHolder.addEventListener('mousemove', (e) => {
+      const r = imgHolder.getBoundingClientRect();
       const x = (e.clientX - (r.left + r.width / 2)) / r.width;
       const y = (e.clientY - (r.top + r.height / 2)) / r.height;
-      gsap.to("#heroBG", { x: x * 8, y: y * 6, duration: 0.3, overwrite: true });
-      gsap.to("[data-hero-h1]", { x: x * 3, y: y * 2, duration: 0.3, overwrite: true });
+      gsap.to(imgHolder, { x: x * 6, y: y * 6, duration: 0.3, overwrite: true });
+    });
+    imgHolder.addEventListener('mouseleave', () => {
+      gsap.to(imgHolder, { x: 0, y: 0, duration: 0.3 });
     });
   }
 
-  const avatar = document.querySelector('[data-avatar]');
-  if (window.matchMedia('(pointer: fine)').matches && avatar) {
-    avatar.addEventListener('mousemove', (e) => {
-      const r = avatar.getBoundingClientRect();
-      const x = (e.clientX - (r.left + r.width / 2)) / r.width;
-      const y = (e.clientY - (r.top + r.height / 2)) / r.height;
-      gsap.to(avatar, { rotationY: x * 10, rotationX: -y * 10, duration: 0.3, transformPerspective: 500, overwrite: true });
-    });
-    avatar.addEventListener('mouseleave', () => {
-      gsap.to(avatar, { rotationY: 0, rotationX: 0, duration: 0.3 });
-    });
-  }
-
-  const btns = gsap.utils.toArray("[data-cta]");
-  btns.forEach((b) => {
-    b.addEventListener("mouseenter", () =>
-      gsap.to(b, { scale: 1.02, boxShadow: "0 10px 24px rgba(0,0,0,.18)", duration: 0.18, ease: "power2.out" })
-    );
-    b.addEventListener("mouseleave", () =>
-      gsap.to(b, { scale: 1.0, boxShadow: "0 4px 12px rgba(0,0,0,.12)", duration: 0.18, ease: "power2.out" })
-    );
-  });
-}
-
-function animateMetrics() {
-  document.querySelectorAll('[data-count]').forEach((el) => {
-    const end = parseInt(el.getAttribute('data-count'), 10);
-    const suffix = el.getAttribute('data-suffix') || '';
-    gsap.fromTo(el, { innerText: 0 }, {
-      innerText: end,
-      duration: 1.2,
-      ease: 'power1.out',
-      snap: { innerText: 1 },
-      onUpdate: function () {
-        el.textContent = Math.round(el.innerText) + suffix;
-      }
-    });
-  });
-}
-
-// Reveal the clean strip for "About Me" section on scroll
-window.addEventListener('scroll', function() {
-  const aboutSection = document.getElementById('about');
-  if (aboutSection) {
-    const rect = aboutSection.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.8) {
-      aboutSection.classList.add('scrolled');
+  gsap.to('.hero-transition path', {
+    attr: { d: 'M0,0 C480,40 960,40 1440,0 L1440,80 L0,80 Z' },
+    scrollTrigger: {
+      trigger: '.hero-transition',
+      start: 'top bottom',
+      scrub: true
     }
+  });
+
+  const btns = gsap.utils.toArray('[data-cta]');
+  btns.forEach((b) => {
+    b.addEventListener('mouseenter', () =>
+      gsap.to(b, { scale: 1.02, duration: 0.18, ease: 'power2.out' })
+    );
+    b.addEventListener('mouseleave', () =>
+      gsap.to(b, { scale: 1.0, duration: 0.18, ease: 'power2.out' })
+    );
+  });
+}
+
+function cycleSnippets() {
+  const snippets = [
+    '<Hero name="Nour" />',
+    '<Button primary>Contact</Button>'
+  ];
+  let i = 0;
+  function type() {
+    const el = document.getElementById('code-snippet');
+    if (!el) return;
+    const text = snippets[i];
+    el.textContent = '';
+    let c = 0;
+    (function tick() {
+      if (c < text.length) {
+        el.textContent += text.charAt(c++);
+        setTimeout(tick, 80);
+      } else {
+        i = (i + 1) % snippets.length;
+        setTimeout(type, 7000);
+      }
+    })();
   }
-});
+  type();
+}
 
 window.onload = function() {
   animateSkillBars();
