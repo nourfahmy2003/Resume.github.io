@@ -43,16 +43,16 @@ function runHeroAnimations() {
     .from("[data-cta]", { y: 10, opacity: 0, duration: 0.5 }, "-=0.3")
     .from(".feature-block", { y: 20, opacity: 0, stagger: 0.08, duration: 0.6 }, "-=0.2");
 
-  const imgHolder = document.querySelector('[data-parallax]');
-  if (window.matchMedia('(pointer: fine)').matches && imgHolder) {
-    imgHolder.addEventListener('mousemove', (e) => {
-      const r = imgHolder.getBoundingClientRect();
+  const wrap = document.getElementById('photoWrap');
+  if (window.matchMedia('(pointer: fine)').matches && wrap) {
+    wrap.addEventListener('mousemove', e => {
+      const r = wrap.getBoundingClientRect();
       const x = (e.clientX - (r.left + r.width / 2)) / r.width;
       const y = (e.clientY - (r.top + r.height / 2)) / r.height;
-      gsap.to(imgHolder, { x: x * 6, y: y * 6, duration: 0.3, overwrite: true });
+      wrap.style.transform = `translateX(-80px) translate(${x * 6}px, ${y * 4}px)`;
     });
-    imgHolder.addEventListener('mouseleave', () => {
-      gsap.to(imgHolder, { x: 0, y: 0, duration: 0.3 });
+    wrap.addEventListener('mouseleave', () => {
+      wrap.style.transform = 'translateX(-80px)';
     });
   }
 
