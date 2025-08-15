@@ -1,29 +1,197 @@
-// Add smooth scrolling to navigate to sections
-document.getElementById('scroll-down').addEventListener('click', function() {
-  const target = document.getElementById('about');
-  if (target) {
-    target.scrollIntoView({
-      behavior: 'smooth'
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const savedTheme = localStorage.getItem('theme');
+document.documentElement.setAttribute('data-theme', savedTheme || (prefersDark ? 'dark' : 'light'));
+
+document.addEventListener('DOMContentLoaded', () => {
+  const codeBlock = document.getElementById('code-block');
+  const navbar = document.querySelector('.navbar');
+  const codeText = [
+    '<section id="hero">',
+    '  <h1>Noureldeen Fahmy</h1>',
+    '</section>'
+  ].join('\n');
+  let idx = 0;
+  (function type() {
+    if (idx < codeText.length) {
+      codeBlock.textContent += codeText.charAt(idx);
+      idx++;
+      setTimeout(type, 20);
+    }
+  })();
+
+  runHeroAnimations();
+  runAboutAnimations();
+  shuffleMetrics();
+  runBackgroundCode();
+
+  document.getElementById('scrollCue').addEventListener('click', () => {
+    const target = document.getElementById('about');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle.addEventListener('click', () => {
+    const root = document.documentElement;
+    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+});
+
+const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function runHeroAnimations() {
+  if (prefersReduced) {
+    gsap.set(["#hero", "[data-hero-el]"], { opacity: 1, y: 0, clearProps: "all" });
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+  tl.to("#code-intro", { opacity: 1, duration: 0.2 })
+    .to("#code-intro", { opacity: 0, filter: "blur(10px)", pointerEvents: "none", duration: 0.6, delay: 1.3 });
+
+  tl.from(".hero-left", { opacity: 0, x: -40, duration: 0.8 }, "<0.1")
+    .from(".hero-right", { opacity: 0, x: 40, duration: 0.8 }, "<")
+    .from("[data-hero-h1]", { opacity: 0, y: 10, duration: 0.6 }, "-=0.2")
+    .from("[data-hero-sub]", { opacity: 0, y: 10, duration: 0.5 }, "-=0.2")
+    .from(".headline-metric", { opacity: 0, y: 10, duration: 0.5 }, "-=0.2")
+    .from("[data-cta]", { opacity: 0, y: 8, stagger: 0.08, duration: 0.35 }, "-=0.2")
+    .from("[data-skill]", { opacity: 0, y: 10, stagger: 0.08, duration: 0.4 }, "-=0.2")
+    .to("#scrollCue", { opacity: 1, duration: 0.3 }, "-=0.1");
+
+  const card = document.querySelector("#heroCard");
+  if (window.matchMedia("(pointer: fine)").matches && card) {
+    card.addEventListener("mousemove", (e) => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - (r.left + r.width / 2)) / r.width;
+      const y = (e.clientY - (r.top + r.height / 2)) / r.height;
+      gsap.to("#heroBG", { x: x * 8, y: y * 6, duration: 0.3, overwrite: true });
+      gsap.to("[data-hero-h1]", { x: x * 3, y: y * 2, duration: 0.3, overwrite: true });
     });
   }
-});
 
-// Reveal the clean strip for "About Me" section on scroll
-window.addEventListener('scroll', function() {
-  const aboutSection = document.getElementById('about');
-  if (aboutSection) {
-    const rect = aboutSection.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.8) {
-      aboutSection.classList.add('scrolled');
-    }
+  const avatar = document.querySelector('[data-avatar]');
+  if (window.matchMedia('(pointer: fine)').matches && avatar) {
+    avatar.addEventListener('mousemove', (e) => {
+      const r = avatar.getBoundingClientRect();
+      const x = (e.clientX - (r.left + r.width / 2)) / r.width;
+      const y = (e.clientY - (r.top + r.height / 2)) / r.height;
+      gsap.to(avatar, { rotationY: x * 10, rotationX: -y * 10, duration: 0.3, transformPerspective: 500, overwrite: true });
+    });
+    avatar.addEventListener('mouseleave', () => {
+      gsap.to(avatar, { rotationY: 0, rotationX: 0, duration: 0.3 });
+    });
   }
-});
 
+  const btns = gsap.utils.toArray("[data-cta]");
+  btns.forEach((b) => {
+    b.addEventListener("mouseenter", () =>
+      gsap.to(b, { scale: 1.02, boxShadow: "0 10px 24px rgba(0,0,0,.18)", duration: 0.18, ease: "power2.out" })
+    );
+    b.addEventListener("mouseleave", () =>
+      gsap.to(b, { scale: 1.0, boxShadow: "0 4px 12px rgba(0,0,0,.12)", duration: 0.18, ease: "power2.out" })
+    );
+  });
+}
+
+function runBackgroundCode(){
+  const codeEl=document.getElementById('bg-code');
+  const uiEl=document.getElementById('bg-ui');
+  if(!codeEl||!uiEl)return;
+  const snippet=['<button class="demo-btn">','  Contact Me','</button>'].join('\n');
+  let i=0;
+  const type=()=>{
+    if(i<snippet.length){
+      codeEl.textContent+=snippet.charAt(i);i++;setTimeout(type,40);
+    }else{
+      setTimeout(morph,800);
+    }
+  };
+  const morph=()=>{
+    gsap.to(codeEl.parentElement,{opacity:0,duration:0.5,onComplete:()=>{
+      uiEl.classList.add('show');
+      gsap.to(uiEl,{opacity:1,duration:0.5});
+      setTimeout(()=>{
+        gsap.to(uiEl,{opacity:0,duration:0.5,onComplete:()=>{
+          uiEl.classList.remove('show');
+          codeEl.textContent='';
+          codeEl.parentElement.style.opacity='';
+          i=0;type();
+        }});
+      },2000);
+    }});
+  };
+  type();
+}
+
+function runAboutAnimations() {
+  if (prefersReduced) {
+    gsap.set('#about .about-bio, #about .metric-card, #about .achievement-pill', { opacity: 1, x: 0, y: 0, clearProps: 'all' });
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#about',
+      start: 'top 80%'
+    },
+    defaults: { ease: 'power3.out' }
+  });
+  tl.from('#about .about-bio', { opacity: 0, x: -30, duration: 0.8 })
+    .from('#about .metric-card', { opacity: 0, x: 30, stagger: 0.08, duration: 0.6 }, '-=0.4')
+    .add(() => animateMetrics(document.querySelector('#about')))
+    .from('#about .achievement-pill', { opacity: 0, y: 20, scale: 0.8, stagger: 0.08, duration: 0.4 }, '-=0.2');
+}
+
+function shuffleMetrics() {
+  const container = document.querySelector('#about .about-metrics');
+  if (!container) return;
+  const rotate = () => {
+    const first = container.firstElementChild;
+    if (first && container.children.length > 1) {
+      container.appendChild(first);
+    }
+  };
+  setInterval(rotate, 5000);
+  container.addEventListener('mouseenter', rotate);
+}
+
+function animateMetrics(scope) {
+  (scope || document).querySelectorAll('[data-count]').forEach((el) => {
+    const end = parseInt(el.getAttribute('data-count'), 10);
+    const suffix = el.getAttribute('data-suffix') || '';
+    gsap.fromTo(el, { innerText: 0 }, {
+      innerText: end,
+      duration: 1.2,
+      ease: 'power1.out',
+      snap: { innerText: 1 },
+      onUpdate: function () {
+        el.textContent = Math.round(el.innerText) + suffix;
+      }
+    });
+  });
+}
+
+// Function to animate skill bars when they come into view
 window.onload = function() {
   animateSkillBars();
 };
 
-// Function to animate skill bars when they come into view
 function animateSkillBars() {
   const skillBars = document.querySelectorAll('.skill-progress');
   
