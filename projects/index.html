@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&family=Inter:wght@400;500&family=Poppins:wght@500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../Resume.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/projects" class="nav-link active">Projects</a>
+    <a href="/index.html#card" class="nav-link">Contact</a>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </nav>
+
+  <section class="projects-section fade-section" id="projects">
+    <div class="projects-container">
+      <div class="projects-header">
+        <h2>My Projects</h2>
+        <p>Explore some of the projects I've built</p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card" data-project="project1">
+          <div class="project-card-header">
+            <h3>Memory Game</h3>
+          </div>
+          <div class="project-location">NL, Canada · May 2024</div>
+          <div class="project-description">
+            <p>An interactive, web-based memory game built with React and Vite, designed to deliver a smooth, engaging user experience across desktop and mobile. The project emphasizes performance optimization, modern UI/UX practices, and scalable deployment.</p>
+          </div>
+          <div class="project-tech">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Vite</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Vercel</span>
+          </div>
+          <ul class="project-details">
+            <li>Card-flipping game with scoring, timer, and difficulty scaling</li>
+            <li>Custom React hooks for state management</li>
+            <li>CI/CD deployment pipeline via Vercel</li>
+            <li>60fps animations and optimized rendering</li>
+            <li>Fully responsive design</li>
+            <li>Modular architecture for extensibility</li>
+          </ul>
+          <div class="project-actions">
+            <a href="https://card-memory-game-gold.vercel.app/" target="_blank" class="project-link">
+              <span>🔗</span> Live Demo
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card" data-project="project2">
+          <div class="project-card-header">
+            <h3>CV Maker (AI-Powered Resume Builder)</h3>
+          </div>
+          <div class="project-location">NL, Canada · April 2024</div>
+          <div class="project-description">
+            <p>A full-stack, AI-assisted resume builder designed for professionals and students. The platform enables users to create, edit, and export resumes with intelligent suggestions, drag-and-drop customization, and multi-template support.</p>
+          </div>
+          <div class="project-tech">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">react-pdf</span>
+            <span class="tech-tag">react-beautiful-dnd</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">AI</span>
+          </div>
+          <ul class="project-details">
+            <li>AI-assisted phrasing and keyword suggestions</li>
+            <li>Full-stack builder with live editing and PDF export</li>
+            <li>Drag-and-drop section reordering with react-beautiful-dnd</li>
+            <li>Auto-save with local and cloud storage</li>
+            <li>Multi-template designs with optimized performance</li>
+            <li>40% faster render times and pixel-perfect PDFs</li>
+          </ul>
+          <div class="project-actions">
+            <a href="https://cv-builder-noureldeen.vercel.app/" target="_blank" class="project-link">
+              <span>🔗</span> Live Demo
+            </a>
+          </div>
+        </div>
+        
+        <div class="project-card" data-project="project3">
+          <div class="project-card-header">
+            <h3>JobDone</h3>
+          </div>
+          <div class="project-location">NL, Canada · April 2024</div>
+          <div class="project-description">
+            <p>A Flutter marketplace app where customers post jobs and verified fixers submit offers. Built with Firebase for auth, real-time chat, and scalable data; includes a Google Maps experience and role-based dashboards.</p>
+          </div>
+          <div class="project-tech">
+            <span class="tech-tag">Flutter</span>
+            <span class="tech-tag">Dart</span>
+            <span class="tech-tag">Firebase</span>
+            <span class="tech-tag">Google Maps</span>
+          </div>
+          <ul class="project-details">
+            <li>Post/manage jobs with images, budgets, date &amp; time windows</li>
+            <li>Fixers submit offers with pricing and availability</li>
+            <li>Real-time 1:1 messaging</li>
+            <li>Map view of nearby jobs (bottom-sheet details)</li>
+            <li>Document &amp; selfie verification</li>
+          </ul>
+          <div class="project-actions">
+            <button type="button" class="project-link secondary video-demo" aria-haspopup="dialog" aria-controls="video-modal" aria-label="Video demo available">🎥 Video demo available</button>
+          </div>
+        </div>
+
+        <div class="project-card" data-project="project4">
+          <div class="project-card-header">
+            <h3>World Population &amp; Satellite Data Analysis</h3>
+            <span class="project-date">May 2025</span>
+          </div>
+          <div class="project-location">📍 NL, Canada</div>
+          <div class="project-description">
+            <p>A comprehensive data analytics project leveraging global satellite catalog data and 2023 world population statistics to uncover trends in space activity. Delivered as two Jupyter notebooks showcasing a full exploratory workflow and a final polished analysis.</p>
+          </div>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">Plotly</span>
+            <span class="tech-tag">Matplotlib</span>
+            <span class="tech-tag">Seaborn</span>
+            <span class="tech-tag">Jupyter</span>
+          </div>
+          <ul class="project-details">
+            <li>Designed and executed an end-to-end data analysis pipeline for satellite activity</li>
+            <li>Preprocessed and normalized satellite and population datasets for consistency</li>
+            <li>Built advanced visualizations (time series, orbit distribution, waffle, circle-packing)</li>
+            <li>Conducted per-capita analysis to highlight country-level contributions relative to population size</li>
+            <li>Produced both exploratory (EDA) and presentation-ready deliverables with actionable insights</li>
+          </ul>
+          <div class="project-actions">
+            <span class="project-note">📂 Delivered as Jupyter Notebooks — no live demo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title" hidden>
+    <div class="modal-content">
+      <h3 id="video-modal-title">No public live demo</h3>
+      <p>Contact for private video link.</p>
+      <button type="button" class="modal-close" aria-label="Close">Close</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+  <script src="../Resume.js"></script>
+</body>
+
+</html>
+
