@@ -10,12 +10,14 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&family=Inter:wght@400;500&family=Poppins:wght@500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap"
     rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=line-clamp"></script>
   <link rel="stylesheet" href="Resume.css">
 </head>
 
 <body>
   <nav class="navbar">
     <a href="#hero" class="nav-link active">Home</a>
+    <a href="#projects" class="nav-link">Projects</a>
     <a href="#card" class="nav-link">Contact</a>
     <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
   </nav>
@@ -80,9 +82,10 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Education Section -->
+
+    <!-- Education Section -->
   <div class="education-section fade-section" id="education">
     <div class="content-container">
       <h2>Education</h2>
@@ -184,76 +187,28 @@
     </div>
   </section>
 
-  <section class="projects-section fade-section">
+  <section class="projects-section fade-section" id="projects">
     <div class="projects-container">
       <div class="projects-header">
-        <h2>My Projects</h2>
+        <div class="projects-header-row">
+          <h2>My Projects</h2>
+          <a href="/projects" class="see-more">See more →</a>
+        </div>
         <p>Explore some of the projects I've built</p>
       </div>
 
-      <div class="projects-grid">
-        <div class="project-card" data-project="project1">
-          <div class="project-card-header">
-            <h3>Memory Game</h3>
-            <span class="project-date">May 2024</span>
-          </div>
-          <div class="project-location">🍁 NL, Canada</div>
-          <div class="project-description">
-            <p>An interactive web-based memory game built with React and Vite, featuring optimized performance and
-              modern UI design.</p>
-          </div>
-          <div class="project-tech">
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">Vite</span>
-            <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">Vercel</span>
-          </div>
-          <ul class="project-details">
-            <li>Developed an interactive web-based memory game using React and Vite</li>
-            <li>Implemented state management with custom React hooks</li>
-            <li>Deployed on Vercel with CI/CD pipeline</li>
-            <li>Features card flipping animations, score tracking and timer</li>
-            <li>Responsive design for desktop and mobile</li>
-          </ul>
-          <div class="project-actions">
-            <a href="https://card-memory-game-gold.vercel.app/" target="_blank" class="project-link">
-              <span>🔗</span> Live Demo
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card" data-project="project2">
-          <div class="project-card-header">
-            <h3>CV Maker</h3>
-            <span class="project-date">April 2024</span>
-          </div>
-          <div class="project-location">🍁 NL, Canada</div>
-          <div class="project-description">
-            <p>A full-stack resume builder with PDF export, drag-and-drop functionality, and multiple template designs.
-            </p>
-          </div>
-          <div class="project-tech">
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">react-pdf</span>
-            <span class="tech-tag">react-beautiful-dnd</span>
-            <span class="tech-tag">CSS</span>
-          </div>
-          <ul class="project-details">
-            <li>Full-stack resume builder with PDF export using react-pdf</li>
-            <li>Drag-and-drop interface with react-beautiful-dnd</li>
-            <li>Auto-save feature and multiple templates</li>
-            <li>40% faster renders with React optimizations</li>
-          </ul>
-          <div class="project-actions">
-            <a href="https://cv-builder-noureldeen.vercel.app/" target="_blank" class="project-link">
-              <span>🔗</span> Live Demo
-            </a>
-          </div>
-        </div>
-      </div>
+      <div id="projects-root" data-limit="2"></div>
     </div>
   </section>
 
+
+  <div class="modal" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title" hidden>
+    <div class="modal-content">
+      <h3 id="video-modal-title">No public live demo</h3>
+      <p>Contact for private video link.</p>
+      <button type="button" class="modal-close" aria-label="Close">Close</button>
+    </div>
+  </div>
 
   <!-- Skills section moved after projects -->
   <section class="skills-main-section fade-section">
@@ -614,6 +569,10 @@
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel" src="projects.js"></script>
   <script src="Resume.js"></script>
 </body>
 
