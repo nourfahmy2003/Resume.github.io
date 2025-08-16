@@ -1,0 +1,67 @@
+/* 07) EDUCATION                                                              */
+/* ========================================================================== */
+.education-section {
+  padding: 50px 0;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.education-section .timeline-edu {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.education-section .edu-entry {
+  display: flex;
+  align-items: flex-start;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.education-section .edu-year {
+  width: 120px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-align: right;
+  margin-right: 20px;
+  position: relative;
+}
+
+.education-section .edu-year::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-hairline);
+}
+
+.education-section .edu-details {
+  padding: 0 20px;
+  text-align: left;
+}
+
+.education-section .edu-details h3 {
+  font-size: 22px;
+  margin-bottom: 5px;
+  color: var(--text-primary);
+}
+
+.education-section .edu-details p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ========================================================================== */
+
+/*# sourceMappingURL=education.css.map */
