@@ -1,0 +1,101 @@
+/* 10) CONTACT CARD                                                           */
+/* ========================================================================== */
+
+.profile-container { width: 100%; min-height: 100vh; background: var(--color-slate); padding: 80px 0; position: relative; overflow: hidden; }
+
+.modern-contact-section { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.contact-background { position: absolute; inset: 0; opacity: 0.1; z-index: 1; }
+
+.geometric-patterns { position: relative; width: 100%; height: 100%; }
+.pattern-circle { position: absolute; border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 50%; animation: rotate 20s linear infinite; }
+.circle-1 { width: 200px; height: 200px; top: 10%; left: 10%; animation-delay: 0s; }
+.circle-2 { width: 150px; height: 150px; top: 70%; right: 15%; animation-delay: 5s; }
+.circle-3 { width: 100px; height: 100px; top: 30%; right: 25%; animation-delay: 10s; }
+
+.pattern-hexagon { position: absolute; width: 60px; height: 60px; border: 2px solid rgba(255, 255, 255, 0.2); transform: rotate(45deg); animation: hexFloat 15s ease-in-out infinite; }
+.hex-1 { top: 20%; left: 80%; animation-delay: 0s; }
+.hex-2 { top: 80%; left: 20%; animation-delay: 7s; }
+.pattern-line { position: absolute; width: 2px; height: 100px; background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.3), transparent); animation: lineMove 12s ease-in-out infinite; }
+.line-1 { top: 15%; left: 30%; animation-delay: 0s; }
+.line-2 { top: 60%; left: 70%; animation-delay: 4s; }
+.line-3 { top: 40%; left: 50%; animation-delay: 8s; }
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes hexFloat { 0%,100% { transform: rotate(45deg) translateY(0); } 50% { transform: rotate(45deg) translateY(-30px); } }
+@keyframes lineMove { 0%,100% { opacity: 0.3; transform: translateX(0); } 50% { opacity: 0.8; transform: translateX(20px); } }
+
+.contact-content { position: relative; z-index: 2; max-width: 500px; width: 100%; margin: 0 auto; padding: 0 20px; }
+.contact-card {
+  background: rgba(255, 255, 255, 0.95); border-radius: 25px; padding: 40px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.2); backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3); position: relative; overflow: hidden; animation: cardPulse 4s ease-in-out infinite;
+}
+@keyframes cardPulse { 0%,100% { box-shadow: 0 25px 50px rgba(0,0,0,0.2); } 50% { box-shadow: 0 35px 70px rgba(102, 126, 234, 0.3); } }
+.contact-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: var(--accent-color); border-radius: 25px 25px 0 0; }
+
+.card-header { text-align: center; margin-bottom: 30px; }
+.avatar-section { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.avatar-placeholder {
+  position: relative; width: 80px; height: 80px; background: linear-gradient(135deg, var(--accent-color), var(--accent-color));
+  border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); animation: avatarRotate 6s ease-in-out infinite;
+}
+@keyframes avatarRotate { 0%,100% { transform: rotateY(0deg); } 50% { transform: rotateY(180deg); } }
+.avatar-ring { position: absolute; inset: -5px; border: 2px solid rgba(102, 126, 234, 0.3); border-radius: 50%; animation: ringPulse 3s ease-in-out infinite; }
+@keyframes ringPulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
+
+.status-indicator { display: flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(46, 204, 113, 0.1); border: 1px solid rgba(46, 204, 113, 0.3); border-radius: 20px; font-size: 0.9rem; color: #27ae60; }
+.status-dot { width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; animation: statusBlink 2s infinite; }
+@keyframes statusBlink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+.contact-name { text-align: center; margin-bottom: 10px; font-size: 2rem; color: #2c3e50; }
+.first-name { display: block; font-weight: 300; }
+.last-name  { display: block; font-weight: 700; color: var(--accent-color); }
+
+.contact-role { text-align: center; color: #7f8c8d; margin-bottom: 30px; font-size: 1.1rem; }
+
+.contact-details { margin-bottom: 30px; }
+.detail-item {
+  display: flex; align-items: center; gap: 15px; padding: 15px; margin-bottom: 10px;
+  background: rgba(248, 249, 250, 0.8); border-radius: 15px; transition: all 0.3s ease; border: 1px solid rgba(102, 126, 234, 0.1);
+}
+.detail-item:hover { background: rgba(102, 126, 234, 0.1); border-color: rgba(102, 126, 234, 0.3); transform: translateX(5px); }
+.detail-icon { font-size: 1.2rem; min-width: 25px; text-align: center; }
+.detail-content { flex: 1; }
+.detail-label { display: block; font-size: 0.85rem; color: #7f8c8d; margin-bottom: 2px; }
+.detail-value { font-weight: 500; color: #2c3e50; text-decoration: none; transition: color 0.3s ease; }
+.detail-value:hover { color: var(--accent-color); }
+
+.social-links { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+.social-link {
+  display: flex; align-items: center; gap: 10px; padding: 12px 16px;
+  background: rgba(248, 249, 250, 0.8); border-radius: 15px; text-decoration: none; color: #2c3e50;
+  transition: all 0.3s ease; border: 1px solid rgba(102, 126, 234, 0.1);
+}
+.social-link:hover { background: rgba(102, 126, 234, 0.1); border-color: rgba(102, 126, 234, 0.3); transform: translateY(-2px); }
+.social-icon { font-size: 1.1rem; }
+.social-text { font-size: 0.9rem; font-weight: 500; }
+
+.contact-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.contact-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 15px 20px; border-radius: 25px; font-weight: 600; font-size: 0.95rem;
+  transition: all 0.3s ease; position: relative; overflow: hidden; text-decoration:none;
+}
+.contact-btn::before {
+  content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+.contact-btn:hover::before { left: 100%; }
+.contact-btn.primary  { background: var(--accent-solid); color: var(--text-onAccent); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+.contact-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+.contact-btn.secondary{ background: transparent; color: var(--accent-solid); border: 2px solid var(--accent-solid); }
+.contact-btn.secondary:hover { background: var(--accent-solid); color: var(--text-onAccent); transform: translateY(-2px); }
+
+@media (max-width: 768px) {
+  .contact-card { padding: 30px 25px; }
+  .contact-name { font-size: 1.8rem; }
+  .social-links { grid-template-columns: 1fr; }
+  .contact-actions { grid-template-columns: 1fr; }
+  .contact-btn { width: 100%; }
+}
