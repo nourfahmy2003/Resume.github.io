@@ -5,9 +5,6 @@ document.documentElement.setAttribute('data-theme', savedTheme || (prefersDark ?
 document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.querySelector('.navbar');
 
-  runHeroAnimations();
-  cycleSnippets();
-
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 10);
   });
@@ -26,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
     root.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
   });
+
+  initFadeSections();
 });
 
 const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -92,9 +91,10 @@ function cycleSnippets() {
   type();
 }
 
-window.onload = function() {
-  animateSkillBars();
-};
+function initHero() {
+  runHeroAnimations();
+  cycleSnippets();
+}
 
 // Function to animate skill bars when they come into view
 function animateSkillBars() {
@@ -150,33 +150,37 @@ function addSkillCardAnimations() {
   });
 }
 
-// Initialize animations when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
+function initSkills() {
+  animateSkillBars();
   addSkillCardAnimations();
+}
 
-  // Fade in sections when they enter the viewport
-  const fadeSections = document.querySelectorAll('.fade-section');
-  const fadeObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.2 });
-
-  fadeSections.forEach(section => {
-    fadeObserver.observe(section);
+// Initialize animations when DOM is loaded
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
   });
-});
+}, { threshold: 0.2 });
+
+function initFadeSections() {
+  document.querySelectorAll('.fade-section').forEach(section => {
+    if (!section.dataset.fadeObserved) {
+      fadeObserver.observe(section);
+      section.dataset.fadeObserved = 'true';
+    }
+  });
+}
 
 // Simple timeline navigation without external plugins
-document.addEventListener('DOMContentLoaded', function() {
+function initExperienceTimeline() {
   const timeline = document.getElementById('experience-timeline');
+  if (!timeline) return;
   const items = timeline.querySelectorAll('.timeline-item');
   const indicator = timeline.querySelector('.timeline-indicator');
   let currentIndex = 0;
 
-  // nudge scroll position so sticky indicator starts centered
   timeline.scrollTop = 1;
 
   items.forEach((item, idx) => {
@@ -223,9 +227,6 @@ document.addEventListener('DOMContentLoaded', function() {
     updateActiveItem();
   }
 
-
-
-
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -239,15 +240,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
   items.forEach(item => observer.observe(item));
 
-  // initial state
   if (items.length > 0) {
     items[0].classList.add('visible');
     updateDots();
     updateActiveItem();
   }
-});
+}
 
-document.addEventListener('DOMContentLoaded', () => {
+function initVideoModal() {
   const modal = document.getElementById('video-modal');
   const openBtn = document.querySelector('.video-demo');
   if (!modal || !openBtn) return;
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
       closeModal();
     }
   });
-});
+}
 
 
 
