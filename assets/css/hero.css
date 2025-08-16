@@ -1,0 +1,341 @@
+@charset "UTF-8";
+/* 04) HERO                                                                   */
+/* ========================================================================== */
+#hero {
+  position: relative;
+}
+
+.hero {
+  background: var(--bg-base);
+  color: var(--text-primary);
+}
+
+.hero-canvas {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  border: 1px solid var(--border-hairline);
+  border-radius: 16px;
+  background: var(--bg-elevated);
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 24px 32px rgba(0, 0, 0, 0.25);
+}
+
+.hero-canvas::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.06), transparent 70%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: relative; /* context for the absolute portrait */
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 60px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.hero-left {
+  grid-column: 1/span 7;
+  position: relative;
+  z-index: 3; /* text floats above image */
+  align-self: start;
+}
+
+.hero-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.hero-heading {
+  margin: 0 0 24px;
+  line-height: 1.1;
+}
+
+.hero-role {
+  display: inline-block;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.1;
+  position: relative;
+  z-index: 3;
+}
+
+.role-main {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+}
+
+.role-sub {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.hero-description {
+  font-size: 20px;
+  line-height: 1.6;
+  max-width: 500px; /* give the long paragraph more room */
+  margin-bottom: 16px;
+  color: var(--text-secondary);
+}
+
+.hero-tools {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  background: var(--accent-solid);
+  color: var(--text-onAccent);
+  font-weight: 500;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.hero-cta:hover {
+  transform: scale(1.02);
+  background: var(--accent-hover);
+}
+
+.cta-arrow {
+  transition: transform 0.2s ease;
+}
+
+.hero-cta:hover .cta-arrow {
+  transform: translateX(3px);
+}
+
+/* --- Right column stays in place, photo moves visually left under text --- */
+.hero-right {
+  grid-column: 8/span 5;
+  position: flex;
+  display: grid;
+  grid-template-columns: 260px 1fr; /* space for KPIs */
+  align-items: center;
+  column-gap: 20px;
+  min-height: 520px; /* keeps section balanced */
+  z-index: 1; /* stays behind left text */
+  margin-left: -100px;
+}
+
+/* Large portrait that slides left so the text overlaps it */
+.portrait-wrapper {
+  grid-column: 1; /* photo in the second column */
+  position: flex; /* no absolute overlay here */
+  width: clamp(320px, 34vw, 420px); /* smaller width */
+  height: clamp(420px, 48vh, 520px);
+  margin-left: -250px; /* nudge photo LEFT toward the text */
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Solid “shield” card behind the photo (no blur) */
+.portrait-wrapper .shield {
+  position: absolute;
+  inset: -24px; /* keep current sizing */
+  top: -200px; /* push higher until it hits the hero top */
+  border-radius: 60px 60px 150px 150px;
+  border: 1px solid var(--border-hairline);
+  background: #2f2e2e;
+  z-index: -1;
+}
+
+/* Photo styling */
+.portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top; /* Shift image upward */
+  border-radius: 28px;
+  display: block;
+  translate: 0% -10%;
+}
+
+/* Optional small code panel (kept as-is) */
+.code-panel {
+  position: absolute;
+  bottom: -24px;
+  left: -24px;
+  width: 160px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-hairline);
+  border-radius: 8px;
+  opacity: 0.5;
+  overflow: hidden;
+  font-family: "Fira Code", monospace;
+  font-size: 12px;
+  padding: 8px;
+}
+
+/* KPIs column (unchanged) */
+.hero-stats {
+  grid-column: 2;
+  padding-left: 0; /* remove old separator padding */
+  border-left: none; /* no dividing line anymore */
+  display: grid;
+  gap: 24px;
+  align-content: start;
+  z-index: 3; /* above the photo if they overlap */
+}
+
+[data-theme=light] .hero-stats {
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  transition: color 0.3s;
+}
+
+.stat-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.stat:hover .stat-number {
+  color: var(--accent-solid);
+}
+
+/* Feature row (unchanged) */
+.feature-row {
+  border-top: 1px solid var(--border-hairline);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.feature-block {
+  padding: 24px 32px;
+  text-align: center;
+  border-left: 1px solid var(--border-hairline);
+  transition: transform 0.2s ease;
+}
+
+.feature-block:first-child {
+  border-left: none;
+}
+
+.feature-block h3 {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.feature-block p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.feature-block::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 1px;
+  background: var(--accent-solid);
+  margin: 4px auto 0;
+  transition: width 0.2s ease;
+}
+
+.feature-block:hover {
+  transform: translateY(-4px);
+}
+
+.feature-block:hover::after {
+  width: 60%;
+}
+
+/* --- Responsive hero behavior: remove the overlap on smaller screens --- */
+@media (max-width: 1200px) {
+  .portrait-wrapper {
+    left: -120px;
+  }
+}
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
+  .hero-left {
+    grid-column: 1/-1;
+    text-align: center;
+    z-index: 3;
+  }
+  .hero-right {
+    grid-column: 1/-1;
+    min-height: auto;
+  }
+  .portrait-wrapper {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: min(80vw, 420px);
+    height: auto;
+    margin: 0 auto;
+  }
+  .hero-stats {
+    padding-left: 0;
+    border-left: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+  }
+  .stat {
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  .feature-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .feature-block {
+    border-top: 1px solid var(--border-hairline);
+  }
+  .feature-block:nth-child(odd) {
+    border-left: none;
+  }
+  .feature-block:nth-child(-n+2) {
+    border-top: none;
+  }
+}
+/* Inline code style */
+code, .code-inline {
+  background: var(--code-inline-bg);
+  color: var(--text-primary);
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+  font-family: "Fira Code", monospace;
+}
+
+pre code {
+  background: var(--code-bg);
+  display: block;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+/* ========================================================================== */
+
+/*# sourceMappingURL=hero.css.map */
