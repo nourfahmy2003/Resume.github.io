@@ -1,0 +1,194 @@
+/* ========================================================================== */
+/* 01) THEME TOKENS                                                           */
+/* ========================================================================== */
+:root {
+  --bg-base:#0F1115;
+  --bg-elevated:#12161F;
+  --bg-overlay:rgba(0,0,0,0.35);
+  --text-primary:#E9EDF3;
+  --text-secondary:#C7CFDB;
+  --text-muted:#9AA3B2;
+  --text-onAccent:#FFFFFF;
+  --border-hairline:#2A2F3A;
+  --border-strong:#3A414F;
+  --accent-solid:#2F6EEA;
+  --accent-soft:rgba(47,110,234,0.12);
+  --accent-hover:#3B82F6;
+  --chip-bg:rgba(255,255,255,0.06);
+  --chip-border:transparent;
+  --chip-text:#E9EDF3;
+  --hero-bg:#0F1115;
+  --code-bg:#0C0F14;
+  --code-inline-bg:rgba(255,255,255,0.06);
+  --focus-ring:#2F6EEA;
+  --shadow-1:0 4px 12px rgba(0,0,0,0.20);
+}
+
+:root[data-theme=light] {
+  --bg-base:#F7F7F5;
+  --bg-elevated:#FFFFFF;
+  --bg-overlay:rgba(0,0,0,0.06);
+  --text-primary:#0E1116;
+  --text-secondary:#2B2F36;
+  --text-muted:#5D6676;
+  --text-onAccent:#FFFFFF;
+  --border-hairline:#E6E6EA;
+  --border-strong:#CBD2D9;
+  --accent-solid:#2F6EEA;
+  --accent-soft:rgba(47,110,234,0.10);
+  --accent-hover:#3B82F6;
+  --chip-bg:#F0F3FA;
+  --chip-border:#E6E6EA;
+  --chip-text:#0E1116;
+  --hero-bg:#F7F7F5;
+  --code-bg:#F4F6FB;
+  --code-inline-bg:#EEF2F9;
+  --focus-ring:#2F6EEA;
+  --shadow-1:0 8px 24px rgba(0,0,0,0.10);
+}
+
+/* Legacy aliases (keep for older parts) */
+:root {
+  --color-charcoal: var(--bg-base);
+  --color-slate: var(--bg-elevated);
+  --color-offwhite: var(--text-primary);
+  --color-midgray: var(--text-secondary);
+  --color-border: var(--border-hairline);
+  --accent-color: var(--accent-solid);
+}
+
+:root[data-theme=light] {
+  --color-charcoal: var(--bg-base);
+  --color-slate: var(--bg-elevated);
+  --color-offwhite: var(--text-primary);
+  --color-midgray: var(--text-secondary);
+  --color-border: var(--border-hairline);
+  --accent-color: var(--accent-solid);
+}
+
+/* ========================================================================== */
+/* 02) GLOBAL RESET & BASE                                                    */
+/* ========================================================================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font: normal 16px/1.5 "Inter", sans-serif;
+  margin: 0 0 50px 0;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Poppins", sans-serif;
+}
+
+code, pre {
+  font-family: "Fira Code", monospace;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* ========================================================================== */
+/* 03) NAVIGATION                                                             */
+/* ========================================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  z-index: 900;
+  transition: background 0.3s ease, opacity 0.6s ease;
+  opacity: 1;
+}
+
+.navbar.scrolled {
+  background: var(--bg-overlay);
+  backdrop-filter: blur(4px);
+}
+
+.nav-link {
+  color: var(--text-primary);
+  font-family: "Poppins", sans-serif;
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--accent-solid);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
+}
+
+#theme-toggle {
+  background: none;
+  border: 1px solid var(--border-hairline);
+  color: var(--text-primary);
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+#theme-toggle:hover {
+  background: var(--accent-soft);
+}
+
+/* ========================================================================== */
+.section-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .section-container {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=global.css.map */
