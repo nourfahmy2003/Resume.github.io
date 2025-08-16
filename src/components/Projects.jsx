@@ -1,3 +1,7 @@
+import { useEffect } from 'react';
+import './Projects.css';
+import { useFadeInOnView } from '../hooks/useFadeInOnView.js';
+
 const PROJECTS = [
   {
     title: "Memory Game",
@@ -103,17 +107,52 @@ function ProjectCard({ title, location, date, description, tags, highlights, cta
   );
 }
 
-function ProjectsGrid({ limit }) {
-  const list = typeof limit === 'number' ? PROJECTS.slice(0, limit) : PROJECTS;
-  return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-      {list.map(p => <ProjectCard key={p.title} {...p} />)}
-    </div>
-  );
-}
+export default function Projects(){
+  useFadeInOnView('.projects-section');
+  useEffect(() => {
+    const modal = document.getElementById('video-modal');
+    const openBtn = document.querySelector('.video-demo');
+    if (!modal || !openBtn) return;
+    const closeBtn = modal.querySelector('.modal-close');
+    function open() { modal.removeAttribute('hidden'); closeBtn.focus(); }
+    function close() { modal.setAttribute('hidden', ''); openBtn.focus(); }
+    openBtn.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    const clickOutside = e => { if (e.target === modal) close(); };
+    const onKey = e => { if (e.key === 'Escape' && !modal.hasAttribute('hidden')) close(); };
+    modal.addEventListener('click', clickOutside);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      openBtn.removeEventListener('click', open);
+      closeBtn.removeEventListener('click', close);
+      modal.removeEventListener('click', clickOutside);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, []);
 
-const rootEl = document.getElementById('projects-root');
-if (rootEl) {
-  const limit = rootEl.dataset.limit ? parseInt(rootEl.dataset.limit, 10) : undefined;
-  ReactDOM.createRoot(rootEl).render(<ProjectsGrid limit={limit} />);
+  const list = PROJECTS.slice(0, 2);
+
+  return (
+    <section className="projects-section fade-section" id="projects">
+      <div className="projects-container">
+        <div className="projects-header">
+          <div className="projects-header-row">
+            <h2>My Projects</h2>
+            <a href="/projects" className="see-more">See more →</a>
+          </div>
+          <p>Explore some of the projects I've built</p>
+        </div>
+        <div className="projects-grid">
+          {list.map(p => <ProjectCard key={p.title} {...p} />)}
+        </div>
+      </div>
+      <div className="modal" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title" hidden>
+        <div className="modal-content">
+          <h3 id="video-modal-title">No public live demo</h3>
+          <p>Contact for private video link.</p>
+          <button type="button" className="modal-close" aria-label="Close">Close</button>
+        </div>
+      </div>
+    </section>
+  );
 }
