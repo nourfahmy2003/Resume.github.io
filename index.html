@@ -16,6 +16,7 @@
 <body>
   <nav class="navbar">
     <a href="#hero" class="nav-link active">Home</a>
+    <a href="#projects" class="nav-link">Projects</a>
     <a href="#card" class="nav-link">Contact</a>
     <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
   </nav>
@@ -80,9 +81,10 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Education Section -->
+
+    <!-- Education Section -->
   <div class="education-section fade-section" id="education">
     <div class="content-container">
       <h2>Education</h2>
@@ -184,14 +186,17 @@
     </div>
   </section>
 
-  <section class="projects-section fade-section">
+  <section class="projects-section fade-section" id="projects">
     <div class="projects-container">
       <div class="projects-header">
-        <h2>My Projects</h2>
+        <div class="projects-header-row">
+          <h2>My Projects</h2>
+          <a href="/projects" class="see-more">See more →</a>
+        </div>
         <p>Explore some of the projects I've built</p>
       </div>
 
-      <div class="projects-grid">
+      <div class="projects-grid limit-4">
         <div class="project-card" data-project="project1">
           <div class="project-card-header">
             <h3>Memory Game</h3>
@@ -250,10 +255,73 @@
             </a>
           </div>
         </div>
+        
+        <div class="project-card" data-project="project3">
+          <div class="project-card-header">
+            <h3>JobDone</h3>
+          </div>
+          <div class="project-location">NL, Canada · April 2024</div>
+          <div class="project-description">
+            <p>A Flutter marketplace app where customers post jobs and verified fixers submit offers. Built with Firebase for auth, real-time chat, and scalable data; includes a Google Maps experience and role-based dashboards.</p>
+          </div>
+          <div class="project-tech">
+            <span class="tech-tag">Flutter</span>
+            <span class="tech-tag">Dart</span>
+            <span class="tech-tag">Firebase</span>
+            <span class="tech-tag">Google Maps</span>
+          </div>
+          <ul class="project-details">
+            <li>Post/manage jobs with images, budgets, date &amp; time windows</li>
+            <li>Fixers submit offers with pricing and availability</li>
+            <li>Real-time 1:1 messaging</li>
+            <li>Map view of nearby jobs (bottom-sheet details)</li>
+            <li>Document &amp; selfie verification</li>
+          </ul>
+          <div class="project-actions">
+            <button type="button" class="project-link secondary video-demo" aria-haspopup="dialog" aria-controls="video-modal" aria-label="Video demo available">🎥 Video demo available</button>
+          </div>
+        </div>
+
+        <div class="project-card" data-project="project4">
+          <div class="project-card-header">
+            <h3>World Population &amp; Satellite Data Analysis</h3>
+            <span class="project-date">May 2025</span>
+          </div>
+          <div class="project-location">📍 NL, Canada</div>
+          <div class="project-description">
+            <p>A comprehensive data analytics project leveraging global satellite catalog data and 2023 world population statistics to uncover trends in space activity. Delivered as two Jupyter notebooks showcasing a full exploratory workflow and a final polished analysis.</p>
+          </div>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">Plotly</span>
+            <span class="tech-tag">Matplotlib</span>
+            <span class="tech-tag">Seaborn</span>
+            <span class="tech-tag">Jupyter</span>
+          </div>
+          <ul class="project-details">
+            <li>Designed and executed an end-to-end data analysis pipeline for satellite activity</li>
+            <li>Preprocessed and normalized satellite and population datasets for consistency</li>
+            <li>Built advanced visualizations (time series, orbit distribution, waffle, circle-packing)</li>
+            <li>Conducted per-capita analysis to highlight country-level contributions relative to population size</li>
+            <li>Produced both exploratory (EDA) and presentation-ready deliverables with actionable insights</li>
+          </ul>
+          <div class="project-actions">
+            <span class="project-note">📂 Delivered as Jupyter Notebooks — no live demo</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
+
+  <div class="modal" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title" hidden>
+    <div class="modal-content">
+      <h3 id="video-modal-title">No public live demo</h3>
+      <p>Contact for private video link.</p>
+      <button type="button" class="modal-close" aria-label="Close">Close</button>
+    </div>
+  </div>
 
   <!-- Skills section moved after projects -->
   <section class="skills-main-section fade-section">

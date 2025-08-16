@@ -637,39 +637,42 @@ pre code {
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
   opacity: 0.3;
 }
+/* Projects section */
 .projects-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
-.projects-header { text-align: center; margin-bottom: 60px; color: var(--text-primary); }
+.projects-header { margin-bottom: 60px; color: var(--text-primary); }
+.projects-header-row { display:flex; justify-content: space-between; align-items:center; }
 .projects-header h2 { font-size: 3rem; font-weight: 700; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-.projects-header p  { font-size: 1.2rem; opacity: 0.9; font-weight: 300; color: var(--text-secondary); }
+.projects-header p  { font-size: 1.2rem; opacity: 0.9; font-weight: 300; color: var(--text-secondary); text-align:center; }
+.see-more { color: var(--accent-solid); font-size:1rem; }
+.see-more:hover { text-decoration: underline; }
 
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin-top: 40px; }
+.projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 40px; }
+.projects-grid.limit-4 .project-card:nth-of-type(n+5) { display: none; }
 .project-card {
   background: var(--bg-elevated);
   border-radius: 20px; padding: 30px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-  transition: all 0.3s ease; position: relative; overflow: hidden;
+  transition: filter 0.3s ease, transform 0.15s ease; position: relative; overflow: hidden;
   border: 1px solid var(--border-hairline);
+  filter: brightness(0.8);
 }
 .project-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
   background: var(--accent-color); border-radius: 20px 20px 0 0;
 }
-.project-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.2); }
-
+.project-card:hover { filter: brightness(1); box-shadow: 0 30px 60px rgba(0,0,0,0.2); }
+.project-card:active { filter: brightness(1.1); transform: scale(0.98); }
 .project-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
 .project-card-header h3 { font-size: 1.5rem; color: var(--text-primary); margin: 0; font-weight: 600; }
 .project-date { background: linear-gradient(135deg, var(--accent-solid), var(--accent-solid)); color: var(--text-onAccent);
   padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 500; }
 .project-location { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 15px; font-weight: 500; }
-
 .project-description { margin-bottom: 20px; }
 .project-description p { color: var(--text-secondary); line-height: 1.6; font-size: 1rem; }
 .project-details { margin-bottom: 20px; padding-left: 20px; }
 .project-details li { color: var(--text-secondary); line-height: 1.5; font-size: 0.95rem; list-style: disc; }
-
 .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
 .tech-tag { background: var(--accent-solid); color: var(--text-onAccent); padding: 5px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 500; }
-
 .project-actions { display: flex; gap: 15px; align-items: center; }
 .project-link {
   background: var(--accent-solid); color: var(--text-onAccent);
@@ -677,6 +680,15 @@ pre code {
   display: flex; align-items: center; gap: 8px; transition: transform 0.3s ease;
 }
 .project-link:hover { transform: translateY(-2px); background: var(--accent-hover); }
+.project-link.secondary {
+  background: transparent;
+  border: 1px solid var(--border-hairline);
+  color: var(--text-secondary);
+}
+.project-link.secondary:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
 
 @media (max-width: 768px) {
   .projects-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -685,6 +697,36 @@ pre code {
   .project-actions { flex-direction: column; gap: 10px; }
   .project-link { width: 100%; justify-content: center; }
 }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal[hidden] { display: none; }
+.modal-content {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 90%;
+  width: 400px;
+  border: 1px solid var(--border-hairline);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+.modal-close {
+  margin-top: 20px;
+  background: var(--accent-solid);
+  color: var(--text-onAccent);
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+.modal-close:hover { background: var(--accent-hover); }
 
 /* ========================================================================== */
 /* 09) SKILLS (MODERN)                                                        */
