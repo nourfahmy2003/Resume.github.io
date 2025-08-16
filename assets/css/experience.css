@@ -1,0 +1,252 @@
+/* 05) EXPERIENCE (VERTICAL TIMELINE)                                         */
+/* ========================================================================== */
+.vertical-timeline {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  padding-left: 90px; /* space for indicator */
+  height: 45vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.vertical-timeline::-webkit-scrollbar {
+  display: none;
+}
+
+.vertical-timeline .timeline-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.vertical-timeline .timeline-item {
+  position: relative;
+  margin: 0;
+  min-height: 40vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  box-sizing: border-box;
+  padding: 20px 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.vertical-timeline .timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-indicator {
+  position: sticky;
+  top: calc(50% - 40px);
+  transform: translateY(-50%) translateX(-10%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 10;
+}
+
+.timeline-indicator::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 4px;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(37, 99, 235, 0.4), rgba(37, 99, 235, 0));
+  z-index: -1;
+}
+
+.indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-color);
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  z-index: 5;
+}
+
+.indicator-dot::after {
+  content: attr(data-date);
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+
+.indicator-dot.active {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.indicator-dot:hover::after, .indicator-dot.show-date::after {
+  opacity: 1;
+}
+
+.vertical-timeline .timeline-card {
+  background: var(--bg-elevated);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: calc(100% - 2rem);
+  margin: 0 auto;
+  border-left: 4px solid transparent;
+  border: 1px solid var(--border-hairline);
+  color: var(--text-primary);
+}
+
+.vertical-timeline .timeline-card h3 {
+  margin-top: 0;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+}
+
+.timeline-item.active .timeline-card {
+  border-left-color: var(--accent-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-card-date {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: var(--accent-solid);
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  border: 1px solid var(--accent-soft);
+}
+
+.timeline-card-company {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.timeline-card-role {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.timeline-card-description {
+  color: var(--text-secondary);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.timeline-card-description ul {
+  margin: 8px 0;
+  padding-left: 16px;
+}
+
+.timeline-card-description li {
+  margin-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+  .vertical-timeline {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 60px;
+    height: 50vh;
+  }
+  .timeline-indicator {
+    margin-left: 20px;
+  }
+  .vertical-timeline .timeline-item {
+    min-height: 50vh;
+    padding: 10px 0;
+  }
+  .vertical-timeline .timeline-card {
+    width: calc(100% - 1rem);
+    padding: 0.8rem;
+  }
+  .timeline-card-date {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+  }
+}
+@media (max-width: 480px) {
+  .vertical-timeline {
+    margin-left: -20px;
+    height: 65vh;
+  }
+  .timeline-list {
+    margin-right: 30px;
+  }
+  .timeline-indicator {
+    left: 15px;
+    gap: 8px;
+    transform: translateX(-15%);
+  }
+  .vertical-timeline .timeline-card {
+    width: calc(100% - 0.8rem);
+    padding: 0.7rem;
+  }
+  .vertical-timeline .timeline-item {
+    min-height: 60vh;
+    padding: 12px 0;
+  }
+  .timeline-card-date {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+  }
+  .timeline-card-role {
+    font-size: 1rem;
+  }
+  .timeline-card-description {
+    font-size: 0.9rem;
+  }
+}
+.experience-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-primary);
+  margin: 20px 0 2rem;
+  position: relative;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.experience-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+  margin: 0.5rem auto 0;
+}
+
+/* ========================================================================== */
+
+/*# sourceMappingURL=experience.css.map */
