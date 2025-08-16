@@ -117,3 +117,34 @@ if (rootEl) {
   const limit = rootEl.dataset.limit ? parseInt(rootEl.dataset.limit, 10) : undefined;
   ReactDOM.createRoot(rootEl).render(<ProjectsGrid limit={limit} />);
 }
+
+const setupModal = () => {
+  const modal = document.getElementById('video-modal');
+  const openBtn = document.querySelector('.video-demo');
+  if (!modal || !openBtn) return;
+  const closeBtn = modal.querySelector('.modal-close');
+  function openModal() {
+    modal.removeAttribute('hidden');
+    closeBtn.focus();
+  }
+  function closeModal() {
+    modal.setAttribute('hidden', '');
+    openBtn.focus();
+  }
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.hasAttribute('hidden')) {
+      closeModal();
+    }
+  });
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupModal);
+} else {
+  setupModal();
+}
