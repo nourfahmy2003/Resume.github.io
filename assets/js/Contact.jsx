@@ -1,5 +1,7 @@
+import React, { useEffect } from 'https://esm.sh/react@18';
+
 const Contact = () => {
-  React.useEffect(() => {
+  useEffect(() => {
     if (typeof initContact === 'function') {
       initContact();
     }
@@ -96,3 +98,5 @@ const Contact = () => {
     </section>
   );
 };
+
+export default Contact;

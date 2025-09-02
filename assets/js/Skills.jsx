@@ -1,5 +1,7 @@
+import React, { useEffect } from 'https://esm.sh/react@18';
+
 const Skills = () => {
-  React.useEffect(() => {
+  useEffect(() => {
     if (typeof initSkills === 'function') {
       initSkills();
     }
@@ -217,3 +219,5 @@ const Skills = () => {
     </section>
   );
 };
+
+export default Skills;

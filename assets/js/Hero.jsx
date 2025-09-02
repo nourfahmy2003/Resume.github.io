@@ -1,5 +1,7 @@
+import React, { useEffect } from 'https://esm.sh/react@18';
+
 const Hero = () => {
-  React.useEffect(() => {
+  useEffect(() => {
     if (typeof initHero === 'function') {
       initHero();
     }
@@ -66,3 +68,5 @@ const Hero = () => {
     </section>
   );
 };
+
+export default Hero;

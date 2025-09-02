@@ -1,28 +1,87 @@
 import React, { useEffect, useMemo, useState } from 'https://esm.sh/react@18';
-import ScrollStack, { ScrollStackItem } from './components/ScrollStack.jsx';
 
 const Experience = () => {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
 
-  const scrollToCard = (index) => {
-    try {
-      const scroller = document.querySelector('[data-scrollstack="highlights"]');
-      if (!scroller) return;
-      const cards = scroller.querySelectorAll('.scroll-stack-card');
-      if (!cards[index]) return;
-      const containerHeight = scroller.clientHeight;
-      const stackPosPx = 0.2 * containerHeight; // matches stackPosition = '20%'
-      const itemStackDistance = 28; // prop used below
-      const target = cards[index].offsetTop - stackPosPx - itemStackDistance * index + 1;
-      scroller.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
-    } catch {}
-  };
 
   useEffect(() => {
     if (typeof initExperienceTimeline === 'function') {
       initExperienceTimeline();
     }
+    // Build the same indicator behavior for Highlights (vertical list)
+    const initHighlights = () => {
+      const timeline = document.getElementById('experience-highlights');
+      if (!timeline) return;
+      const items = timeline.querySelectorAll('.timeline-item');
+      const indicator = timeline.querySelector('.timeline-indicator');
+      let currentIndex = 0;
+
+      indicator.innerHTML = '';
+      items.forEach((item, idx) => {
+        const dot = document.createElement('span');
+        dot.className = 'indicator-dot';
+        dot.dataset.date = item.dataset.date || '';
+        dot.addEventListener('click', () => scrollToIndex(idx));
+        indicator.appendChild(dot);
+      });
+
+      function updateDots() {
+        indicator.querySelectorAll('.indicator-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === currentIndex);
+          if (i === currentIndex) {
+            if (!d.classList.contains('show-date')) {
+              d.classList.add('show-date');
+              const timer = setTimeout(() => {
+                d.classList.remove('show-date');
+                d.dataset.timer = '';
+              }, 1500);
+              d.dataset.timer = String(timer);
+            }
+          } else {
+            d.classList.remove('show-date');
+            if (d.dataset.timer) {
+              clearTimeout(parseInt(d.dataset.timer, 10));
+              d.dataset.timer = '';
+            }
+          }
+        });
+      }
+
+      function updateActiveItem() {
+        items.forEach((item, idx) => {
+          item.classList.toggle('active', idx === currentIndex);
+        });
+      }
+
+      function scrollToIndex(index) {
+        if (index < 0 || index >= items.length) return;
+        currentIndex = index;
+        items[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        updateDots();
+        updateActiveItem();
+      }
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            currentIndex = Array.from(items).indexOf(entry.target);
+            entry.target.classList.add('visible');
+            updateDots();
+            updateActiveItem();
+          }
+        });
+      }, { threshold: 0.6 });
+
+      items.forEach(item => observer.observe(item));
+
+      if (items.length > 0) {
+        items[0].classList.add('visible');
+        updateDots();
+        updateActiveItem();
+      }
+    };
+
+    try { initHighlights(); } catch { }
     try {
       const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
       const handler = () => setPrefersReducedMotion(!!mq.matches);
@@ -31,7 +90,7 @@ const Experience = () => {
       return () => {
         mq.removeEventListener ? mq.removeEventListener('change', handler) : mq.removeListener(handler);
       };
-    } catch {}
+    } catch { }
   }, []);
   const jobs = useMemo(() => [
     {
@@ -148,68 +207,6 @@ const Experience = () => {
         </ul>
       </div>
 
-      <div className="mt-20">
-        <h3 className="text-xl font-semibold mb-4">Highlights</h3>
-        {prefersReducedMotion ? (
-          <div className="space-y-6">
-            {jobs.map((job, idx) => (
-              <div key={idx} className="ml-[90px]">
-                <div className="timeline-card">
-                  <div className="timeline-card-date">{job.date}</div>
-                  <div className="timeline-card-role">{job.role}</div>
-                  <div className="timeline-card-company">{job.company}</div>
-                  <div className="timeline-card-description">
-                    <ul>
-                      {job.bullets.map((b, i) => <li key={i}>{b}</li>)}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="h-[90vh] max-w-[700px] mx-auto">
-            <ScrollStack
-              className="h-full scrollbar-hide"
-              itemDistance={90}
-              itemScale={0.04}
-              baseScale={0.86}
-              itemStackDistance={28}
-              onActiveIndexChange={setActiveIndex}
-              dataId="highlights"
-            >
-              {/* Sticky indicator aligned like the vertical timeline */}
-              <div className="timeline-indicator">
-                {jobs.map((job, i) => (
-                  <div
-                    key={i}
-                    className={`indicator-dot ${i === activeIndex ? 'active' : ''}`}
-                    data-date={job.date}
-                    onClick={() => scrollToCard(i)}
-                  />
-                ))}
-              </div>
-
-              {jobs.map((job, idx) => (
-                <ScrollStackItem key={idx}>
-                  <div className={`timeline-item ${idx === activeIndex ? 'active' : ''} ml-[90px]`}>
-                    <div className="timeline-card">
-                      <div className="timeline-card-date">{job.date}</div>
-                      <div className="timeline-card-role">{job.role}</div>
-                      <div className="timeline-card-company">{job.company}</div>
-                      <div className="timeline-card-description">
-                        <ul>
-                          {job.bullets.map((b, i) => <li key={i}>{b}</li>)}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </ScrollStackItem>
-              ))}
-            </ScrollStack>
-          </div>
-        )}
-      </div>
     </section>
   );
 };

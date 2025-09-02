@@ -19,7 +19,8 @@
   display: none;
 }
 
-.vertical-timeline .timeline-list {
+.vertical-timeline .timeline-list,
+.vertical-timeline .timelaine-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -64,7 +65,7 @@
   left: 4px;
   width: 2px;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(37, 99, 235, 0.4), rgba(37, 99, 235, 0));
+  background: linear-gradient(to bottom, var(--accent-soft), rgba(0,0,0,0));
   z-index: -1;
 }
 
@@ -86,8 +87,8 @@
   top: 50%;
   left: 10px;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
+  background: var(--bg-overlay);
+  color: var(--text-primary);
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.7rem;
@@ -108,6 +109,19 @@
 }
 
 .vertical-timeline .timeline-card {
+  background: var(--bg-elevated);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: calc(100% - 2rem);
+  margin: 0 auto;
+  border-left: 4px solid transparent;
+  border: 1px solid var(--border-hairline);
+  color: var(--text-primary);
+}
+
+/* Unscoped duplicate so stack items inherit identical visuals */
+.timeline-card {
   background: var(--bg-elevated);
   padding: 1rem;
   border-radius: 8px;
@@ -175,12 +189,10 @@
   .vertical-timeline {
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-left: 60px;
+    padding-left: 0; /* do not reserve gutter on mobile */
     height: 50vh;
   }
-  .timeline-indicator {
-    margin-left: 20px;
-  }
+  .timeline-indicator { display: none; }
   .vertical-timeline .timeline-item {
     min-height: 50vh;
     padding: 10px 0;
@@ -248,5 +260,47 @@
 }
 
 /* ========================================================================== */
+/* Overlay gutter indicator variant for stacked highlights (does not shift content) */
+.vertical-timeline.overlay-gutter { padding-left: 0; }
+.vertical-timeline.overlay-gutter .timeline-indicator {
+  left: -56px;
+  transform: translateY(-50%);
+}
 
-/*# sourceMappingURL=experience.css.map */
+/* Support explicit stack-indicator class used by Highlights */
+.stack-indicator {
+  position: sticky;
+  top: calc(50% - 40px);
+  transform: translateY(-50%);
+  left: -56px;
+  z-index: 10;
+}
+
+/* Compact spacing for stacked highlights */
+.vertical-timeline.compact .timeline-item { min-height: 32vh; padding: 14px 0; }
+
+/* Make .timeline-card usable everywhere (stack + timeline) */
+.timeline-item.active .timeline-card {
+  border-left-color: var(--accent-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-card-date {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.8rem;
+  background: var(--accent-soft);
+  color: var(--accent-solid);
+  padding: 4px 12px;
+  border-radius: 15px;
+  margin-bottom: 12px;
+  border: 1px solid var(--accent-soft);
+}
+.timeline-card-company { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 8px; font-style: italic; }
+.timeline-card-role { color: var(--text-primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; }
+.timeline-card-description { color: var(--text-secondary); line-height: 1.5; font-size: 0.95rem; }
+.timeline-card-description ul { margin: 8px 0; padding-left: 16px; }
+.timeline-card-description li { margin-bottom: 4px; }
+
+/* Light-mode polish */
+[data-theme="light"] .timeline-card { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07); }

@@ -1,9 +1,9 @@
-import { useLayoutEffect, useRef, useCallback } from 'react';
-import Lenis from 'lenis';
+import React, { useLayoutEffect, useRef, useCallback } from 'https://esm.sh/react@18';
+import Lenis from 'https://esm.sh/lenis@latest';
 
 export const ScrollStackItem = ({ children, itemClassName = '' }) => (
   <div
-    className={`scroll-stack-card relative w-full h-80 my-8 p-12 rounded-[40px] shadow-[0_0_30px_rgba(0,0,0,0.1)] box-border origin-top will-change-transform ${itemClassName}`.trim()}
+    className={`scroll-stack-card relative w-full my-8 box-border origin-top will-change-transform min-h-[40vh] ${itemClassName}`.trim()}
     style={{
       backfaceVisibility: 'hidden',
       transformStyle: 'preserve-3d'
@@ -25,7 +25,9 @@ const ScrollStack = ({
   scaleDuration = 0.5,
   rotationAmount = 0,
   blurAmount = 0,
-  onStackComplete
+  onStackComplete,
+  onActiveIndexChange,
+  dataId
 }) => {
   const scrollerRef = useRef(null);
   const stackCompletedRef = useRef(false);
@@ -61,6 +63,16 @@ const ScrollStack = ({
     const endElement = scroller.querySelector('.scroll-stack-end');
     const endElementTop = endElement ? endElement.offsetTop : 0;
 
+    // Determine which card is currently the top-most in the stack view
+    let activeIndex = 0;
+    for (let j = 0; j < cardsRef.current.length; j++) {
+      const jCardTop = cardsRef.current[j].offsetTop;
+      const jTriggerStart = jCardTop - stackPositionPx - itemStackDistance * j;
+      if (scrollTop >= jTriggerStart) {
+        activeIndex = j;
+      }
+    }
+
     cardsRef.current.forEach((card, i) => {
       if (!card) return;
 
@@ -76,20 +88,9 @@ const ScrollStack = ({
       const rotation = rotationAmount ? i * rotationAmount * scaleProgress : 0;
 
       let blur = 0;
-      if (blurAmount) {
-        let topCardIndex = 0;
-        for (let j = 0; j < cardsRef.current.length; j++) {
-          const jCardTop = cardsRef.current[j].offsetTop;
-          const jTriggerStart = jCardTop - stackPositionPx - itemStackDistance * j;
-          if (scrollTop >= jTriggerStart) {
-            topCardIndex = j;
-          }
-        }
-
-        if (i < topCardIndex) {
-          const depthInStack = topCardIndex - i;
-          blur = Math.max(0, depthInStack * blurAmount);
-        }
+      if (blurAmount && i < activeIndex) {
+        const depthInStack = activeIndex - i;
+        blur = Math.max(0, depthInStack * blurAmount);
       }
 
       let translateY = 0;
@@ -137,6 +138,15 @@ const ScrollStack = ({
       }
     });
 
+    // Notify active index change
+    if (typeof onActiveIndexChange === 'function') {
+      const prev = lastTransformsRef.current.get('__activeIndex');
+      if (prev !== activeIndex) {
+        onActiveIndexChange(activeIndex);
+        lastTransformsRef.current.set('__activeIndex', activeIndex);
+      }
+    }
+
     isUpdatingRef.current = false;
   }, [
     itemScale,
@@ -147,6 +157,7 @@ const ScrollStack = ({
     rotationAmount,
     blurAmount,
     onStackComplete,
+    onActiveIndexChange,
     calculateProgress,
     parsePercentage
   ]);
@@ -241,6 +252,7 @@ const ScrollStack = ({
     <div
       className={`relative w-full h-full overflow-y-auto overflow-x-visible ${className}`.trim()}
       ref={scrollerRef}
+      data-scrollstack={dataId || undefined}
       style={{
         overscrollBehavior: 'contain',
         WebkitOverflowScrolling: 'touch',
@@ -250,9 +262,8 @@ const ScrollStack = ({
         willChange: 'scroll-position'
       }}
     >
-      <div className="scroll-stack-inner pt-[20vh] px-20 pb-[50rem] min-h-screen">
+      <div className="scroll-stack-inner pt-[12vh] px-0 pb-[40vh] min-h-screen">
         {children}
-        {/* Spacer so the last pin can release cleanly */}
         <div className="scroll-stack-end w-full h-px" />
       </div>
     </div>

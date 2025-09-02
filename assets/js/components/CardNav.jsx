@@ -106,27 +106,27 @@ const CardNav = ({
   };
 
   const setCardRef = (i) => (el) => { if (el) cardsRef.current[i] = el; };
-  useLayoutEffect(() => {
-    const root = document.documentElement;
-    const btn = document.getElementById('theme-toggle');
-    if (!btn) return;
+  // useLayoutEffect(() => {
+  //   const root = document.documentElement;
+  //   const btn = document.getElementById('theme-toggle');
+  //   if (!btn) return;
 
-    const apply = (theme) => {
-      root.setAttribute('data-theme', theme);
-      try { localStorage.setItem('theme', theme); } catch { }
-      const dark = theme === 'dark';
-      btn.setAttribute('aria-pressed', String(dark));
-      btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
-      btn.textContent = dark ? '🌙' : '☀️';
-    };
+  //   const apply = (theme) => {
+  //     root.setAttribute('data-theme', theme);
+  //     try { localStorage.setItem('theme', theme); } catch { }
+  //     const dark = theme === 'dark';
+  //     btn.setAttribute('aria-pressed', String(dark));
+  //     btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+  //     btn.textContent = dark ? '🌙' : '☀️';
+  //   };
 
-    // sync with whatever your <head> script set (or system preference)
-    apply(root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+  //   // sync with whatever your <head> script set (or system preference)
+  //   apply(root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
 
-    const onClick = () => apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-    btn.addEventListener('click', onClick);
-    return () => btn.removeEventListener('click', onClick);
-  }, []);
+  //   const onClick = () => apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  //   btn.addEventListener('click', onClick);
+  //   return () => btn.removeEventListener('click', onClick);
+  // }, []);
 
   return (
     <div className={`card-nav-container absolute left-1/2 -translate-x-1/2 w-[90%] max-w-[600px] z-[99] top-[1.2em] md:top-[2em] ${className}`}>

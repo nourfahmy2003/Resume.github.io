@@ -1,5 +1,7 @@
+import React, { useEffect } from 'https://esm.sh/react@18';
+
 const Education = () => {
-  React.useEffect(() => {
+  useEffect(() => {
     if (typeof initEducation === 'function') {
       initEducation();
     }
@@ -28,3 +30,5 @@ const Education = () => {
     </section>
   );
 };
+
+export default Education;

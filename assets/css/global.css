@@ -191,4 +191,13 @@ code, pre {
   }
 }
 
+/* Utility: hide native scrollbars while keeping scroll behavior */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none;    /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar { /* Chrome/Safari */
+  display: none;
+}
+
 /*# sourceMappingURL=global.css.map */
