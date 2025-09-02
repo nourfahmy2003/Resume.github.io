@@ -1,6 +1,7 @@
-@charset "UTF-8";
-/* 04) HERO                                                                   */
-/* ========================================================================== */
+/* =========================
+   HERO (clean, de-duped)
+   ========================= */
+
 #hero {
   position: relative;
 }
@@ -30,12 +31,13 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.06), transparent 70%);
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, .06), transparent 70%);
   pointer-events: none;
 }
 
+/* -------- Layout (desktop/laptop) -------- */
 .hero-grid {
-  position: relative; /* context for the absolute portrait */
+  position: relative;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   column-gap: 60px;
@@ -44,16 +46,16 @@
 }
 
 .hero-left {
-  grid-column: 1/span 7;
+  grid-column: 1 / span 7;
   position: relative;
-  z-index: 5; /* text floats above image */
+  z-index: 5;
   align-self: start;
 }
 
 .hero-eyebrow {
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 0.875rem;
+  letter-spacing: .06em;
+  font-size: .875rem;
   color: var(--text-muted);
   margin-bottom: 20px;
 }
@@ -87,7 +89,7 @@
 .hero-description {
   font-size: 20px;
   line-height: 1.6;
-  max-width: 500px; /* give the long paragraph more room */
+  max-width: 500px;
   margin-bottom: 16px;
   color: var(--text-secondary);
 }
@@ -107,7 +109,7 @@
   background: var(--accent-solid);
   color: var(--text-onAccent);
   font-weight: 500;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: transform .2s ease, background .2s ease;
 }
 
 .hero-cta:hover {
@@ -116,114 +118,77 @@
 }
 
 .cta-arrow {
-  transition: transform 0.2s ease;
+  transition: transform .2s ease;
 }
 
 .hero-cta:hover .cta-arrow {
   transform: translateX(3px);
 }
 
-/* --- Right column stays in place, photo moves visually left under text --- */
+/* Right side (photo + KPIs) */
 .hero-right {
-  grid-column: 8/span 5;
+  grid-column: 8 / span 5;
   position: relative;
   display: grid;
-  grid-template-columns: 260px 1fr; /* space for KPIs */
+  grid-template-columns: 260px 1fr;
+  /* photo | KPIs */
   align-items: center;
   column-gap: 20px;
-  min-height: 520px; /* keeps section balanced */
-  z-index: 1; /* stays behind left text */
-  margin-left: -100px;
-}
-
-/* Large portrait that slides left so the text overlaps it */
-.portrait-wrapper {
-  grid-column: 1; /* photo in the second column */
-  position: relative; /* no absolute overlay here */
-  width: clamp(320px, 34vw, 420px); /* smaller width */
-  height: clamp(420px, 48vh, 520px);
-  margin-left: -250px; /* nudge photo LEFT toward the text */
+  min-height: 520px;
   z-index: 1;
-  justify-content: center;
-  align-items: center;
+  margin-left: -100px;
+  /* your overlap */
 }
 
-/* Solid “shield” card behind the photo (no blur) */
+/* Portrait (desktop/tablet) */
+.portrait-wrapper {
+  grid-column: 1;
+  position: relative;
+  width: clamp(320px, 34vw, 420px);
+  height: clamp(420px, 48vh, 520px);
+  margin-left: -250px;
+  z-index: 1;
+}
+
 .portrait-wrapper .shield {
   position: absolute;
-  inset: -24px; /* keep current sizing */
-  top: -200px; /* push higher until it hits the hero top */
+  inset: -24px;
+  top: -200px;
   border-radius: 60px 60px 150px 150px;
   border: 1px solid var(--border-hairline);
   background: #2f2e2e;
   z-index: -1;
 }
 
-[data-theme=light] .portrait-wrapper .shield {
+[data-theme="light"] .portrait-wrapper .shield {
   background: #E9ECEF;
   border-color: #E6E6EA;
-  opacity: 0.95;
+  opacity: .95;
 }
 
-[data-theme=light] .hero-heading,
-[data-theme=light] .hero-description {
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.65);
-}
-
-[data-theme=light] .hero-left::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
-  z-index: -1;
-}
-
-/* Photo styling */
 .portrait {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top; /* Shift image upward */
+  object-position: top;
   border-radius: 28px;
   display: block;
   translate: 0% -10%;
 }
 
-/* Optional small code panel (kept as-is) */
-.code-panel {
-  position: absolute;
-  bottom: -24px;
-  left: -24px;
-  width: 160px;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-hairline);
-  border-radius: 8px;
-  opacity: 0.5;
-  overflow: hidden;
-  font-family: "Fira Code", monospace;
-  font-size: 12px;
-  padding: 8px;
-}
-
-/* KPIs column (unchanged) */
+/* KPIs (desktop) – vertical column */
 .hero-stats {
   grid-column: 2;
-  padding-left: 0; /* remove old separator padding */
-  border-left: none; /* no dividing line anymore */
   display: grid;
   gap: 24px;
   align-content: start;
-  z-index: 3; /* above the photo if they overlap */
-}
-
-[data-theme=light] .hero-stats {
-  border-left: 1px solid rgba(0, 0, 0, 0.12);
+  z-index: 3;
 }
 
 .stat-number {
   font-size: 32px;
   font-weight: 700;
-  transition: color 0.3s;
+  transition: color .3s;
 }
 
 .stat-label {
@@ -236,7 +201,7 @@
   color: var(--accent-solid);
 }
 
-/* Feature row (unchanged) */
+/* Feature row */
 .feature-row {
   border-top: 1px solid var(--border-hairline);
   display: grid;
@@ -247,7 +212,7 @@
   padding: 24px 32px;
   text-align: center;
   border-left: 1px solid var(--border-hairline);
-  transition: transform 0.2s ease;
+  transition: transform .2s ease;
 }
 
 .feature-block:first-child {
@@ -273,7 +238,7 @@
   height: 1px;
   background: var(--accent-solid);
   margin: 4px auto 0;
-  transition: width 0.2s ease;
+  transition: width .2s ease;
 }
 
 .feature-block:hover {
@@ -284,77 +249,212 @@
   width: 60%;
 }
 
-/* --- Responsive hero behavior: remove the overlap on smaller screens --- */
-@media (max-width: 1200px) {
+/* -------- Tablet polish (keeps layout, centers face a bit) -------- */
+@media (min-width:1025px) and (max-width:1280px) {
   .portrait-wrapper {
-    left: -120px;
+    margin-left: clamp(-160px, -12vw, -80px);
+    width: clamp(300px, 32vw, 380px);
+    height: clamp(420px, 46vh, 500px);
+  }
+
+  .portrait {
+    object-position: 50% 18%;
+    translate: 0;
   }
 }
-@media (max-width: 1024px) {
+
+/* -------- Mobile (≤1024): stack, center text, KPIs as perfectly centered 2×2) -------- */
+
+/* hidden by default; shown on mobile between H1 and paragraph */
+.portrait-mobile-wrapper {
+  display: none;
+}
+
+@media (max-width:1024px) {
   .hero-grid {
     grid-template-columns: 1fr;
     row-gap: 40px;
   }
+
+  /* center all hero text */
   .hero-left {
-    grid-column: 1/-1;
+    grid-column: 1 / -1;
     text-align: center;
     z-index: 5;
   }
+
+  .hero-heading,
+  .hero-eyebrow,
+  .hero-description,
+  .hero-tools {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-description {
+    max-width: 64ch;
+  }
+
+  /* hide desktop portrait; show the mobile one (between title & paragraph) */
   .hero-right {
-    grid-column: 1/-1;
+    grid-column: 1 / -1;
+    display: block;
     min-height: auto;
+    margin-left: 0;
   }
-  .portrait-wrapper {
+
+  .hero-right .portrait-wrapper {
+    display: none;
+  }
+
+
+  .portrait-mobile-wrapper {
+    display: block;
     position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    width: min(80vw, 420px);
-    height: auto;
-    margin: 0 auto;
+    width: min(82vw, 420px);
+    height: clamp(450px, 42vw, 420px);
+    margin: 12px auto 18px;
+    aspect-ratio: 3/4;
   }
+
+  .portrait-mobile-wrapper .shield {
+    position: absolute;
+    inset: -16px;
+    border-radius: 60px 60px 150px 150px;
+    border: 1px solid var(--border-hairline);
+    background: #2f2e2e;
+    z-index: -1;
+  }
+
+  [data-theme="light"] .portrait-mobile-wrapper .shield {
+    background: #E9ECEF;
+    border-color: #E6E6EA;
+    opacity: .95;
+  }
+
+  .portrait.mobile {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    object-position: 50% 18%;
+    border-radius: 28px;
+    display: block;
+    translate: 0;
+  }
+
+  /* KPIs: true 2×2 grid, centered and evenly spaced */
   .hero-stats {
+    grid-column: 1 / -1 !important;
+    width: min(680px, 100%);
+    margin: 12px auto 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    gap: 24px 32px;
+    /* row x column */
+    place-items: center;
+    /* center each KPI box */
+    justify-items: center;
     padding-left: 0;
     border-left: none;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    width: 100%;
   }
+
   .stat {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    min-height: 72px;
+    /* keeps rows even if labels wrap */
+  }
+
+  .stat-number {
+    font-size: clamp(28px, 6vw, 36px);
+    line-height: 1.1;
   }
 }
-@media (max-width: 768px) {
+
+/* small phones */
+@media (max-width:420px) {
+  .hero-stats {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    gap: 18px 20px;
+    width: min(560px, 100%);
+  }
+
+  .stat {
+    min-height: 66px;
+  }
+}
+
+/* tiny phones */
+@media (max-width:375px) {
+  .hero-canvas {
+    padding-top: 36px;
+  }
+}
+
+/* Light-mode polish */
+[data-theme="light"] .hero-heading,
+[data-theme="light"] .hero-description {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .65);
+}
+
+/* =========================
+   Feature row: 4 across → 2×2
+   ========================= */
+
+/* Desktop/Laptop: keep your current 4 columns */
+.feature-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border-hairline);
+}
+
+/* Tablet/Phone: switch to a centered 2×2 grid */
+@media (max-width: 1024px) {
   .feature-row {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 32px;
+    row-gap: 24px;
+    justify-items: stretch;
+    /* each cell fills its column */
+    align-items: stretch;
   }
+
   .feature-block {
-    border-top: 1px solid var(--border-hairline);
-  }
-  .feature-block:nth-child(odd) {
+    /* reset desktop separators; we’ll redraw them for 2×2 */
     border-left: none;
+    border-top: 1px solid var(--border-hairline);
+    text-align: center;
+    padding: 24px 18px;
   }
-  .feature-block:nth-child(-n+2) {
+
+  /* remove top border for the first row (items 1 & 2) */
+  .feature-block:nth-child(-n + 2) {
     border-top: none;
   }
-}
-/* Inline code style */
-code, .code-inline {
-  background: var(--code-inline-bg);
-  color: var(--text-primary);
-  padding: 0.1em 0.3em;
-  border-radius: 4px;
-  font-family: "Fira Code", monospace;
+
+  /* vertical divider for the right column (items 2 & 4) */
+  .feature-block:nth-child(2),
+  .feature-block:nth-child(4) {
+    border-left: 1px solid var(--border-hairline);
+  }
 }
 
-pre code {
-  background: var(--code-bg);
-  display: block;
-  padding: 1rem;
-  border-radius: 8px;
+/* Very small phones: tighten spacing just a touch */
+@media (max-width: 420px) {
+  .feature-row {
+    column-gap: 16px;
+    row-gap: 16px;
+  }
+
+  .feature-block h3 {
+    font-size: 12px;
+  }
+
+  .feature-block p {
+    font-size: 13px;
+  }
 }
-
-/* ========================================================================== */
-
-/*# sourceMappingURL=hero.css.map */

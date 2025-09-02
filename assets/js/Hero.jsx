@@ -11,6 +11,15 @@ const Hero = () => {
           <div className="hero-left">
             <p className="hero-eyebrow">HEY, I'M NOURELDEEN FAHMY</p>
             <h1 className="hero-heading">
+              <div className="portrait-mobile-wrapper" aria-hidden="false">
+                <div className="shield" aria-hidden="true"></div>
+                <img
+                  src="images/ChatGPT Image Aug 15, 2025, 11_23_28 PM.png"
+                  alt="Noureldeen Fahmy"
+                  className="portrait mobile"
+                />
+              </div>
+
               <span className="hero-role">
                 <span className="role-main">Software Developer</span>
                 <span className="role-sub">&amp; Data Scientist</span>
